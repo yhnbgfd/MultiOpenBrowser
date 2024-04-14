@@ -1,11 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
+		<OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FreeSql" Version="3.2.821" />
+		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.821" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2420.47" />
+		<PackageReference Include="NLog" Version="5.2.8" />
+	</ItemGroup>
 
 </Project>

@@ -1,0 +1,13 @@
+<Project>
+    <PropertyGroup>
+        <Product>EShopHelper</Product>
+        <Description>EShopHelper</Description>
+        <Authors>HANG</Authors>
+        <Company>HANG</Company>
+        <Copyright>© 2024 - HANG</Copyright>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Version>1.0.0.2</Version>
+    </PropertyGroup>
+</Project>
