@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace EShopHelper.Views.Windows
 {
-    /// <summary>
-    /// Interaction logic for LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()

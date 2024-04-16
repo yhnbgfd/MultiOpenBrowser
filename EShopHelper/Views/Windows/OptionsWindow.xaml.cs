@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace EShopHelper.Views.Windows
 {
-    /// <summary>
-    /// Interaction logic for OptionsWindow.xaml
-    /// </summary>
     public partial class OptionsWindow : Window
     {
         public OptionsWindow()
