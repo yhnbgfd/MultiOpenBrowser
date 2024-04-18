@@ -4,7 +4,7 @@ namespace EShopHelper.Views.UserControls
 {
     public partial class WebEnvironmentListItemUserControl : UserControl
     {
-        public WebEnvironment WebEnvironment { get; set; } = new();
+        public WebEnvironment WebEnvironment { get; set; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
