@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="WebBrowserOptionWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <Button Content="保存" Click="Button_Save_Click" HorizontalAlignment="Left" Margin="400,21,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

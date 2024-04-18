@@ -18,7 +18,7 @@ namespace EShopHelper.Base
             {
                 Directory.CreateDirectory(dbDir);
             }
-            var connectionString = $@"Data Source={dbDir}\Hang.CQMS.Repository.db;Pooling=true;Max Pool Size=10";
+            var connectionString = $@"Data Source={dbDir}\dat.db;Pooling=true;Max Pool Size=10";
 
             FSql = new FreeSql.FreeSqlBuilder()
                 .UseConnectionString(FreeSql.DataType.Sqlite, connectionString, typeof(FreeSql.Sqlite.SqliteProvider<>))
