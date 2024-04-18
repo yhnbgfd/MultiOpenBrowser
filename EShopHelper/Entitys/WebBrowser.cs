@@ -12,6 +12,7 @@ namespace EShopHelper.Entitys
         [Column(IsIdentity = true)]
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        public bool IsTemplate { get; set; } = false;
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
         public string UserAgent { get; set; } = string.Empty;
 
