@@ -21,5 +21,13 @@ namespace EShopHelper.Entitys
             Chrome,
             WebView2
         }
+
+        public void Start()
+        {
+            if (Type == WebBrowser.TypeEnum.Chrome)
+            {
+
+            }
+        }
     }
 }

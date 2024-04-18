@@ -15,7 +15,7 @@ namespace EShopHelper.Views.UserControls
 
         private void Button_StartWebEnvironment_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            WebEnvironment.StartWebBrowser();
         }
     }
 }

@@ -14,5 +14,15 @@ namespace EShopHelper.Entitys
         public string Name { get; set; } = string.Empty;
         public WebBrowser? WebBrowser { get; set; }
         public string WebBrowserDataPath { get; set; } = string.Empty;
+
+        public void StartWebBrowser()
+        {
+            if (WebBrowser == null)
+            {
+                return;
+            }
+
+            WebBrowser.Start();
+        }
     }
 }
