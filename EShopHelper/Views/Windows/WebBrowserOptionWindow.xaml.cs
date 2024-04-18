@@ -2,9 +2,9 @@
 
 namespace EShopHelper.Views.Windows
 {
-    public partial class OptionsWindow : Window
+    public partial class WebBrowserOptionWindow : Window
     {
-        public OptionsWindow()
+        public WebBrowserOptionWindow()
         {
             InitializeComponent();
         }
