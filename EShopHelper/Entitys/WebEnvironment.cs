@@ -12,8 +12,11 @@ namespace EShopHelper.Entitys
         [Column(IsIdentity = true)]
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public WebBrowser? WebBrowser { get; set; }
+        public int? WebBrowserId { get; set; }
         public string WebBrowserDataPath { get; set; } = string.Empty;
+
+        [Column(IsIgnore = true)]
+        public WebBrowser? WebBrowser { get; set; }
 
         public void StartWebBrowser()
         {
