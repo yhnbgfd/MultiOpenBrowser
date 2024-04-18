@@ -7,6 +7,7 @@ namespace EShopHelper.Views.Windows
         public LoginWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }

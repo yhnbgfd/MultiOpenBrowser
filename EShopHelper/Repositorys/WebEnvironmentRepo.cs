@@ -1,9 +1,6 @@
 ﻿namespace EShopHelper.Repositorys
 {
-    class WebEnvironmentRepo : BaseRepo<WebEnvironment>
+    class WebEnvironmentRepo(IUnitOfWork? uow) : BaseRepo<WebEnvironment>(uow, null, null)
     {
-        public WebEnvironmentRepo(IUnitOfWork? uow) : base(uow, null, null)
-        {
-        }
     }
 }

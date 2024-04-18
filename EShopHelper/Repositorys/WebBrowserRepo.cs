@@ -1,9 +1,6 @@
 ﻿namespace EShopHelper.Repositorys
 {
-    class WebBrowserRepo : BaseRepo<WebBrowser>
+    class WebBrowserRepo(IUnitOfWork? uow) : BaseRepo<WebBrowser>(uow, null, null)
     {
-        public WebBrowserRepo(IUnitOfWork? uow) : base(uow, null, null)
-        {
-        }
     }
 }

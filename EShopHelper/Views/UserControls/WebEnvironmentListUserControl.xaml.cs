@@ -1,21 +1,34 @@
-﻿using System.Windows;
+﻿using NLog;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace EShopHelper.Views.UserControls
 {
     public partial class WebEnvironmentListUserControl : UserControl
     {
-        internal List<WebEnvironment> Data { get; set; } = [];
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+        internal List<WebEnvironment> WebEnvironmentList { get; set; } = [];
 
         public WebEnvironmentListUserControl()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            _logger.Debug("Loaded");
+
+            await ReloadListAsync();
+
+            _logger.Debug("Load Data OK");
+        }
+
+        public async Task ReloadListAsync()
+        {
             WebEnvironmentRepo webEnvironmentRepo = new(null);
-            Data = await webEnvironmentRepo.Select.ToListAsync();
+            WebEnvironmentList = await webEnvironmentRepo.Select.ToListAsync();
         }
     }
 }

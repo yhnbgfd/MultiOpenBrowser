@@ -18,12 +18,12 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="浏览器设置">
-                <MenuItem Header="添加浏览器设置" Click="MenuItem_AddWebBrowser"/>
+                <MenuItem Header="添加浏览器设置" Click="MenuItem_AddWebBrowser_Click"/>
             </MenuItem>
             <MenuItem Header="环境设置">
-                <MenuItem Header="添加新环境" Click="MenuItem_AddWebEnvironment"/>
+                <MenuItem Header="添加新环境" Click="MenuItem_AddWebEnvironment_Click"/>
             </MenuItem>
         </Menu>
-        <UserControls:WebEnvironmentListUserControl Grid.Row="1"/>
+        <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" Grid.Row="1"/>
     </Grid>
 </Window>

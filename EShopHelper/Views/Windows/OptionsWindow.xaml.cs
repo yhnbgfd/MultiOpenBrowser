@@ -7,6 +7,7 @@ namespace EShopHelper.Views.Windows
         public OptionsWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }
