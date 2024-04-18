@@ -7,7 +7,7 @@ namespace EShopHelper.Entitys
     /// </summary>
     [Table(Name = nameof(WebBrowser))]
     [Obfuscation(Exclude = true)]
-    internal class WebBrowser
+    public class WebBrowser
     {
         [Column(IsIdentity = true)]
         public int Id { get; set; }
@@ -15,7 +15,7 @@ namespace EShopHelper.Entitys
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
         public string UserAgent { get; set; } = string.Empty;
 
-        internal enum TypeEnum
+        public enum TypeEnum
         {
             Chrome,
             WebView2

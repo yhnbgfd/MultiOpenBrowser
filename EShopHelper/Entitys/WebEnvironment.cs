@@ -7,7 +7,7 @@ namespace EShopHelper.Entitys
     /// </summary>
     [Table(Name = nameof(WebEnvironment))]
     [Obfuscation(Exclude = true)]
-    internal class WebEnvironment
+    public class WebEnvironment
     {
         [Column(IsIdentity = true)]
         public int Id { get; set; }
