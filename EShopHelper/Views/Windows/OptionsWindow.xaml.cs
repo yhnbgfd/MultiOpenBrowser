@@ -9,5 +9,10 @@ namespace EShopHelper.Views.Windows
             InitializeComponent();
             DataContext = this;
         }
+
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

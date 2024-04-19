@@ -11,12 +11,8 @@
     Height="650"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="28" />
-            <RowDefinition Height="132*" />
-        </Grid.RowDefinitions>
-        <Menu>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
             <MenuItem Header="浏览器设置">
                 <MenuItem Click="MenuItem_AddWebBrowser_Click" Header="添加浏览器设置" />
             </MenuItem>
@@ -24,6 +20,6 @@
                 <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="添加新环境" />
             </MenuItem>
         </Menu>
-        <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" Grid.Row="1" />
-    </Grid>
+        <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />
+    </DockPanel>
 </Window>

@@ -9,5 +9,16 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid />
+    <DockPanel>
+        <Button
+            Width="60"
+            Height="30"
+            Margin="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Click="Button_Save_Click"
+            Content="保存"
+            DockPanel.Dock="Bottom" />
+        <Grid />
+    </DockPanel>
 </Window>
