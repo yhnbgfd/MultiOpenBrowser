@@ -10,16 +10,16 @@ namespace EShopHelper.Views.UserControls
 
         public WebEnvironment WebEnvironment { get; set; }
 
-        public static readonly RoutedEvent DeleteEvent = EventManager.RegisterRoutedEvent(
+        public static readonly RoutedEvent DeleteClickEvent = EventManager.RegisterRoutedEvent(
             name: "Delete",
             routingStrategy: RoutingStrategy.Bubble,
             handlerType: typeof(RoutedEventHandler),
             ownerType: typeof(WebEnvironmentListItemUserControl));
 
-        public event RoutedEventHandler Delete
+        public event RoutedEventHandler DeleteClick
         {
-            add { AddHandler(DeleteEvent, value); }
-            remove { RemoveHandler(DeleteEvent, value); }
+            add { AddHandler(DeleteClickEvent, value); }
+            remove { RemoveHandler(DeleteClickEvent, value); }
         }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
@@ -29,9 +29,9 @@ namespace EShopHelper.Views.UserControls
             WebEnvironment = webEnvironment;
         }
 
-        void RaiseDeleteEvent()
+        void RaiseDeleteClickEvent()
         {
-            RoutedEventArgs routedEventArgs = new(routedEvent: DeleteEvent);
+            RoutedEventArgs routedEventArgs = new(routedEvent: DeleteClickEvent);
             RaiseEvent(routedEventArgs);
         }
 
@@ -52,7 +52,6 @@ namespace EShopHelper.Views.UserControls
             using var uow = Global.FSql.CreateUnitOfWork();
             try
             {
-
                 if (WebEnvironment.WebBrowser?.IsTemplate == false)
                 {
                     WebBrowserRepo webBrowserRepo = new(uow);
@@ -64,7 +63,9 @@ namespace EShopHelper.Views.UserControls
 
                 uow.Commit();
 
-                RaiseDeleteEvent();
+                //TODO 删除 WebEnvironment.WebBrowserDataPath 文件夹
+
+                RaiseDeleteClickEvent();
             }
             catch (Exception ex)
             {

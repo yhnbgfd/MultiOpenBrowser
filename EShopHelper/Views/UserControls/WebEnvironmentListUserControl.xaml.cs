@@ -37,7 +37,7 @@ namespace EShopHelper.Views.UserControls
                     {
                         Margin = new Thickness(5),
                     };
-                    webEnvironmentListItemUserControl.Delete += WebEnvironmentListItemUserControl_DeleteClick;
+                    webEnvironmentListItemUserControl.DeleteClick += WebEnvironmentListItemUserControl_DeleteClick;
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
                 }
             }
