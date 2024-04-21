@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using EShopHelper.Views.Windows;
+using NLog;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -49,6 +50,12 @@ namespace EShopHelper.Views.UserControls
 
         private async void Button_DeleteWebEnvironment_Click(object sender, RoutedEventArgs e)
         {
+            var result = MessageBox.Show("Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+
             using var uow = Global.FSql.CreateUnitOfWork();
             try
             {
@@ -72,6 +79,15 @@ namespace EShopHelper.Views.UserControls
                 uow.Rollback();
                 _logger.Error(ex);
             }
+        }
+
+        private void Button_EditWebEnvironment_Click(object sender, RoutedEventArgs e)
+        {
+            new WebEnvironmentOptionWindow()
+            {
+                Owner = Application.Current.MainWindow,
+                WebEnvironment = WebEnvironment
+            }.ShowDialog();
         }
     }
 }
