@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Text;
 
 namespace EShopHelper.Entitys
 {
@@ -14,7 +16,6 @@ namespace EShopHelper.Entitys
         public string Name { get; set; } = string.Empty;
         public bool IsTemplate { get; set; } = false;
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
-        public SystemEnum System { get; set; } = SystemEnum.Window11;
         public string UserAgent { get; set; } = string.Empty;
 
         public enum TypeEnum
@@ -23,19 +24,45 @@ namespace EShopHelper.Entitys
             WebView2,
         }
 
-        public enum SystemEnum
-        {
-            Window11,
-            Window10,
-            Window7,
-        }
-
-        public void Start()
+        public void Start(string userDataDir, string? proxyServer = null)
         {
             if (Type == TypeEnum.Chrome)
             {
-
+                StartChrome(userDataDir, proxyServer);
             }
+        }
+
+        private static void StartChrome(string userDataDir, string? proxyServer = null)
+        {
+            var chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
+
+            StringBuilder sb = new();
+
+            if (!string.IsNullOrWhiteSpace(userDataDir))
+            {
+                sb.Append($"--user-data-dir=\"{userDataDir}\" ");
+            }
+            sb.Append("--no-first-run ");
+            sb.Append("--no-default-browser-check ");
+            if (!string.IsNullOrWhiteSpace(proxyServer))
+            {
+                sb.Append($"--proxy-server=\"{proxyServer}\" ");
+            }
+            sb.Append("--restore-last-session ");
+            sb.Append("--hide-crash-restore-bubble ");
+            sb.Append("--flag-switches-begin ");
+            sb.Append("--flag-switches-end ");
+
+            ProcessStartInfo processStartInfo = new()
+            {
+                FileName = chromePath,
+                Arguments = sb.ToString(),
+            };
+            Process process = new()
+            {
+                StartInfo = processStartInfo,
+            };
+            process.Start();
         }
     }
 }

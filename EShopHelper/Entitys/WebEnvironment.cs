@@ -15,7 +15,6 @@ namespace EShopHelper.Entitys
         public int? WebBrowserId { get; set; }
         public string WebBrowserDataPath { get; set; } = string.Empty;
 
-        [Column(IsIgnore = true)]
         public WebBrowser? WebBrowser { get; set; }
 
         public void StartWebBrowser()
@@ -25,7 +24,7 @@ namespace EShopHelper.Entitys
                 return;
             }
 
-            WebBrowser.Start();
+            WebBrowser.Start(WebBrowserDataPath);
         }
     }
 }

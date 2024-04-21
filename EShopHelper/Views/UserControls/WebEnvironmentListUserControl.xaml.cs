@@ -23,14 +23,23 @@ namespace EShopHelper.Views.UserControls
 
         public async Task ReloadListAsync()
         {
-            WebEnvironmentRepo webEnvironmentRepo = new(null);
-            WebEnvironmentList = await webEnvironmentRepo.Select.ToListAsync();
-
-            this.StackPanel_WebEnvironmentList.Children.Clear();
-            foreach (var item in WebEnvironmentList)
+            try
             {
-                WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item);
-                this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
+                WebEnvironmentRepo webEnvironmentRepo = new(null);
+                WebEnvironmentList = await webEnvironmentRepo.Select
+                    .LeftJoin(a => a.WebBrowserId == a.WebBrowser.Id)
+                    .ToListAsync();
+
+                this.StackPanel_WebEnvironmentList.Children.Clear();
+                foreach (var item in WebEnvironmentList)
+                {
+                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item);
+                    this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
             }
         }
     }
