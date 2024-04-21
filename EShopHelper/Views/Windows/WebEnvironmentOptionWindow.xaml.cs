@@ -8,6 +8,7 @@ namespace EShopHelper.Views.Windows
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public WebEnvironment WebEnvironment { get; set; } = WebEnvironment.Default;
+        public WebBrowser? WebBrowser => WebEnvironment.WebBrowser;
 
         public WebEnvironmentOptionWindow()
         {

@@ -60,7 +60,7 @@
                 Text="{Binding WebEnvironment.WebBrowserDataPath}"
                 TextWrapping="Wrap" />
             <Grid Grid.Row="2" Grid.ColumnSpan="99">
-                <UserControls:WebBrowserOptionUserControl WebBrowser="{Binding WebEnvironment.WebBrowser}" />
+                <UserControls:WebBrowserOptionUserControl WebBrowser="{Binding WebBrowser}" />
             </Grid>
         </Grid>
     </DockPanel>
