@@ -33,7 +33,10 @@ namespace EShopHelper.Views.UserControls
                 this.StackPanel_WebEnvironmentList.Children.Clear();
                 foreach (var item in WebEnvironmentList)
                 {
-                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item);
+                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item)
+                    {
+                        Margin = new Thickness(5)
+                    };
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
                 }
             }

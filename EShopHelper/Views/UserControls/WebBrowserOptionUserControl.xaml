@@ -20,7 +20,7 @@
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Text="Name" />
+            Text="WebBrowserName" />
         <TextBox
             Grid.Column="1"
             Width="200"
