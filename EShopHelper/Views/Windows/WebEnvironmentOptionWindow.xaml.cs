@@ -1,10 +1,13 @@
-﻿using System.Windows;
+﻿using NLog;
+using System.Windows;
 
 namespace EShopHelper.Views.Windows
 {
     public partial class WebEnvironmentOptionWindow : Window
     {
-        internal WebEnvironment WebEnvironment { get; set; } = new();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+        public WebEnvironment WebEnvironment { get; set; } = WebEnvironment.Default;
 
         public WebEnvironmentOptionWindow()
         {
@@ -14,15 +17,20 @@ namespace EShopHelper.Views.Windows
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            WebEnvironment = new()
+            try
             {
-                Name = "环境1",
-            };
+                WebBrowserRepo webBrowserRepo = new(null);
+                await webBrowserRepo.InsertOrUpdateAsync(WebEnvironment.WebBrowser!);
 
-            WebEnvironmentRepo webEnvironmentRepo = new(null);
-            await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
+                WebEnvironmentRepo webEnvironmentRepo = new(null);
+                await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
         }
     }
 }

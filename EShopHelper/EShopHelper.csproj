@@ -10,12 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fody" Version="6.8.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="FreeSql" Version="3.2.821" />
     <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.821" />
     <PackageReference Include="FreeSql.Repository" Version="3.2.821" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2420.47" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NLog" Version="5.2.8" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
@@ -9,14 +10,14 @@ namespace EShopHelper.Entitys
     /// </summary>
     [Table(Name = nameof(WebBrowser))]
     [Obfuscation(Exclude = true)]
-    public class WebBrowser
+    public class WebBrowser : INotifyPropertyChanged
     {
         [Column(IsIdentity = true)]
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
         public bool IsTemplate { get; set; } = false;
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
-        public string UserAgent { get; set; } = string.Empty;
+        public string? UserAgent { get; set; }
 
         public enum TypeEnum
         {
@@ -24,7 +25,15 @@ namespace EShopHelper.Entitys
             WebView2,
         }
 
-        public void Start(string userDataDir, string? proxyServer = null)
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public static WebBrowser Default => new()
+        {
+            Name = "MyWebBrowser",
+            UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 NGA_WP_JW/(;WINDOWS)",
+        };
+
+        public void Start(string? userDataDir, string? proxyServer = null)
         {
             if (Type == TypeEnum.Chrome)
             {
@@ -32,7 +41,7 @@ namespace EShopHelper.Entitys
             }
         }
 
-        private static void StartChrome(string userDataDir, string? proxyServer = null)
+        private static void StartChrome(string? userDataDir, string? proxyServer = null)
         {
             var chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
 

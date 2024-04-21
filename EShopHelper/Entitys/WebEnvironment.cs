@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.ComponentModel;
+using System.Reflection;
 
 namespace EShopHelper.Entitys
 {
@@ -7,15 +8,23 @@ namespace EShopHelper.Entitys
     /// </summary>
     [Table(Name = nameof(WebEnvironment))]
     [Obfuscation(Exclude = true)]
-    public class WebEnvironment
+    public class WebEnvironment : INotifyPropertyChanged
     {
         [Column(IsIdentity = true)]
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
         public int? WebBrowserId { get; set; }
-        public string WebBrowserDataPath { get; set; } = string.Empty;
+        public string? WebBrowserDataPath { get; set; }
 
         public WebBrowser? WebBrowser { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public static WebEnvironment Default => new()
+        {
+            Name = "MyWebEnvironment",
+            WebBrowser = WebBrowser.Default,
+        };
 
         public void StartWebBrowser()
         {
