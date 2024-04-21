@@ -25,6 +25,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -59,7 +60,23 @@
                 AcceptsReturn="True"
                 Text="{Binding WebEnvironment.WebBrowserDataPath}"
                 TextWrapping="Wrap" />
-            <Grid Grid.Row="2" Grid.ColumnSpan="99">
+            <TextBlock
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="ProxyServer" />
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Width="400"
+                MinHeight="30"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                AcceptsReturn="True"
+                Text="{Binding WebEnvironment.ProxyServer}"
+                TextWrapping="Wrap" />
+            <Grid Grid.Row="3" Grid.ColumnSpan="99">
                 <UserControls:WebBrowserOptionUserControl WebBrowser="{Binding WebBrowser}" />
             </Grid>
         </Grid>

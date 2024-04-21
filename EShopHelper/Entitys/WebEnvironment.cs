@@ -15,6 +15,7 @@ namespace EShopHelper.Entitys
         public string? Name { get; set; }
         public int? WebBrowserId { get; set; }
         public string? WebBrowserDataPath { get; set; }
+        public string? ProxyServer { get; set; }
 
         public WebBrowser? WebBrowser { get; set; }
 
@@ -33,7 +34,7 @@ namespace EShopHelper.Entitys
                 return;
             }
 
-            WebBrowser.Start(WebBrowserDataPath);
+            WebBrowser.Start(WebBrowserDataPath, ProxyServer);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace EShopHelper.Entitys
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 NGA_WP_JW/(;WINDOWS)",
         };
 
-        public void Start(string? userDataDir, string? proxyServer = null)
+        public void Start(string? userDataDir, string? proxyServer)
         {
             if (Type == TypeEnum.Chrome)
             {
@@ -41,7 +41,7 @@ namespace EShopHelper.Entitys
             }
         }
 
-        private static void StartChrome(string? userDataDir, string? proxyServer = null)
+        private static void StartChrome(string? userDataDir, string? proxyServer)
         {
             var chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
 
