@@ -20,7 +20,9 @@ namespace EShopHelper.Views.Windows
             try
             {
                 WebBrowserRepo webBrowserRepo = new(null);
-                await webBrowserRepo.InsertOrUpdateAsync(WebEnvironment.WebBrowser!);
+                WebEnvironment.WebBrowser = await webBrowserRepo.InsertOrUpdateAsync(WebEnvironment.WebBrowser!);
+
+                WebEnvironment.WebBrowserId = WebEnvironment.WebBrowser.Id;
 
                 WebEnvironmentRepo webEnvironmentRepo = new(null);
                 await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
