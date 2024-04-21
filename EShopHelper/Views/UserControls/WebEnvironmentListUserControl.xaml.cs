@@ -35,8 +35,9 @@ namespace EShopHelper.Views.UserControls
                 {
                     WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item)
                     {
-                        Margin = new Thickness(5)
+                        Margin = new Thickness(5),
                     };
+                    webEnvironmentListItemUserControl.Delete += WebEnvironmentListItemUserControl_DeleteClick;
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
                 }
             }
@@ -44,6 +45,11 @@ namespace EShopHelper.Views.UserControls
             {
                 _logger.Error(ex);
             }
+        }
+
+        private async void WebEnvironmentListItemUserControl_DeleteClick(object sender, RoutedEventArgs e)
+        {
+            await ReloadListAsync();
         }
     }
 }

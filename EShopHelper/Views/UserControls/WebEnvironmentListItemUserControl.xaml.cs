@@ -10,11 +10,29 @@ namespace EShopHelper.Views.UserControls
 
         public WebEnvironment WebEnvironment { get; set; }
 
+        public static readonly RoutedEvent DeleteEvent = EventManager.RegisterRoutedEvent(
+            name: "Delete",
+            routingStrategy: RoutingStrategy.Bubble,
+            handlerType: typeof(RoutedEventHandler),
+            ownerType: typeof(WebEnvironmentListItemUserControl));
+
+        public event RoutedEventHandler Delete
+        {
+            add { AddHandler(DeleteEvent, value); }
+            remove { RemoveHandler(DeleteEvent, value); }
+        }
+
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
             InitializeComponent();
             DataContext = this;
             WebEnvironment = webEnvironment;
+        }
+
+        void RaiseDeleteEvent()
+        {
+            RoutedEventArgs routedEventArgs = new(routedEvent: DeleteEvent);
+            RaiseEvent(routedEventArgs);
         }
 
         private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)
@@ -45,6 +63,8 @@ namespace EShopHelper.Views.UserControls
                 await webEnvironmentRepo.DeleteAsync(WebEnvironment);
 
                 uow.Commit();
+
+                RaiseDeleteEvent();
             }
             catch (Exception ex)
             {
