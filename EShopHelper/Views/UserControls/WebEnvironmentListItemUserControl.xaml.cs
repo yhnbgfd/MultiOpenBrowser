@@ -11,7 +11,7 @@ namespace EShopHelper.Views.UserControls
         public WebEnvironment WebEnvironment { get; set; }
 
         public static readonly RoutedEvent DeleteClickEvent = EventManager.RegisterRoutedEvent(
-            name: "Delete",
+            name: nameof(DeleteClick),
             routingStrategy: RoutingStrategy.Bubble,
             handlerType: typeof(RoutedEventHandler),
             ownerType: typeof(WebEnvironmentListItemUserControl));
