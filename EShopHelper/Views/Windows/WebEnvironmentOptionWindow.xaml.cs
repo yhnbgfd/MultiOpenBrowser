@@ -18,20 +18,24 @@ namespace EShopHelper.Views.Windows
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
         {
+            using var uow = Global.FSql.CreateUnitOfWork();
             try
             {
-                WebBrowserRepo webBrowserRepo = new(null);
+                WebBrowserRepo webBrowserRepo = new(uow);
                 WebEnvironment.WebBrowser = await webBrowserRepo.InsertOrUpdateAsync(WebEnvironment.WebBrowser!);
 
                 WebEnvironment.WebBrowserId = WebEnvironment.WebBrowser.Id;
 
-                WebEnvironmentRepo webEnvironmentRepo = new(null);
+                WebEnvironmentRepo webEnvironmentRepo = new(uow);
                 await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
+
+                uow.Commit();
 
                 this.Close();
             }
             catch (Exception ex)
             {
+                uow.Rollback();
                 _logger.Error(ex);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using NLog;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace EShopHelper.Views.UserControls
@@ -16,7 +17,7 @@ namespace EShopHelper.Views.UserControls
             WebEnvironment = webEnvironment;
         }
 
-        private void Button_StartWebEnvironment_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -24,6 +25,30 @@ namespace EShopHelper.Views.UserControls
             }
             catch (Exception ex)
             {
+                _logger.Error(ex);
+            }
+        }
+
+        private async void Button_DeleteWebEnvironment_Click(object sender, RoutedEventArgs e)
+        {
+            using var uow = Global.FSql.CreateUnitOfWork();
+            try
+            {
+
+                if (WebEnvironment.WebBrowser?.IsTemplate == false)
+                {
+                    WebBrowserRepo webBrowserRepo = new(uow);
+                    await webBrowserRepo.DeleteAsync(WebEnvironment.WebBrowser);
+                }
+
+                WebEnvironmentRepo webEnvironmentRepo = new(uow);
+                await webEnvironmentRepo.DeleteAsync(WebEnvironment);
+
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
                 _logger.Error(ex);
             }
         }
