@@ -13,6 +13,7 @@ namespace EShopHelper.Entitys
         [Column(IsIdentity = true)]
         public int Id { get; set; }
         public string? Name { get; set; }
+        public int Order { get; set; }
         public int? WebBrowserId { get; set; }
         public string? WebBrowserDataPath { get; set; }
         public string? ProxyServer { get; set; }

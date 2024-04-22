@@ -28,6 +28,7 @@ namespace EShopHelper.Views.UserControls
                 WebEnvironmentRepo webEnvironmentRepo = new(null);
                 WebEnvironmentList = await webEnvironmentRepo.Select
                     .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
+                    .OrderBy(a => a.Order)
                     .ToListAsync();
 
                 this.StackPanel_WebEnvironmentList.Children.Clear();
