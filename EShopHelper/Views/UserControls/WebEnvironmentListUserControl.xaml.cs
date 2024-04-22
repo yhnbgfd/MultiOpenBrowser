@@ -31,6 +31,8 @@ namespace EShopHelper.Views.UserControls
                     .OrderBy(a => a.Order)
                     .ToListAsync();
 
+                _logger.Info($"WebEnvironmentList Count={WebEnvironmentList.Count}");
+
                 this.StackPanel_WebEnvironmentList.Children.Clear();
                 foreach (var item in WebEnvironmentList)
                 {
