@@ -1,4 +1,5 @@
 ﻿using NLog;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -34,9 +35,10 @@ namespace EShopHelper.Views.UserControls
                 _logger.Info($"WebEnvironmentList Count={WebEnvironmentList.Count}");
 
                 this.StackPanel_WebEnvironmentList.Children.Clear();
-                foreach (var item in WebEnvironmentList)
+                foreach (var item in WebEnvironmentList.Select((value, i) => new { i, value }))
                 {
-                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item)
+                    item.value.Order = item.i + 1;
+                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value)
                     {
                         Margin = new Thickness(5),
                     };

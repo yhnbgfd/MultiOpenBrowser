@@ -22,5 +22,10 @@ namespace EShopHelper.Views.Windows
             new WebEnvironmentOptionWindow() { Owner = this }.ShowDialog();
             await WebEnvironmentListUC.ReloadListAsync();
         }
+
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
