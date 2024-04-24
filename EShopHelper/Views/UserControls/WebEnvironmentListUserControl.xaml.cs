@@ -1,5 +1,4 @@
 ﻿using NLog;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -30,6 +29,7 @@ namespace EShopHelper.Views.UserControls
                 WebEnvironmentList = await webEnvironmentRepo.Select
                     .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
                     .OrderBy(a => a.Order)
+                    .OrderBy(a => a.Id)
                     .ToListAsync();
 
                 _logger.Info($"WebEnvironmentList Count={WebEnvironmentList.Count}");
