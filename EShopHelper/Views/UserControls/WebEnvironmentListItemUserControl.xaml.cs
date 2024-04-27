@@ -1,5 +1,6 @@
 ﻿using EShopHelper.Views.Windows;
 using NLog;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -68,9 +69,12 @@ namespace EShopHelper.Views.UserControls
                 WebEnvironmentRepo webEnvironmentRepo = new(uow);
                 await webEnvironmentRepo.DeleteAsync(WebEnvironment);
 
-                uow.Commit();
+                if (!string.IsNullOrWhiteSpace(WebEnvironment.WebBrowserDataPath) && Directory.Exists(WebEnvironment.WebBrowserDataPath))
+                {
+                    Directory.Delete(WebEnvironment.WebBrowserDataPath, true);
+                }
 
-                //TODO 删除 WebEnvironment.WebBrowserDataPath 文件夹
+                uow.Commit();
 
                 RaiseDeleteClickEvent();
             }

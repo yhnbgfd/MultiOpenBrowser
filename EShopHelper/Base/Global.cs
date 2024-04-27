@@ -28,7 +28,7 @@ namespace EShopHelper.Base
             FSql = new FreeSqlBuilder()
                 .UseConnectionString(DataType.Sqlite, connectionString, typeof(FreeSql.Sqlite.SqliteProvider<>))
                 .UseAutoSyncStructure(true)
-                .UseNameConvert(NameConvertType.ToLower)
+                .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
                 .Build();
             FSql.Aop.SyncStructureAfter += FSqlAop_SyncStructureAfter;
             FSql.Aop.ConfigEntityProperty += FSqlAop_ConfigEntityProperty;
