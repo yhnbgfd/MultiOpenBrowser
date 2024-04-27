@@ -56,7 +56,7 @@ namespace EShopHelper.Views.Windows
 
         private void MenuItem_CheckForUpdates_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("当前为最新版");
+            MessageBox.Show(this, "当前为最新版");
         }
 
         private async void Window_Closed(object sender, EventArgs e)

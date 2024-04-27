@@ -56,7 +56,7 @@ namespace EShopHelper.Views.UserControls
                 return;
             }
 
-            var result = MessageBox.Show("Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel);
+            var result = MessageBox.Show(Application.Current.MainWindow, "Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.Cancel)
             {
                 return;
