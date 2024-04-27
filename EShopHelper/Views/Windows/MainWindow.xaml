@@ -25,8 +25,8 @@
                 <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="Add WebEnvironment" />
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="Check for Updates" />
-                <MenuItem Header="About" />
+                <MenuItem Click="MenuItem_CheckForUpdates_Click" Header="Check for Updates" />
+                <MenuItem Click="MenuItem_About_Click" Header="About" />
             </MenuItem>
         </Menu>
         <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />

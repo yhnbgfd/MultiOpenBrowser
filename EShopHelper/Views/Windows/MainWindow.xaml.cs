@@ -30,7 +30,17 @@ namespace EShopHelper.Views.Windows
 
         private void MenuItem_Options_Click(object sender, RoutedEventArgs e)
         {
+            new OptionsWindow() { Owner = this }.ShowDialog();
+        }
 
+        private void MenuItem_About_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow() { Owner = this }.ShowDialog();
+        }
+
+        private void MenuItem_CheckForUpdates_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("当前为最新版");
         }
     }
 }
