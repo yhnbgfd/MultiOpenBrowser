@@ -8,20 +8,25 @@ namespace EShopHelper.Base
     class Global
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly string[] _Directory = ["Data"];
 
         public static IFreeSql FSql { get; private set; }
 
         static Global()
         {
-            var dbDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
-            if (!Directory.Exists(dbDir))
+            foreach (var dir in _Directory)
             {
-                Directory.CreateDirectory(dbDir);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), dir);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
             }
-            var connectionString = $@"Data Source={dbDir}\dat.db;Pooling=true;Max Pool Size=10";
 
-            FSql = new FreeSql.FreeSqlBuilder()
-                .UseConnectionString(FreeSql.DataType.Sqlite, connectionString, typeof(FreeSql.Sqlite.SqliteProvider<>))
+            var dbDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+            var connectionString = $@"Data Source={dbDir}\dat.db;Pooling=true;Max Pool Size=10";
+            FSql = new FreeSqlBuilder()
+                .UseConnectionString(DataType.Sqlite, connectionString, typeof(FreeSql.Sqlite.SqliteProvider<>))
                 .UseAutoSyncStructure(true)
                 .UseNameConvert(NameConvertType.ToLower)
                 .Build();
