@@ -37,6 +37,7 @@ namespace EShopHelper.Views.UserControls
                 this.StackPanel_WebEnvironmentList.Children.Clear();
                 foreach (var item in WebEnvironmentList.Select((value, i) => new { i, value }))
                 {
+                    item.value.Index = item.i + 1;
                     WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value)
                     {
                         Margin = new Thickness(5),

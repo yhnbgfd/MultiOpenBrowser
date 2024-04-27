@@ -40,6 +40,10 @@ namespace EShopHelper.Entitys
             {
                 StartChrome(userDataDir, proxyServer);
             }
+            else if (Type == TypeEnum.WebView2)
+            {
+
+            }
         }
 
         private static void StartChrome(string? userDataDir, string? proxyServer)

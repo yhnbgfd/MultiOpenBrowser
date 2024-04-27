@@ -18,6 +18,9 @@ namespace EShopHelper.Entitys
         public string? WebBrowserDataPath { get; set; }
         public string? ProxyServer { get; set; }
 
+        [Column(IsIgnore = true)]
+        public int Index { get; set; }
+
         public WebBrowser? WebBrowser { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
