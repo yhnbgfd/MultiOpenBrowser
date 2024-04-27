@@ -1,0 +1,39 @@
+﻿namespace EShopHelper.Repositorys
+{
+    internal class CacheRepo(IUnitOfWork? uow) : BaseRepo<Cache>(uow, null, null)
+    {
+        public static async Task SetAsync(string key, object? value, DateTimeOffset? expired, CancellationToken cancellationToken = default)
+        {
+            CacheRepo cacheRepo = new(null);
+            Cache cache = new()
+            {
+                Key = key,
+                Value = value?.ToString(),
+                Expired = expired,
+            };
+            await cacheRepo.InsertOrUpdateAsync(cache, cancellationToken);
+        }
+
+        public static async Task<Cache?> GetAsync(string key, CancellationToken cancellationToken = default)
+        {
+            CacheRepo cacheRepo = new(null);
+            var cache = await cacheRepo.Select.Where(a => a.Key == key).FirstAsync(cancellationToken);
+            if (cache.Expired != null && cache.Expired < DateTimeOffset.Now)
+            {
+                return null;
+            }
+            return cache;
+        }
+
+        public static Cache? Get(string key)
+        {
+            CacheRepo cacheRepo = new(null);
+            var cache = cacheRepo.Select.Where(a => a.Key == key).First();
+            if (cache.Expired != null && cache.Expired < DateTimeOffset.Now)
+            {
+                return null;
+            }
+            return cache;
+        }
+    }
+}

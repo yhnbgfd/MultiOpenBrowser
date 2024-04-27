@@ -10,6 +10,22 @@ namespace EShopHelper.Views.Windows
         {
             InitializeComponent();
             DataContext = this;
+
+            var topCache = CacheRepo.Get("MainWindow_Top");
+            var leftCache = CacheRepo.Get("MainWindow_Left");
+            if (topCache != null && leftCache != null)
+            {
+                _ = double.TryParse(topCache.Value, out var top);
+                _ = double.TryParse(leftCache.Value, out var left);
+                this.WindowStartupLocation = WindowStartupLocation.Manual;
+                this.Top = top;
+                this.Left = left;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void MenuItem_AddWebBrowser_Click(object sender, RoutedEventArgs e)
@@ -41,6 +57,12 @@ namespace EShopHelper.Views.Windows
         private void MenuItem_CheckForUpdates_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("当前为最新版");
+        }
+
+        private async void Window_Closed(object sender, EventArgs e)
+        {
+            await CacheRepo.SetAsync("MainWindow_Top", this.Top, null);
+            await CacheRepo.SetAsync("MainWindow_Left", this.Left, null);
         }
     }
 }

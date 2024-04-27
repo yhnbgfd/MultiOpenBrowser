@@ -4,7 +4,6 @@ using System.Reflection;
 namespace EShopHelper.Entitys
 {
     [Table(Name = nameof(UserInfo))]
-    [Obfuscation(Exclude = true)]
     public class UserInfo : INotifyPropertyChanged
     {
         [Column(IsIdentity = true)]

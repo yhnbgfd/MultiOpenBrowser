@@ -9,7 +9,6 @@ namespace EShopHelper.Entitys
     /// 浏览器配置
     /// </summary>
     [Table(Name = nameof(WebBrowser))]
-    [Obfuscation(Exclude = true)]
     public class WebBrowser : INotifyPropertyChanged
     {
         [Column(IsIdentity = true)]

@@ -7,7 +7,6 @@ namespace EShopHelper.Entitys
     /// 网络环境
     /// </summary>
     [Table(Name = nameof(WebEnvironment))]
-    [Obfuscation(Exclude = true)]
     public class WebEnvironment : INotifyPropertyChanged
     {
         [Column(IsIdentity = true)]
