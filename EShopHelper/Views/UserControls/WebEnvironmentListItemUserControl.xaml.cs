@@ -10,7 +10,7 @@ namespace EShopHelper.Views.UserControls
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public WebEnvironment WebEnvironment { get; set; }
+        public WebEnvironment? WebEnvironment { get; set; }
 
         public static readonly RoutedEvent DeleteClickEvent = EventManager.RegisterRoutedEvent(
             name: nameof(DeleteClick),
@@ -41,7 +41,7 @@ namespace EShopHelper.Views.UserControls
         {
             try
             {
-                WebEnvironment.StartWebBrowser();
+                WebEnvironment?.StartWebBrowser();
             }
             catch (Exception ex)
             {
@@ -51,6 +51,11 @@ namespace EShopHelper.Views.UserControls
 
         private async void Button_DeleteWebEnvironment_Click(object sender, RoutedEventArgs e)
         {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
             var result = MessageBox.Show("Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.Cancel)
             {
@@ -87,6 +92,11 @@ namespace EShopHelper.Views.UserControls
 
         private void Button_EditWebEnvironment_Click(object sender, RoutedEventArgs e)
         {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
             new WebEnvironmentOptionWindow()
             {
                 Owner = Application.Current.MainWindow,

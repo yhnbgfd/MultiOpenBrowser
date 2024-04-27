@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:UserControls="clr-namespace:EShopHelper.Views.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:EShopHelper.Views.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="EShopHelper"
     Width="1000"
@@ -15,16 +14,20 @@
     mc:Ignorable="d">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Height="28" Header="文件">
-                <MenuItem Click="MenuItem_Exit_Click" Header="退出" />
+            <MenuItem Height="28" Header="File">
+                <MenuItem Click="MenuItem_Options_Click" Header="Options" />
+                <MenuItem Click="MenuItem_Exit_Click" Header="Exit" />
             </MenuItem>
-            <MenuItem Header="浏览器设置">
-                <MenuItem Click="MenuItem_AddWebBrowser_Click" Header="添加浏览器设置" />
+            <MenuItem Header="WebBrowser">
+                <MenuItem Click="MenuItem_AddWebBrowser_Click" Header="Add WebBrowser" />
             </MenuItem>
-            <MenuItem Header="环境设置">
-                <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="添加新环境" />
+            <MenuItem Header="WebEnvironment">
+                <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="Add WebEnvironment" />
             </MenuItem>
-            <MenuItem Header="关于" />
+            <MenuItem Header="Help">
+                <MenuItem Header="Check for Updates" />
+                <MenuItem Header="About" />
+            </MenuItem>
         </Menu>
         <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />
     </DockPanel>

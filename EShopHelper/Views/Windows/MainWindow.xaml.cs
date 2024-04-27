@@ -27,5 +27,10 @@ namespace EShopHelper.Views.Windows
         {
             this.Close();
         }
+
+        private void MenuItem_Options_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
