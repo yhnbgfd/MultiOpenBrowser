@@ -18,7 +18,7 @@
         {
             CacheRepo cacheRepo = new(null);
             var cache = await cacheRepo.Select.Where(a => a.Key == key).FirstAsync(cancellationToken);
-            if (cache.Expired != null && cache.Expired < DateTimeOffset.Now)
+            if (cache == null || cache.Expired != null && cache.Expired < DateTimeOffset.Now)
             {
                 return null;
             }
@@ -29,7 +29,7 @@
         {
             CacheRepo cacheRepo = new(null);
             var cache = cacheRepo.Select.Where(a => a.Key == key).First();
-            if (cache.Expired != null && cache.Expired < DateTimeOffset.Now)
+            if (cache == null || cache.Expired != null && cache.Expired < DateTimeOffset.Now)
             {
                 return null;
             }
