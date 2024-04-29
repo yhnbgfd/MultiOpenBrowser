@@ -20,7 +20,7 @@
     <PackageReference Include="FreeSql.Repository" Version="3.2.821" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NLog" Version="5.3.0" />
+    <PackageReference Include="NLog" Version="5.3.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
