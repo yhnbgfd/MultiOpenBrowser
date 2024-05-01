@@ -29,7 +29,7 @@ namespace EShopHelper.Entitys
         public static WebBrowser Default => new()
         {
             Name = "MyWebBrowser",
-            UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 NGA_WP_JW/(;WINDOWS)",
+            UserAgent = GlobalData.Option.DefaultUserAgent,
         };
 
         public void Start(string? userDataDir, string? proxyServer)

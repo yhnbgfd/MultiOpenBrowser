@@ -16,6 +16,7 @@ namespace EShopHelper.Views.Windows
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             await CacheRepo.SetAsync("Option", Option, null);
+            this.Close();
         }
 
         private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

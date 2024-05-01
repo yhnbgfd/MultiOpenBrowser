@@ -17,6 +17,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Height="28" Header="File">
                 <MenuItem Click="MenuItem_Options_Click" Header="Options" />
+                <Separator />
                 <MenuItem Click="MenuItem_Exit_Click" Header="Exit" />
             </MenuItem>
             <MenuItem Header="WebBrowser">
@@ -27,6 +28,7 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Click="MenuItem_CheckForUpdates_Click" Header="Check for Updates" />
+                <Separator />
                 <MenuItem Click="MenuItem_About_Click" Header="About" />
             </MenuItem>
         </Menu>
