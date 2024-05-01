@@ -46,8 +46,6 @@ namespace EShopHelper.Entitys
 
         private static void StartChrome(string? userDataDir, string? proxyServer)
         {
-            var chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
-
             StringBuilder sb = new();
 
             if (!string.IsNullOrWhiteSpace(userDataDir))
@@ -67,7 +65,7 @@ namespace EShopHelper.Entitys
 
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = chromePath,
+                FileName = GlobalData.ChromePath,
                 Arguments = sb.ToString(),
             };
             Process process = new()
