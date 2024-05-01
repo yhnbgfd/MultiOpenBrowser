@@ -27,7 +27,7 @@ namespace EShopHelper.Entitys
         {
             Name = "MyWebEnvironment",
             WebBrowser = WebBrowser.Default,
-            WebBrowserDataPath = GlobalData.Option.DefaultWebBrowserDataPath + "\\",
+            WebBrowserDataPath = $"{GlobalData.Option.DefaultWebBrowserDataPath}\\{DateTimeOffset.Now:yyyyMMddHHmmss}",
         };
 
         public void StartWebBrowser()
