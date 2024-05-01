@@ -56,7 +56,7 @@ namespace EShopHelper.Views.UserControls
                     JumpTask task = new()
                     {
                         Title = item.value.Name,
-                        Arguments = item.value.Id.ToString(),
+                        Arguments = $"--start-web-environment={item.value.Id}",
                         Description = item.value.Name,
                         CustomCategory = "WebEnvironment List",
                         IconResourcePath = Environment.ProcessPath,
