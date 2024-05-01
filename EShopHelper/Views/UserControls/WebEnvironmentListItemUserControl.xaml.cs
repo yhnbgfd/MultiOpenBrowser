@@ -3,6 +3,8 @@ using NLog;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace EShopHelper.Views.UserControls
 {
@@ -102,6 +104,16 @@ namespace EShopHelper.Views.UserControls
                 Owner = Application.Current.MainWindow,
                 WebEnvironment = WebEnvironment
             }.ShowDialog();
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Background = Brushes.WhiteSmoke;
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Background = Brushes.White;
         }
     }
 }

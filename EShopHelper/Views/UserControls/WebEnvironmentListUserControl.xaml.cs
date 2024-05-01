@@ -44,10 +44,7 @@ namespace EShopHelper.Views.UserControls
                 foreach (var item in WebEnvironmentList.Select((value, i) => new { i, value }))
                 {
                     item.value.Index = item.i + 1;
-                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value)
-                    {
-                        Margin = new Thickness(5),
-                    };
+                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value);
                     webEnvironmentListItemUserControl.DeleteClick += WebEnvironmentListItemUserControl_DeleteClick;
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
                 }
