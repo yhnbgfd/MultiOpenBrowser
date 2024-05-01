@@ -44,13 +44,13 @@ namespace EShopHelper
                     _ = int.TryParse(startWebEnvironmenArgsSplit[1], out var id);
 
                     WebEnvironmentRepo webEnvironmentRepo = new(null);
-                    var webEnvironmen = await webEnvironmentRepo.Select
+                    var webEnvironment = await webEnvironmentRepo.Select
                         .Where(a => a.Id == id)
                         .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
                         .FirstAsync();
-                    if (webEnvironmen != null)
+                    if (webEnvironment != null)
                     {
-                        webEnvironmen.StartWebBrowser();
+                        webEnvironment.StartWebBrowser();
                         Environment.Exit(0);
                     }
                 }
