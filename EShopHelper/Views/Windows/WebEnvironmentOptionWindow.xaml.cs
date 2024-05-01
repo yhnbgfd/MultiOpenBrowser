@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using EShopHelper.Helpers;
+using NLog;
 using System.Windows;
 
 namespace EShopHelper.Views.Windows
@@ -30,6 +31,8 @@ namespace EShopHelper.Views.Windows
                 await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
 
                 uow.Commit();
+
+                JumpListHelper.SetJumpList();
 
                 this.Close();
             }

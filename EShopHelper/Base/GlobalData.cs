@@ -3,5 +3,6 @@
     internal class GlobalData
     {
         internal static UserInfo? UserInfo { get; set; }
+        internal static List<WebEnvironment> WebEnvironmentList { get; set; } = [];
     }
 }

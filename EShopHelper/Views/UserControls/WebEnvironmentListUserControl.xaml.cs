@@ -1,8 +1,7 @@
-﻿using NLog;
-using System.IO;
+﻿using EShopHelper.Helpers;
+using NLog;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Shell;
 
 namespace EShopHelper.Views.UserControls
 {
@@ -10,7 +9,7 @@ namespace EShopHelper.Views.UserControls
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        internal List<WebEnvironment> WebEnvironmentList { get; set; } = [];
+        internal static List<WebEnvironment> WebEnvironmentList => GlobalData.WebEnvironmentList;
 
         public WebEnvironmentListUserControl()
         {
@@ -23,24 +22,23 @@ namespace EShopHelper.Views.UserControls
             await ReloadListAsync();
         }
 
-        public async Task ReloadListAsync()
+        private async void WebEnvironmentListItemUserControl_DeleteClick(object sender, RoutedEventArgs e)
+        {
+            await ReloadListAsync();
+        }
+
+        internal async Task ReloadListAsync()
         {
             try
             {
                 WebEnvironmentRepo webEnvironmentRepo = new(null);
-                WebEnvironmentList = await webEnvironmentRepo.Select
+                GlobalData.WebEnvironmentList = await webEnvironmentRepo.Select
                     .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
                     .OrderBy(a => a.Order)
                     .OrderBy(a => a.Id)
                     .ToListAsync();
 
                 _logger.Info($"WebEnvironmentList Count={WebEnvironmentList.Count}");
-
-                JumpList jumpList = new()
-                {
-                    ShowFrequentCategory = false,
-                    ShowRecentCategory = false
-                };
 
                 this.StackPanel_WebEnvironmentList.Children.Clear();
                 foreach (var item in WebEnvironmentList.Select((value, i) => new { i, value }))
@@ -52,31 +50,14 @@ namespace EShopHelper.Views.UserControls
                     };
                     webEnvironmentListItemUserControl.DeleteClick += WebEnvironmentListItemUserControl_DeleteClick;
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
-
-                    JumpTask task = new()
-                    {
-                        Title = item.value.Name,
-                        Arguments = $"--start-web-environment={item.value.Id}",
-                        Description = item.value.Name,
-                        CustomCategory = "WebEnvironment List",
-                        IconResourcePath = Environment.ProcessPath,
-                        ApplicationPath = Environment.ProcessPath,
-                        WorkingDirectory = Directory.GetCurrentDirectory(),
-                    };
-                    jumpList.JumpItems.Add(task);
                 }
 
-                JumpList.SetJumpList(Application.Current, jumpList);
+                JumpListHelper.SetJumpList();
             }
             catch (Exception ex)
             {
                 _logger.Error(ex);
             }
-        }
-
-        private async void WebEnvironmentListItemUserControl_DeleteClick(object sender, RoutedEventArgs e)
-        {
-            await ReloadListAsync();
         }
     }
 }
