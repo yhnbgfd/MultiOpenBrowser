@@ -4,7 +4,7 @@ namespace EShopHelper.Views.Windows
 {
     public partial class MainWindow : Window
     {
-        internal UserInfo? UserInfo => GlobalData.UserInfo;
+        internal static UserInfo? UserInfo => GlobalData.UserInfo;
 
         public MainWindow()
         {
@@ -13,13 +13,19 @@ namespace EShopHelper.Views.Windows
 
             var topCache = CacheRepo.Get("MainWindow_Top");
             var leftCache = CacheRepo.Get("MainWindow_Left");
-            if (topCache != null && leftCache != null)
+            var widthCache = CacheRepo.Get("MainWindow_Width");
+            var heightCache = CacheRepo.Get("MainWindow_Height");
+            if (topCache != null && leftCache != null && widthCache != null && heightCache != null)
             {
                 _ = double.TryParse(topCache.Value, out var top);
                 _ = double.TryParse(leftCache.Value, out var left);
+                _ = double.TryParse(widthCache.Value, out var width);
+                _ = double.TryParse(heightCache.Value, out var height);
                 this.WindowStartupLocation = WindowStartupLocation.Manual;
                 this.Top = top;
                 this.Left = left;
+                this.Width = width;
+                this.Height = height;
             }
         }
 
@@ -63,6 +69,8 @@ namespace EShopHelper.Views.Windows
         {
             await CacheRepo.SetAsync("MainWindow_Top", this.Top, null);
             await CacheRepo.SetAsync("MainWindow_Left", this.Left, null);
+            await CacheRepo.SetAsync("MainWindow_Width", this.Width, null);
+            await CacheRepo.SetAsync("MainWindow_Height", this.Height, null);
         }
     }
 }
