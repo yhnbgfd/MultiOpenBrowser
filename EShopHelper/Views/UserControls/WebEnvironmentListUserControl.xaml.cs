@@ -1,6 +1,8 @@
 ﻿using NLog;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Shell;
 
 namespace EShopHelper.Views.UserControls
 {
@@ -34,6 +36,12 @@ namespace EShopHelper.Views.UserControls
 
                 _logger.Info($"WebEnvironmentList Count={WebEnvironmentList.Count}");
 
+                JumpList jumpList = new()
+                {
+                    ShowFrequentCategory = false,
+                    ShowRecentCategory = false
+                };
+
                 this.StackPanel_WebEnvironmentList.Children.Clear();
                 foreach (var item in WebEnvironmentList.Select((value, i) => new { i, value }))
                 {
@@ -44,7 +52,21 @@ namespace EShopHelper.Views.UserControls
                     };
                     webEnvironmentListItemUserControl.DeleteClick += WebEnvironmentListItemUserControl_DeleteClick;
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
+
+                    JumpTask task = new()
+                    {
+                        Title = item.value.Name,
+                        Arguments = item.value.Id.ToString(),
+                        Description = item.value.Name,
+                        CustomCategory = "WebEnvironment List",
+                        IconResourcePath = Environment.ProcessPath,
+                        ApplicationPath = Environment.ProcessPath,
+                        WorkingDirectory = Directory.GetCurrentDirectory(),
+                    };
+                    jumpList.JumpItems.Add(task);
                 }
+
+                JumpList.SetJumpList(Application.Current, jumpList);
             }
             catch (Exception ex)
             {
