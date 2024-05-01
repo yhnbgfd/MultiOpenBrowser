@@ -36,7 +36,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock
                 Margin="10,0,10,0"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Text="Default WebBrowser DataPath"
                 TextWrapping="Wrap" />
@@ -52,7 +52,7 @@
             <TextBlock
                 Grid.Row="1"
                 Margin="10,0,10,0"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Text="Default User-Agent"
                 TextWrapping="Wrap" />

@@ -17,7 +17,8 @@
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
         <TextBlock
-            HorizontalAlignment="Center"
+            Margin="5,0,5,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Text="WebBrowser Name"
             TextWrapping="Wrap" />
@@ -31,7 +32,8 @@
             Text="{Binding WebBrowser.Name}" />
         <TextBlock
             Grid.Row="1"
-            HorizontalAlignment="Center"
+            Margin="5,0,5,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Text="User-Agent" />
         <TextBox
