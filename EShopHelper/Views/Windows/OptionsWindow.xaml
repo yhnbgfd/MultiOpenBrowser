@@ -9,6 +9,12 @@
     Height="450"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="ApplicationCommands.Close" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
+    </Window.CommandBindings>
     <DockPanel>
         <Button
             Width="60"
@@ -19,6 +25,24 @@
             Click="Button_Save_Click"
             Content="OK"
             DockPanel.Dock="Bottom" />
-        <Grid />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="Default WebBrowser DataPath" />
+            <TextBox
+                Grid.Column="1"
+                MinHeight="30"
+                Margin="0,0,30,0"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                AcceptsReturn="True"
+                Text="{Binding Option.DefaultWebBrowserDataPath}"
+                TextWrapping="Wrap" />
+        </Grid>
     </DockPanel>
 </Window>

@@ -11,7 +11,6 @@
     MinWidth="600"
     MinHeight="400"
     Closed="Window_Closed"
-    Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel>

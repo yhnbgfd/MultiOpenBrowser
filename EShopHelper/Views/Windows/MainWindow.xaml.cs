@@ -17,21 +17,16 @@ namespace EShopHelper.Views.Windows
             var heightCache = CacheRepo.Get("MainWindow_Height");
             if (topCache != null && leftCache != null && widthCache != null && heightCache != null)
             {
-                _ = double.TryParse(topCache.Value, out var top);
-                _ = double.TryParse(leftCache.Value, out var left);
-                _ = double.TryParse(widthCache.Value, out var width);
-                _ = double.TryParse(heightCache.Value, out var height);
+                _ = double.TryParse(topCache, out var top);
+                _ = double.TryParse(leftCache, out var left);
+                _ = double.TryParse(widthCache, out var width);
+                _ = double.TryParse(heightCache, out var height);
                 this.WindowStartupLocation = WindowStartupLocation.Manual;
                 this.Top = top;
                 this.Left = left;
                 this.Width = width;
                 this.Height = height;
             }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void MenuItem_AddWebBrowser_Click(object sender, RoutedEventArgs e)

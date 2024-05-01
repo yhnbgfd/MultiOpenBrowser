@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace EShopHelper.Views.Windows
 {
@@ -8,6 +9,11 @@ namespace EShopHelper.Views.Windows
         {
             InitializeComponent();
             DataContext = this;
+        }
+
+        private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
