@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using System.Reflection;
 using System.Text;
 
 namespace EShopHelper.Entitys

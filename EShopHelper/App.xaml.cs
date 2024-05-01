@@ -33,7 +33,7 @@ namespace EShopHelper
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        private static async Task StartWebEnvironmentAsync(string[] args)
+        private static async Task StartWebEnvironmentAsync(params string[] args)
         {
             var startWebEnvironmenArgs = args.FirstOrDefault(a => a.StartsWith("--start-web-environment="));
             if (startWebEnvironmenArgs != null)
@@ -48,8 +48,11 @@ namespace EShopHelper
                         .Where(a => a.Id == id)
                         .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
                         .FirstAsync();
-                    webEnvironmen?.StartWebBrowser();
-                    Environment.Exit(0);
+                    if (webEnvironmen != null)
+                    {
+                        webEnvironmen.StartWebBrowser();
+                        Environment.Exit(0);
+                    }
                 }
             }
         }

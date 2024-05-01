@@ -5,7 +5,7 @@ using System.IO;
 
 namespace EShopHelper.Base
 {
-    class Global
+    internal static class Global
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private static readonly string[] _Directory = ["Data"];
