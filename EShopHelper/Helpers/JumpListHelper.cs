@@ -14,16 +14,6 @@ namespace EShopHelper.Helpers
                 ShowRecentCategory = false
             };
 
-            JumpTask taskChrome = new()
-            {
-                Title = "Google Chrome",
-                Description = "Google Chrome",
-                CustomCategory = "System",
-                IconResourcePath = GlobalData.ChromePath,
-                ApplicationPath = GlobalData.ChromePath,
-            };
-            jumpList.JumpItems.Add(taskChrome);
-
             foreach (var item in GlobalData.WebEnvironmentList)
             {
                 JumpTask task = new()
@@ -31,13 +21,23 @@ namespace EShopHelper.Helpers
                     Title = item.Name,
                     Arguments = $"--start-web-environment={item.Id}",
                     Description = item.Name,
-                    CustomCategory = "WebEnvironments",
+                    //CustomCategory = "WebEnvironments",
                     IconResourcePath = Environment.ProcessPath,
                     ApplicationPath = Environment.ProcessPath,
                     WorkingDirectory = Directory.GetCurrentDirectory(),
                 };
                 jumpList.JumpItems.Add(task);
             }
+
+            JumpTask taskChrome = new()
+            {
+                Title = "Google Chrome",
+                Description = "Google Chrome",
+                //CustomCategory = "System",
+                IconResourcePath = GlobalData.ChromePath,
+                ApplicationPath = GlobalData.ChromePath,
+            };
+            jumpList.JumpItems.Add(taskChrome);
 
             JumpList.SetJumpList(Application.Current, jumpList);
         }
