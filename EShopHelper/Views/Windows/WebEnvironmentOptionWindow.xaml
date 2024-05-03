@@ -8,6 +8,7 @@
     Title="WebEnvironment Option Window"
     Width="640"
     Height="350"
+    Loaded="Window_Loaded"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.InputBindings>

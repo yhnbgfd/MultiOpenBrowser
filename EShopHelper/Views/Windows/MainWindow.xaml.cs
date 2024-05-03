@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
+using WebBrowser = EShopHelper.Entitys.WebBrowser;
 
 namespace EShopHelper.Views.Windows
 {
@@ -27,17 +30,23 @@ namespace EShopHelper.Views.Windows
                 this.Width = width;
                 this.Height = height;
             }
+
+            if (GlobalData.UserInfo == null)
+            {
+                this.Title = $"{this.Title} (试用版)";
+            }
+            this.Title = $"{this.Title} {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
-        private void MenuItem_AddWebBrowser_Click(object sender, RoutedEventArgs e)
+        private async void MenuItem_AddWebBrowser_Click(object sender, RoutedEventArgs e)
         {
             new WebBrowserOptionWindow() { Owner = this }.ShowDialog();
+            await CreateWebBrowserMenuItemsAsync();
         }
 
-        private async void MenuItem_AddWebEnvironment_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_AddWebEnvironment_Click(object sender, RoutedEventArgs e)
         {
             new WebEnvironmentOptionWindow() { Owner = this }.ShowDialog();
-            await WebEnvironmentListUC.ReloadListAsync();
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
@@ -66,6 +75,98 @@ namespace EShopHelper.Views.Windows
             await CacheRepo.SetAsync("MainWindow_Left", this.Left, null);
             await CacheRepo.SetAsync("MainWindow_Width", this.Width, null);
             await CacheRepo.SetAsync("MainWindow_Height", this.Height, null);
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await CreateWebBrowserMenuItemsAsync();
+        }
+
+        private async Task CreateWebBrowserMenuItemsAsync()
+        {
+            this.MenuItem_WebBrowser.Items.Clear();
+
+            MenuItem menuItemAdd = new()
+            {
+                Header = "添加浏览器",
+            };
+            menuItemAdd.Click += MenuItem_AddWebBrowser_Click;
+            this.MenuItem_WebBrowser.Items.Add(menuItemAdd);
+
+            var webBrowserList = await new WebBrowserRepo(null).Select.Where(a => a.IsTemplate == true).OrderBy(a => a.Id).Take(10).ToListAsync();
+            if (webBrowserList.Count != 0)
+            {
+                this.MenuItem_WebBrowser.Items.Add(new Separator());
+
+                foreach (var wb in webBrowserList)
+                {
+                    MenuItem menuItem = new()
+                    {
+                        Tag = wb,
+                        Header = wb.Name,
+                    };
+                    this.MenuItem_WebBrowser.Items.Add(menuItem);
+
+                    MenuItem addEnvMenuItem = new()
+                    {
+                        Tag = wb,
+                        Header = "添加浏览器环境",
+                    };
+                    addEnvMenuItem.Click += MenuItem_WebBrowser_AddByWebEnvironment_Click;
+                    menuItem.Items.Add(addEnvMenuItem);
+
+                    MenuItem editMenuItem = new()
+                    {
+                        Tag = wb,
+                        Header = "编辑",
+                    };
+                    editMenuItem.Click += MenuItem_WebBrowser_EditWebBrowser_Click; ;
+                    menuItem.Items.Add(editMenuItem);
+
+                    MenuItem deleteMenuItem = new()
+                    {
+                        Tag = wb,
+                        Header = "删除",
+                    };
+                    deleteMenuItem.Click += MenuItem_WebBrowser_DeleteWebBrowser_Click; ;
+                    menuItem.Items.Add(deleteMenuItem);
+                }
+            }
+        }
+
+        private void MenuItem_WebBrowser_AddByWebEnvironment_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowser webBrowser = ((sender as MenuItem)!.Tag as WebBrowser)!;
+
+            var newWebBrowser = (WebBrowser)webBrowser.Clone();
+            newWebBrowser.Id = 0;
+            newWebBrowser.IsTemplate = false;
+
+            new WebEnvironmentOptionWindow()
+            {
+                Owner = this,
+                WebBrowser = newWebBrowser,
+            }.ShowDialog();
+        }
+
+        private async void MenuItem_WebBrowser_EditWebBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowser webBrowser = ((sender as MenuItem)!.Tag as WebBrowser)!;
+
+            var newWebBrowser = (WebBrowser)webBrowser.Clone();
+            new WebBrowserOptionWindow()
+            {
+                Owner = this,
+                WebBrowser = newWebBrowser
+            }.ShowDialog();
+            await CreateWebBrowserMenuItemsAsync();
+        }
+
+        private async void MenuItem_WebBrowser_DeleteWebBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowser webBrowser = ((sender as MenuItem)!.Tag as WebBrowser)!;
+            await new WebBrowserRepo(null).DeleteAsync(webBrowser);
+            await CreateWebBrowserMenuItemsAsync();
         }
     }
 }

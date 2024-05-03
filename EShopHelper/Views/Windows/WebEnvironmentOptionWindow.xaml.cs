@@ -1,21 +1,27 @@
 ﻿using EShopHelper.Helpers;
 using NLog;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
 namespace EShopHelper.Views.Windows
 {
-    public partial class WebEnvironmentOptionWindow : Window
+    public partial class WebEnvironmentOptionWindow : Window, INotifyPropertyChanged
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public WebEnvironment WebEnvironment { get; set; } = WebEnvironment.Default;
-        public WebBrowser? WebBrowser => WebEnvironment.WebBrowser;
+        public WebBrowser WebBrowser { get; set; }
 
         public WebEnvironmentOptionWindow()
         {
             InitializeComponent();
             DataContext = this;
+            WebBrowser ??= this.WebEnvironment.WebBrowser;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
         }
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -24,9 +30,8 @@ namespace EShopHelper.Views.Windows
             try
             {
                 WebBrowserRepo webBrowserRepo = new(uow);
-                WebEnvironment.WebBrowser = await webBrowserRepo.InsertOrUpdateAsync(WebEnvironment.WebBrowser!);
-
-                WebEnvironment.WebBrowserId = WebEnvironment.WebBrowser.Id;
+                WebEnvironment.WebBrowser = await webBrowserRepo.InsertAsync(WebBrowser!);
+                WebEnvironment.WebBrowserId = WebEnvironment.WebBrowser!.Id;
 
                 WebEnvironmentRepo webEnvironmentRepo = new(uow);
                 await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
@@ -34,6 +39,8 @@ namespace EShopHelper.Views.Windows
                 uow.Commit();
 
                 JumpListHelper.SetJumpList();
+
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
 
                 this.Close();
             }

@@ -11,25 +11,26 @@
     MinWidth="600"
     MinHeight="400"
     Closed="Window_Closed"
+    Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Height="28" Header="File">
-                <MenuItem Click="MenuItem_Options_Click" Header="Options" />
+            <MenuItem Height="28" Header="文件">
+                <MenuItem Click="MenuItem_Options_Click" Header="设置" />
                 <Separator />
-                <MenuItem Click="MenuItem_Exit_Click" Header="Exit" />
+                <MenuItem Click="MenuItem_Exit_Click" Header="关闭" />
             </MenuItem>
-            <MenuItem Header="WebBrowser">
-                <MenuItem Click="MenuItem_AddWebBrowser_Click" Header="Add WebBrowser" />
+            <MenuItem x:Name="MenuItem_WebBrowser" Header="浏览器" />
+            <MenuItem Header="浏览器环境">
+                <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="添加浏览器环境" />
             </MenuItem>
-            <MenuItem Header="WebEnvironment">
-                <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="Add WebEnvironment" />
-            </MenuItem>
-            <MenuItem Header="Help">
-                <MenuItem Click="MenuItem_CheckForUpdates_Click" Header="Check for Updates" />
+            <MenuItem Header="帮助">
+                <MenuItem Click="MenuItem_CheckForUpdates_Click" Header="检查更新" />
                 <Separator />
-                <MenuItem Click="MenuItem_About_Click" Header="About" />
+                <MenuItem Header="注册" />
+                <Separator />
+                <MenuItem Click="MenuItem_About_Click" Header="关于" />
             </MenuItem>
         </Menu>
         <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />

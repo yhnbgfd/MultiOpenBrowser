@@ -21,6 +21,7 @@ namespace EShopHelper.Views.Windows
             try
             {
                 WebBrowserRepo webBrowserRepo = new(null);
+                WebBrowser.IsTemplate = true;
                 await webBrowserRepo.InsertOrUpdateAsync(WebBrowser);
 
                 this.Close();

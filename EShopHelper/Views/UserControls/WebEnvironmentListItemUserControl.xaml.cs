@@ -14,29 +14,11 @@ namespace EShopHelper.Views.UserControls
 
         public WebEnvironment? WebEnvironment { get; set; }
 
-        public static readonly RoutedEvent DeleteClickEvent = EventManager.RegisterRoutedEvent(
-            name: nameof(DeleteClick),
-            routingStrategy: RoutingStrategy.Bubble,
-            handlerType: typeof(RoutedEventHandler),
-            ownerType: typeof(WebEnvironmentListItemUserControl));
-
-        public event RoutedEventHandler DeleteClick
-        {
-            add { AddHandler(DeleteClickEvent, value); }
-            remove { RemoveHandler(DeleteClickEvent, value); }
-        }
-
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
             InitializeComponent();
             DataContext = this;
             WebEnvironment = webEnvironment;
-        }
-
-        void RaiseDeleteClickEvent()
-        {
-            RoutedEventArgs routedEventArgs = new(routedEvent: DeleteClickEvent);
-            RaiseEvent(routedEventArgs);
         }
 
         private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)
@@ -83,7 +65,7 @@ namespace EShopHelper.Views.UserControls
 
                 uow.Commit();
 
-                RaiseDeleteClickEvent();
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
             catch (Exception ex)
             {
@@ -99,11 +81,14 @@ namespace EShopHelper.Views.UserControls
                 return;
             }
 
+            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
             new WebEnvironmentOptionWindow()
             {
                 Owner = Application.Current.MainWindow,
-                WebEnvironment = WebEnvironment
+                WebEnvironment = newWebEnvironment
             }.ShowDialog();
+
+            EventBus.NotifyWebEnvironmentChange?.Invoke();
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)

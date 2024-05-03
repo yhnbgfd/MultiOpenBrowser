@@ -6,7 +6,7 @@ namespace EShopHelper.Entitys
     /// 网络环境
     /// </summary>
     [Table(Name = nameof(WebEnvironment))]
-    public class WebEnvironment : INotifyPropertyChanged
+    public class WebEnvironment : INotifyPropertyChanged, ICloneable
     {
         [Column(IsIdentity = true)]
         public int Id { get; set; }
@@ -19,14 +19,13 @@ namespace EShopHelper.Entitys
         [Column(IsIgnore = true)]
         public int Index { get; set; }
 
-        public WebBrowser? WebBrowser { get; set; }
+        public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public static WebEnvironment Default => new()
         {
             Name = "MyWebEnvironment",
-            WebBrowser = WebBrowser.Default,
             WebBrowserDataPath = $"{GlobalData.Option.DefaultWebBrowserDataPath}\\{DateTimeOffset.Now:yyyyMMddHHmmss}",
         };
 
@@ -38,6 +37,11 @@ namespace EShopHelper.Entitys
             }
 
             WebBrowser.Start(WebBrowserDataPath, ProxyServer);
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }

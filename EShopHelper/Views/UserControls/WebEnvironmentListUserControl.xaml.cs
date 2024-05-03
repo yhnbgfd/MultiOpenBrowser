@@ -15,19 +15,20 @@ namespace EShopHelper.Views.UserControls
         {
             InitializeComponent();
             DataContext = this;
+            EventBus.NotifyWebEnvironmentChange += EventBus_NotifyWebEnvironmentChange;
+        }
+
+        private async Task EventBus_NotifyWebEnvironmentChange()
+        {
+            await ReloadListAsync();
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            await ReloadListAsync();
+            await EventBus_NotifyWebEnvironmentChange();
         }
 
-        private async void WebEnvironmentListItemUserControl_DeleteClick(object sender, RoutedEventArgs e)
-        {
-            await ReloadListAsync();
-        }
-
-        internal async Task ReloadListAsync()
+        private async Task ReloadListAsync()
         {
             try
             {
@@ -45,7 +46,6 @@ namespace EShopHelper.Views.UserControls
                 {
                     item.value.Index = item.i + 1;
                     WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value);
-                    webEnvironmentListItemUserControl.DeleteClick += WebEnvironmentListItemUserControl_DeleteClick;
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
                 }
 

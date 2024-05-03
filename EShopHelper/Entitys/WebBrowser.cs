@@ -8,7 +8,7 @@ namespace EShopHelper.Entitys
     /// 浏览器配置
     /// </summary>
     [Table(Name = nameof(WebBrowser))]
-    public class WebBrowser : INotifyPropertyChanged
+    public class WebBrowser : INotifyPropertyChanged, ICloneable
     {
         [Column(IsIdentity = true)]
         public int Id { get; set; }
@@ -73,6 +73,11 @@ namespace EShopHelper.Entitys
                 StartInfo = processStartInfo,
             };
             process.Start();
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }
