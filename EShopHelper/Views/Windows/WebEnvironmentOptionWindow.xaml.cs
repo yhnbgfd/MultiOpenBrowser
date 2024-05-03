@@ -11,17 +11,17 @@ namespace EShopHelper.Views.Windows
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public WebEnvironment WebEnvironment { get; set; } = WebEnvironment.Default;
-        public WebBrowser WebBrowser { get; set; }
+        public WebBrowser? WebBrowser { get; set; }
 
         public WebEnvironmentOptionWindow()
         {
             InitializeComponent();
             DataContext = this;
-            WebBrowser ??= this.WebEnvironment.WebBrowser;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WebBrowser ??= this.WebEnvironment.WebBrowser;
         }
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -30,7 +30,7 @@ namespace EShopHelper.Views.Windows
             try
             {
                 WebBrowserRepo webBrowserRepo = new(uow);
-                WebEnvironment.WebBrowser = await webBrowserRepo.InsertAsync(WebBrowser!);
+                WebEnvironment.WebBrowser = await webBrowserRepo.InsertOrUpdateAsync(WebBrowser!);
                 WebEnvironment.WebBrowserId = WebEnvironment.WebBrowser!.Id;
 
                 WebEnvironmentRepo webEnvironmentRepo = new(uow);
