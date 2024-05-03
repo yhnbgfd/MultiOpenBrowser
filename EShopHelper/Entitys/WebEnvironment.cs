@@ -14,7 +14,6 @@ namespace EShopHelper.Entitys
         public int Order { get; set; }
         public int? WebBrowserId { get; set; }
         public string? WebBrowserDataPath { get; set; }
-        public string? ProxyServer { get; set; }
 
         [Column(IsIgnore = true)]
         public int Index { get; set; }
@@ -36,7 +35,7 @@ namespace EShopHelper.Entitys
                 return;
             }
 
-            WebBrowser.Start(WebBrowserDataPath, ProxyServer);
+            WebBrowser.Start(WebBrowserDataPath);
         }
 
         public object Clone()

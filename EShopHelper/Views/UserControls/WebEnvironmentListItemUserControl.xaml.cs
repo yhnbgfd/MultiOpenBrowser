@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using WebBrowser = EShopHelper.Entitys.WebBrowser;
 
 namespace EShopHelper.Views.UserControls
 {
@@ -12,13 +13,15 @@ namespace EShopHelper.Views.UserControls
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public WebEnvironment? WebEnvironment { get; set; }
+        public WebEnvironment WebEnvironment { get; set; }
+        public WebBrowser WebBrowser { get; set; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
             InitializeComponent();
             DataContext = this;
             WebEnvironment = webEnvironment;
+            WebBrowser = WebEnvironment.WebBrowser;
         }
 
         private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)

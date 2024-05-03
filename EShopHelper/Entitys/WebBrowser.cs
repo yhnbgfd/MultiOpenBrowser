@@ -17,6 +17,7 @@ namespace EShopHelper.Entitys
         public bool IsTemplate { get; set; } = false;
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
         public string? UserAgent { get; set; }
+        public string? ProxyServer { get; set; }
 
         public enum TypeEnum
         {
@@ -32,11 +33,11 @@ namespace EShopHelper.Entitys
             UserAgent = GlobalData.Option.DefaultUserAgent,
         };
 
-        public void Start(string? userDataDir, string? proxyServer)
+        public void Start(string? userDataDir)
         {
             if (Type == TypeEnum.Chrome)
             {
-                StartChrome(userDataDir, proxyServer);
+                StartChrome(userDataDir, ProxyServer);
             }
             else if (Type == TypeEnum.WebView2)
             {
