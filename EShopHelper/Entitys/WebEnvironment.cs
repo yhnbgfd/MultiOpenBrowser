@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.IO;
 
 namespace EShopHelper.Entitys
 {
@@ -25,7 +26,7 @@ namespace EShopHelper.Entitys
         public static WebEnvironment Default => new()
         {
             Name = "MyWebEnvironment",
-            WebBrowserDataPath = $"{GlobalData.Option.DefaultWebBrowserDataPath}\\{DateTimeOffset.Now:yyyyMMddHHmmss}",
+            WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}"),
         };
 
         public void StartWebBrowser()
