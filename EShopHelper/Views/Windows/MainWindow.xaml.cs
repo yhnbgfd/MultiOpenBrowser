@@ -64,11 +64,6 @@ namespace EShopHelper.Views.Windows
             new AboutWindow() { Owner = this }.ShowDialog();
         }
 
-        private void MenuItem_CheckForUpdates_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(this, "当前为最新版");
-        }
-
         private async void Window_Closed(object sender, EventArgs e)
         {
             await CacheRepo.SetAsync("MainWindow_Top", this.Top, null);
@@ -114,6 +109,8 @@ namespace EShopHelper.Views.Windows
                     };
                     addEnvMenuItem.Click += MenuItem_WebBrowser_AddByWebEnvironment_Click;
                     menuItem.Items.Add(addEnvMenuItem);
+
+                    menuItem.Items.Add(new Separator());
 
                     MenuItem editMenuItem = new()
                     {

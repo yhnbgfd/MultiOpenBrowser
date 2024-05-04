@@ -26,9 +26,9 @@
                 <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="添加浏览器环境" />
             </MenuItem>
             <MenuItem Header="帮助">
-                <MenuItem Click="MenuItem_CheckForUpdates_Click" Header="检查更新" />
+                <MenuItem Click="MenuItem_About_Click" Header="检查更新" />
                 <Separator />
-                <MenuItem Header="注册" />
+                <MenuItem Click="MenuItem_About_Click" Header="注册" />
                 <Separator />
                 <MenuItem Click="MenuItem_About_Click" Header="关于" />
             </MenuItem>
