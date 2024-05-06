@@ -33,7 +33,7 @@ namespace EShopHelper.Views.Windows
 
             if (GlobalData.UserInfo == null)
             {
-                this.Title = $"{this.Title} (试用版)";
+                //this.Title = $"{this.Title} (试用版)";
             }
             this.Title = $"{this.Title} {Assembly.GetExecutingAssembly().GetName().Version}";
         }
