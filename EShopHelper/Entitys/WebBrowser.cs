@@ -18,6 +18,7 @@ namespace EShopHelper.Entitys
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
         public string? UserAgent { get; set; }
         public string? ProxyServer { get; set; }
+        public bool DisableWebSecurity { get; set; } = false;
 
         public enum TypeEnum
         {
@@ -37,7 +38,7 @@ namespace EShopHelper.Entitys
         {
             if (Type == TypeEnum.Chrome)
             {
-                StartChrome(userDataDir, ProxyServer);
+                this.StartChrome(userDataDir);
             }
             else if (Type == TypeEnum.WebView2)
             {
@@ -45,7 +46,7 @@ namespace EShopHelper.Entitys
             }
         }
 
-        private static void StartChrome(string? userDataDir, string? proxyServer)
+        private void StartChrome(string? userDataDir)
         {
             StringBuilder sb = new();
 
@@ -55,15 +56,18 @@ namespace EShopHelper.Entitys
             }
             sb.Append("--no-first-run ");
             sb.Append("--no-default-browser-check ");
-            if (!string.IsNullOrWhiteSpace(proxyServer))
+            if (!string.IsNullOrWhiteSpace(ProxyServer))
             {
-                sb.Append($"--proxy-server=\"{proxyServer}\" ");
+                sb.Append($"--proxy-server=\"{ProxyServer}\" ");
             }
             sb.Append("--restore-last-session ");
             sb.Append("--hide-crash-restore-bubble ");
             sb.Append("--flag-switches-begin ");
             sb.Append("--flag-switches-end ");
-            sb.Append("--disable-web-security ");//可解决跨域报错
+            if (DisableWebSecurity)
+            {
+                sb.Append("--disable-web-security ");//可解决跨域报错
+            }
 
             ProcessStartInfo processStartInfo = new()
             {

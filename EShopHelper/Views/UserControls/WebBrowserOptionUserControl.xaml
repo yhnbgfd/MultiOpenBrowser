@@ -12,6 +12,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -65,5 +66,19 @@
             AcceptsReturn="True"
             Text="{Binding WebBrowser.ProxyServer}"
             TextWrapping="Wrap" />
+        <TextBlock
+            Grid.Row="3"
+            Margin="5,0,5,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Text="禁用浏览器安全" />
+        <CheckBox
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="(可解决部分网站跨域报错)"
+            IsChecked="{Binding WebBrowser.DisableWebSecurity}" />
     </Grid>
 </UserControl>
