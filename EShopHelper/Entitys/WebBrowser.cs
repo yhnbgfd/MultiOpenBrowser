@@ -63,6 +63,7 @@ namespace EShopHelper.Entitys
             sb.Append("--hide-crash-restore-bubble ");
             sb.Append("--flag-switches-begin ");
             sb.Append("--flag-switches-end ");
+            sb.Append("--disable-web-security ");//可解决跨域报错
 
             ProcessStartInfo processStartInfo = new()
             {
