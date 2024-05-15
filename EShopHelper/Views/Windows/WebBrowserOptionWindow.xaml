@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="WebBrowser Option Window"
     Width="640"
-    Height="280"
+    Height="320"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.InputBindings>

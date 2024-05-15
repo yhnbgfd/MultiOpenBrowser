@@ -19,6 +19,7 @@ namespace EShopHelper.Entitys
         public string? UserAgent { get; set; }
         public string? ProxyServer { get; set; }
         public bool DisableWebSecurity { get; set; } = false;
+        public string? Arguments { get; set; }
 
         public enum TypeEnum
         {
@@ -67,6 +68,10 @@ namespace EShopHelper.Entitys
             if (DisableWebSecurity)
             {
                 sb.Append("--disable-web-security ");//可解决跨域报错
+            }
+            if (!string.IsNullOrWhiteSpace(Arguments))
+            {
+                sb.Append($"{Arguments} ");
             }
 
             ProcessStartInfo processStartInfo = new()
