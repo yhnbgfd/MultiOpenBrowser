@@ -35,7 +35,7 @@ namespace EShopHelper.Views.Windows
             {
                 //this.Title = $"{this.Title} (试用版)";
             }
-            this.Title = $"{this.Title} {Assembly.GetExecutingAssembly().GetName().Version}";
+            //this.Title = $"{this.Title} {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         private async void MenuItem_AddWebBrowser_Click(object sender, RoutedEventArgs e)
