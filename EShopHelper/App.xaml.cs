@@ -42,17 +42,17 @@ namespace EShopHelper
                 var startWebEnvironmenArgsSplit = startWebEnvironmenArgs.Split("=", StringSplitOptions.RemoveEmptyEntries);
                 if (startWebEnvironmenArgsSplit.Length > 1)
                 {
-                    _ = int.TryParse(startWebEnvironmenArgsSplit[1], out var id);
-
-                    WebEnvironmentRepo webEnvironmentRepo = new(null);
-                    var webEnvironment = await webEnvironmentRepo.Select
-                        .Where(a => a.Id == id)
-                        .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
-                        .FirstAsync();
-                    if (webEnvironment != null)
+                    if (int.TryParse(startWebEnvironmenArgsSplit[1], out var id))
                     {
-                        webEnvironment.StartWebBrowser();
-                        Environment.Exit(0);
+                        WebEnvironmentRepo webEnvironmentRepo = new(null);
+                        var webEnvironment = await webEnvironmentRepo.Select
+                            .Where(a => a.Id == id)
+                            .FirstAsync();
+                        if (webEnvironment != null)
+                        {
+                            webEnvironment.StartWebBrowser();
+                            Environment.Exit(0);
+                        }
                     }
                 }
             }
