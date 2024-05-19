@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using EShopHelper.Helpers;
+using NLog;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -35,7 +36,7 @@ namespace EShopHelper
         /// <returns></returns>
         private static async Task StartWebEnvironmentAsync(params string[] args)
         {
-            var startWebEnvironmenArgs = args.FirstOrDefault(a => a.StartsWith("--start-web-environment="));
+            var startWebEnvironmenArgs = args.FirstOrDefault(a => a.StartsWith($"--{ArgsHelper.Start_Web_Environment}="));
             if (startWebEnvironmenArgs != null)
             {
                 var startWebEnvironmenArgsSplit = startWebEnvironmenArgs.Split("=", StringSplitOptions.RemoveEmptyEntries);
