@@ -19,7 +19,7 @@ namespace EShopHelper.Helpers
                 JumpTask task = new()
                 {
                     Title = item.Name,
-                    Arguments = $"--{ArgsHelper.Start_Web_Environment}={item.Id}",
+                    Arguments = $"{ArgsHelper.Start_Web_Environment}={item.Id}",
                     Description = item.Name,
                     //CustomCategory = "WebEnvironments",
                     IconResourcePath = Environment.ProcessPath,
