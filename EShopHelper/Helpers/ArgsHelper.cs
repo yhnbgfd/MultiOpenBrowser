@@ -9,7 +9,7 @@
             var arg = args.FirstOrDefault(a => a.StartsWith($"{key}="));
             if (arg != null)
             {
-                var argsSplit = arg.Split("=", StringSplitOptions.RemoveEmptyEntries);
+                var argsSplit = arg.Split("=", 2, StringSplitOptions.RemoveEmptyEntries);
                 if (argsSplit.Length > 1)
                 {
                     return argsSplit[1];
