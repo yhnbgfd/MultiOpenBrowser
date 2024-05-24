@@ -1,6 +1,5 @@
 ﻿using FreeSql.Aop;
 using FreeSql.Internal;
-using NLog;
 using System.IO;
 
 namespace EShopHelper.Base

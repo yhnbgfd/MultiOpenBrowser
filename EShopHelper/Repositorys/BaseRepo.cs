@@ -7,7 +7,7 @@ namespace EShopHelper.Repositorys
     /// 标准仓储
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class BaseRepo<T> : BaseRepository<T> where T : class
+    internal class BaseRepo<T> : BaseRepository<T> where T : class
     {
         /// <summary>
         /// 更新全部数据 UpdateDiy.Where("1=1")

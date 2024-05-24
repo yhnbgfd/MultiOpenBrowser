@@ -1,6 +1,4 @@
-﻿using EShopHelper.Helpers;
-using NLog;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace EShopHelper.Views.UserControls
