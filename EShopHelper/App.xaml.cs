@@ -11,12 +11,12 @@ namespace EShopHelper
 
         public App()
         {
-            //在异常由应用程序引发但未进行处理时发生。UI线程
-            //无法捕获多线程异常
+            // 在异常由应用程序引发但未进行处理时发生。UI线程
+            // 无法捕获多线程异常
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-            //专门捕获所有线程中的异常
+            // 专门捕获所有线程中的异常
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            //专门捕获Task异常
+            // 专门捕获Task异常
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
         }
 
@@ -24,38 +24,9 @@ namespace EShopHelper
         {
             _logger.Info($"Application_Startup {string.Join(" ", e.Args)}");
 
-            await StartWebEnvironmentAsync(e.Args);
+            await ArgsHelper.StartWebEnvironmentAsync(e.Args);
 
             StartupUri = new Uri("Views/Windows/MainWindow.xaml", UriKind.Relative);
-        }
-
-        /// <summary>
-        /// 启动WebEnvironment
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        private static async Task StartWebEnvironmentAsync(params string[] args)
-        {
-            var startWebEnvironmenArgs = args.FirstOrDefault(a => a.StartsWith($"{ArgsHelper.Start_Web_Environment}="));
-            if (startWebEnvironmenArgs != null)
-            {
-                var startWebEnvironmenArgsSplit = startWebEnvironmenArgs.Split("=", StringSplitOptions.RemoveEmptyEntries);
-                if (startWebEnvironmenArgsSplit.Length > 1)
-                {
-                    if (int.TryParse(startWebEnvironmenArgsSplit[1], out var id))
-                    {
-                        WebEnvironmentRepo webEnvironmentRepo = new(null);
-                        var webEnvironment = await webEnvironmentRepo.Select
-                            .Where(a => a.Id == id)
-                            .FirstAsync();
-                        if (webEnvironment != null)
-                        {
-                            webEnvironment.StartWebBrowser();
-                            Environment.Exit(0);
-                        }
-                    }
-                }
-            }
         }
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
