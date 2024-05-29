@@ -14,7 +14,7 @@ namespace EShopHelper.Helpers
                 ShowRecentCategory = false
             };
 
-            foreach (var item in GlobalData.WebEnvironmentList)
+            foreach (var item in GlobalData.WebEnvironmentList.Take(12))
             {
                 JumpTask task = new()
                 {
