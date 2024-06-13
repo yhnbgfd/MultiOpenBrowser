@@ -102,5 +102,17 @@ namespace EShopHelper.Views.UserControls
         {
             this.Background = Brushes.White;
         }
+
+        private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WebEnvironment?.StartWebBrowser(true);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+        }
     }
 }

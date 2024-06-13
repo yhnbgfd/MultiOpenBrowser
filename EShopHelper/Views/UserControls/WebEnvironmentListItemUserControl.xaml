@@ -15,11 +15,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25" />
             <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="160" />
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="60" />
-            <ColumnDefinition Width="60" />
-            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
         </Grid.ColumnDefinitions>
         <TextBlock
             Grid.Column="0"
@@ -42,34 +42,31 @@
             d:Text="127.0.0.1:10809"
             Text="{Binding WebBrowser.ProxyServer}"
             TextWrapping="Wrap" />
-        <TextBlock
-            Grid.Column="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            d:Text="D:\EShopHelper"
-            Text="{Binding WebEnvironment.WebBrowserDataPath}"
-            TextWrapping="Wrap" />
         <Button
-            Grid.Column="4"
-            Width="50"
+            Grid.Column="3"
             Height="27"
-            HorizontalAlignment="Center"
+            Margin="5,0,5,0"
             VerticalAlignment="Center"
             Click="Button_StartWebEnvironment_Click"
             Content="Run" />
         <Button
-            Grid.Column="5"
-            Width="50"
+            Grid.Column="4"
             Height="27"
-            HorizontalAlignment="Center"
+            Margin="5,0,5,0"
+            VerticalAlignment="Center"
+            Click="Button_StartWebEnvironmentIncognito_Click"
+            Content="Incognito" />
+        <Button
+            Grid.Column="5"
+            Height="27"
+            Margin="5,0,5,0"
             VerticalAlignment="Center"
             Click="Button_EditWebEnvironment_Click"
             Content="Edit" />
         <Button
             Grid.Column="6"
-            Width="50"
             Height="27"
-            HorizontalAlignment="Center"
+            Margin="5,0,5,0"
             VerticalAlignment="Center"
             Click="Button_DeleteWebEnvironment_Click"
             Content="Delete" />

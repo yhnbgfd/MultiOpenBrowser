@@ -35,11 +35,11 @@ namespace EShopHelper.Entitys
             UserAgent = GlobalData.Option.DefaultUserAgent,
         };
 
-        public void Start(string? userDataDir)
+        public void Start(string? userDataDir, bool incognito = false)
         {
             if (Type == TypeEnum.Chrome)
             {
-                this.StartChrome(userDataDir);
+                this.StartChrome(userDataDir, incognito);
             }
             else if (Type == TypeEnum.WebView2)
             {
@@ -47,7 +47,7 @@ namespace EShopHelper.Entitys
             }
         }
 
-        private void StartChrome(string? userDataDir)
+        private void StartChrome(string? userDataDir, bool incognito = false)
         {
             StringBuilder sb = new();
 
@@ -72,6 +72,10 @@ namespace EShopHelper.Entitys
             if (!string.IsNullOrWhiteSpace(Arguments))
             {
                 sb.Append($"{Arguments} ");
+            }
+            if (incognito == true)
+            {
+                sb.Append("--incognito ");
             }
 
             ProcessStartInfo processStartInfo = new()

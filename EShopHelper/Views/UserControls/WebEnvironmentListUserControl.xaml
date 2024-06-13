@@ -16,11 +16,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25" />
                 <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="160" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="60" />
-                <ColumnDefinition Width="60" />
-                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="17" />
             </Grid.ColumnDefinitions>
             <TextBlock
@@ -33,11 +33,6 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Text="Proxy Server" />
-            <TextBlock
-                Grid.Column="3"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Text="Data Path" />
         </Grid>
         <ScrollViewer>
             <StackPanel x:Name="StackPanel_WebEnvironmentList" />
