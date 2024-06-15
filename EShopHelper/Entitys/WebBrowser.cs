@@ -23,8 +23,11 @@ namespace EShopHelper.Entitys
 
         public enum TypeEnum
         {
+            [Description("Google Chrome")]
             Chrome = 1,
+            [Description("Microsoft Edge")]
             MsEdge = 2,
+            [Description("Microsoft Edge WebView2")]
             WebView2 = 3,
         }
 
