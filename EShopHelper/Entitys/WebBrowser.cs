@@ -23,8 +23,9 @@ namespace EShopHelper.Entitys
 
         public enum TypeEnum
         {
-            Chrome,
-            WebView2,
+            Chrome = 1,
+            MsEdge = 2,
+            WebView2 = 3,
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -37,13 +38,17 @@ namespace EShopHelper.Entitys
 
         public void Start(string? userDataDir, bool incognito = false)
         {
-            if (Type == TypeEnum.Chrome)
+            if (Type == TypeEnum.MsEdge)
             {
-                this.StartChrome(userDataDir, incognito);
+                this.StartMsEdge(userDataDir, incognito);
             }
             else if (Type == TypeEnum.WebView2)
             {
-
+                throw new NotSupportedException();
+            }
+            else
+            {
+                this.StartChrome(userDataDir, incognito);
             }
         }
 
@@ -81,6 +86,49 @@ namespace EShopHelper.Entitys
             ProcessStartInfo processStartInfo = new()
             {
                 FileName = GlobalData.ChromePath,
+                Arguments = sb.ToString(),
+            };
+            Process process = new()
+            {
+                StartInfo = processStartInfo,
+            };
+            process.Start();
+        }
+
+        private void StartMsEdge(string? userDataDir, bool incognito = false)
+        {
+            StringBuilder sb = new();
+
+            if (!string.IsNullOrWhiteSpace(userDataDir))
+            {
+                sb.Append($"--user-data-dir=\"{userDataDir}\" ");
+            }
+            sb.Append("--no-first-run ");
+            sb.Append("--no-default-browser-check ");
+            if (!string.IsNullOrWhiteSpace(ProxyServer))
+            {
+                sb.Append($"--proxy-server=\"{ProxyServer}\" ");
+            }
+            sb.Append("--restore-last-session ");
+            sb.Append("--hide-crash-restore-bubble ");
+            sb.Append("--flag-switches-begin ");
+            sb.Append("--flag-switches-end ");
+            if (DisableWebSecurity)
+            {
+                sb.Append("--disable-web-security ");//可解决跨域报错
+            }
+            if (!string.IsNullOrWhiteSpace(Arguments))
+            {
+                sb.Append($"{Arguments} ");
+            }
+            if (incognito == true)
+            {
+                sb.Append("--inprivate ");
+            }
+
+            ProcessStartInfo processStartInfo = new()
+            {
+                FileName = GlobalData.MsEdgePath,
                 Arguments = sb.ToString(),
             };
             Process process = new()
