@@ -12,13 +12,12 @@
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
                 <Button
-                    x:Name="ButtonGo"
-                    Click="ButtonGo_Click"
+                    Click="Button_Go_Click"
                     Content="Go"
                     DockPanel.Dock="Right" />
                 <TextBox Name="addressBar" />
             </DockPanel>
-            <wv2:WebView2 Name="webView" Source="https://www.microsoft.com" />
+            <wv2:WebView2 Name="webView" Source="https://www.taobao.com" />
         </DockPanel>
     </Grid>
 </UserControl>

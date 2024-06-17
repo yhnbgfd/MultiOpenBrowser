@@ -11,30 +11,20 @@ namespace EShopHelper.WebBrowsers
                 return;
             }
 
-            Start(webEnvironment.WebBrowser, webEnvironment.WebBrowserDataPath, incognito);
-        }
-
-        private static void Start(WebBrowser? webBrowser, string? userDataDir, bool incognito = false)
-        {
-            if (webBrowser == null)
+            if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
             {
-                return;
+                MsEdge msEdge = new(webEnvironment);
+                msEdge.Start(incognito);
             }
-
-            if (webBrowser.Type == TypeEnum.MsEdge)
+            else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
             {
-                MsEdge msEdge = new(webBrowser);
-                msEdge.Start(userDataDir, incognito);
-            }
-            else if (webBrowser.Type == TypeEnum.WebView2)
-            {
-                WebView2 webView2 = new(webBrowser);
-                webView2.Start(userDataDir, incognito);
+                WebView2 webView2 = new(webEnvironment);
+                webView2.Start(incognito);
             }
             else
             {
-                Chrome chrome = new(webBrowser);
-                chrome.Start(userDataDir, incognito);
+                Chrome chrome = new(webEnvironment);
+                chrome.Start(incognito);
             }
         }
     }

@@ -5,35 +5,35 @@ namespace EShopHelper.WebBrowsers
 {
     internal class MsEdge : WebBrowserBase
     {
-        public MsEdge(WebBrowser webBrowser) : base(webBrowser)
+        public MsEdge(WebEnvironment webEnvironment) : base(webEnvironment)
         {
         }
 
-        public override void Start(string? userDataDir, bool incognito = false)
+        public override void Start(bool incognito = false)
         {
             StringBuilder sb = new();
 
-            if (!string.IsNullOrWhiteSpace(userDataDir))
+            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowserDataPath))
             {
-                sb.Append($"--user-data-dir=\"{userDataDir}\" ");
+                sb.Append($"--user-data-dir=\"{_webEnvironment.WebBrowserDataPath}\" ");
             }
             sb.Append("--no-first-run ");
             sb.Append("--no-default-browser-check ");
-            if (!string.IsNullOrWhiteSpace(_webBrowser.ProxyServer))
+            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ProxyServer))
             {
-                sb.Append($"--proxy-server=\"{_webBrowser.ProxyServer}\" ");
+                sb.Append($"--proxy-server=\"{_webEnvironment.WebBrowser.ProxyServer}\" ");
             }
             sb.Append("--restore-last-session ");
             sb.Append("--hide-crash-restore-bubble ");
             sb.Append("--flag-switches-begin ");
             sb.Append("--flag-switches-end ");
-            if (_webBrowser.DisableWebSecurity)
+            if (_webEnvironment.WebBrowser.DisableWebSecurity)
             {
                 sb.Append("--disable-web-security ");//可解决跨域报错
             }
-            if (!string.IsNullOrWhiteSpace(_webBrowser.Arguments))
+            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.Arguments))
             {
-                sb.Append($"{_webBrowser.Arguments} ");
+                sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");
             }
             if (incognito == true)
             {

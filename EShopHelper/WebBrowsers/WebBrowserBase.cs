@@ -2,13 +2,13 @@
 {
     internal abstract class WebBrowserBase : IWebBrowser
     {
-        protected WebBrowser _webBrowser;
+        protected WebEnvironment _webEnvironment;
 
-        public WebBrowserBase(WebBrowser webBrowser)
+        public WebBrowserBase(WebEnvironment webEnvironment)
         {
-            _webBrowser = webBrowser;
+            _webEnvironment = webEnvironment;
         }
 
-        public abstract void Start(string? userDataDir, bool incognito = false);
+        public abstract void Start(bool incognito = false);
     }
 }

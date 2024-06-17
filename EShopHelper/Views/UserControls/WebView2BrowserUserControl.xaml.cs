@@ -1,20 +1,30 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace EShopHelper.Views.UserControls
 {
     public partial class WebView2BrowserUserControl : UserControl
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public WebView2BrowserUserControl()
         {
             InitializeComponent();
         }
 
-        private void ButtonGo_Click(object sender, RoutedEventArgs e)
+        private void Button_Go_Click(object sender, RoutedEventArgs e)
         {
-            if (webView != null && webView.CoreWebView2 != null)
+            try
             {
-                webView.CoreWebView2.Navigate(addressBar.Text);
+                if (webView != null && webView.CoreWebView2 != null)
+                {
+                    webView.CoreWebView2.Navigate(addressBar.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
             }
         }
     }
