@@ -15,5 +15,12 @@
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
     </Window.CommandBindings>
-    <Grid />
+    <Grid>
+        <TextBlock
+            Margin="20,20,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding AppVersion}"
+            TextWrapping="Wrap" />
+    </Grid>
 </Window>

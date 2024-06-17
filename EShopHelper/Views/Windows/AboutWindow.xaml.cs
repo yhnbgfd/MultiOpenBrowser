@@ -5,6 +5,8 @@ namespace EShopHelper.Views.Windows
 {
     public partial class AboutWindow : Window
     {
+        public string? AppVersion => GlobalData.AppVersion;
+
         public AboutWindow()
         {
             InitializeComponent();
