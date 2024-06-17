@@ -1,4 +1,6 @@
-﻿namespace EShopHelper.Helpers
+﻿using EShopHelper.WebBrowsers;
+
+namespace EShopHelper.Helpers
 {
     internal class ArgsHelper
     {
@@ -15,7 +17,6 @@
                     return argsSplit[1];
                 }
             }
-
             return null;
         }
 
@@ -37,7 +38,7 @@
                         .FirstAsync();
                     if (webEnvironment != null)
                     {
-                        webEnvironment.StartWebBrowser();
+                        WebBrowserFactory.Start(webEnvironment);
                         Environment.Exit(0);
                     }
                 }

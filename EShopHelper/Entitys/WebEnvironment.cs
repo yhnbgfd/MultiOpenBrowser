@@ -29,16 +29,6 @@ namespace EShopHelper.Entitys
             WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}"),
         };
 
-        public void StartWebBrowser(bool incognito = false)
-        {
-            if (WebBrowser == null)
-            {
-                return;
-            }
-
-            WebBrowser.Start(WebBrowserDataPath, incognito);
-        }
-
         public object Clone()
         {
             return MemberwiseClone();

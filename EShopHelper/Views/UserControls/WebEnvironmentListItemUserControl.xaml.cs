@@ -1,4 +1,5 @@
 ﻿using EShopHelper.Views.Windows;
+using EShopHelper.WebBrowsers;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,7 +28,7 @@ namespace EShopHelper.Views.UserControls
         {
             try
             {
-                WebEnvironment?.StartWebBrowser();
+                WebBrowserFactory.Start(WebEnvironment);
             }
             catch (Exception ex)
             {
@@ -107,7 +108,7 @@ namespace EShopHelper.Views.UserControls
         {
             try
             {
-                WebEnvironment?.StartWebBrowser(true);
+                WebBrowserFactory.Start(WebEnvironment, true);
             }
             catch (Exception ex)
             {
