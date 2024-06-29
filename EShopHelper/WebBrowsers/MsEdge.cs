@@ -39,6 +39,10 @@ namespace EShopHelper.WebBrowsers
             {
                 sb.Append("--inprivate ");
             }
+            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.UserAgent))
+            {
+                sb.Append($"--user-agent=\"{_webEnvironment.WebBrowser.UserAgent}\" ");
+            }
 
             ProcessStartInfo processStartInfo = new()
             {
