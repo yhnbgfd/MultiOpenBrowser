@@ -19,5 +19,44 @@ namespace EShopHelper.Views.UserControls
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            switch (WebBrowser.Type)
+            {
+                case WebBrowser.TypeEnum.Chrome:
+                    this.ComboBox_Type.SelectedIndex = 0;
+                    break;
+                case WebBrowser.TypeEnum.MsEdge:
+                    this.ComboBox_Type.SelectedIndex = 1;
+                    break;
+                case WebBrowser.TypeEnum.WebView2:
+                    this.ComboBox_Type.SelectedIndex = 2;
+                    break;
+                default:
+                    this.ComboBox_Type.SelectedIndex = 0;
+                    break;
+            }
+        }
+
+        private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string? text = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Content as string;
+            switch (text)
+            {
+                case "Google Chrome":
+                    WebBrowser.Type = WebBrowser.TypeEnum.Chrome;
+                    break;
+                case "Microsoft Edge":
+                    WebBrowser.Type = WebBrowser.TypeEnum.MsEdge;
+                    break;
+                case "Microsoft Edge WebView2":
+                    WebBrowser.Type = WebBrowser.TypeEnum.WebView2;
+                    break;
+                default:
+                    WebBrowser.Type = WebBrowser.TypeEnum.Chrome;
+                    break;
+            }
+        }
     }
 }
