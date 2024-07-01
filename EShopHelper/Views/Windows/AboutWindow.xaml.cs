@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EShopHelper.Views.Windows
@@ -16,6 +17,15 @@ namespace EShopHelper.Views.Windows
         private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void TextBlock_Url_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var url = this.TextBlock_Url.Text.Trim();
+            Process.Start(new ProcessStartInfo(url)
+            {
+                UseShellExecute = true
+            });
         }
     }
 }

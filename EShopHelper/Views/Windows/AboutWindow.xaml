@@ -15,12 +15,23 @@
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
     </Window.CommandBindings>
-    <Grid>
+    <StackPanel>
         <TextBlock
             Margin="20,20,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            d:Text="1.2.3.400"
             Text="{Binding AppVersion}"
             TextWrapping="Wrap" />
-    </Grid>
+        <TextBlock
+            x:Name="TextBlock_Url"
+            Margin="20,20,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            d:Text="https://github.com/yhnbgfd/EShopHelper"
+            MouseLeftButtonDown="TextBlock_Url_MouseLeftButtonDown"
+            Text="https://github.com/yhnbgfd/EShopHelper"
+            TextDecorations="Underline"
+            TextWrapping="Wrap" />
+    </StackPanel>
 </Window>
