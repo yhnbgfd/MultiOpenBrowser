@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Base;
-using MultiOpenBrowser.Base.Generic;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
 
 namespace MultiOpenBrowser.Repositorys

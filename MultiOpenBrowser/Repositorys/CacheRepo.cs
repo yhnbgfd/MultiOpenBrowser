@@ -1,5 +1,4 @@
-﻿using MultiOpenBrowser.Entitys;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace MultiOpenBrowser.Repositorys
 {

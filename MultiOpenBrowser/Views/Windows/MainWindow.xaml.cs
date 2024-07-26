@@ -1,7 +1,4 @@
-﻿using MultiOpenBrowser.Base;
-using MultiOpenBrowser.Entitys;
-using MultiOpenBrowser.Repositorys;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 

@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Base;
-using System.ComponentModel;
-using System.IO;
+﻿using System.IO;
 
 namespace MultiOpenBrowser.Entitys
 {

@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Entitys;
-using MultiOpenBrowser.Repositorys;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace MultiOpenBrowser.Base
 {

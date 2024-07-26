@@ -1,5 +1,4 @@
-﻿using MultiOpenBrowser.Repositorys;
-using MultiOpenBrowser.WebBrowsers;
+﻿using MultiOpenBrowser.WebBrowsers;
 
 namespace MultiOpenBrowser.Helpers
 {

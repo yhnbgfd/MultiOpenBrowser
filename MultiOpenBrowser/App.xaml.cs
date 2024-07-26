@@ -1,5 +1,4 @@
-﻿using MultiOpenBrowser.Helpers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Threading;
 
 namespace MultiOpenBrowser

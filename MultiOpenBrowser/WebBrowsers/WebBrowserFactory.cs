@@ -1,5 +1,4 @@
-﻿using MultiOpenBrowser.Entitys;
-using static MultiOpenBrowser.Entitys.WebBrowser;
+﻿using static MultiOpenBrowser.Entitys.WebBrowser;
 using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.WebBrowsers

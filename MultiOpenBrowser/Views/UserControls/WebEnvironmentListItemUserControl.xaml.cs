@@ -1,7 +1,4 @@
 ﻿using MultiOpenBrowser.Views.Windows;
-using MultiOpenBrowser.Base;
-using MultiOpenBrowser.Entitys;
-using MultiOpenBrowser.Repositorys;
 using MultiOpenBrowser.WebBrowsers;
 using System.IO;
 using System.Windows;

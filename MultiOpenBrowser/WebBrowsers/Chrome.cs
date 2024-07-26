@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Base;
-using MultiOpenBrowser.Entitys;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 

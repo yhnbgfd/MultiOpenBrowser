@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace MultiOpenBrowser.Entitys
+﻿namespace MultiOpenBrowser.Entitys
 {
     public class Option : INotifyPropertyChanged
     {

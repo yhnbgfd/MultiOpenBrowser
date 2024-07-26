@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace MultiOpenBrowser.Entitys
+﻿namespace MultiOpenBrowser.Entitys
 {
     [Table(Name = nameof(UserInfo))]
     public class UserInfo : INotifyPropertyChanged

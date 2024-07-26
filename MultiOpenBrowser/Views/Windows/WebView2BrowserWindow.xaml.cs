@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Entitys;
-using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MultiOpenBrowser.Views.Windows
 {

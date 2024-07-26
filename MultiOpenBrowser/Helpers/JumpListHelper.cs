@@ -1,5 +1,4 @@
-﻿using MultiOpenBrowser.Base;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Shell;
 
