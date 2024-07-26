@@ -18,19 +18,30 @@
             public bool IncognitoMode { get; set; } = false;
         }
 
+        /// <summary>
+        /// 浏览器启动结果
+        /// </summary>
         public class StartResult
         {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
             public bool IsSuccess { get; set; }
+            /// <summary>
+            /// 进程ID
+            /// </summary>
             public int? ProcessId { get; set; }
 
-            public static StartResult SuccessResult(int? processId = null)
+            /// <summary>
+            /// 返回一个成功的结果对象
+            /// </summary>
+            /// <param name="processId"></param>
+            /// <returns></returns>
+            public static StartResult SuccessResult(int? processId = null) => new()
             {
-                return new StartResult()
-                {
-                    IsSuccess = true,
-                    ProcessId = processId,
-                };
-            }
+                IsSuccess = true,
+                ProcessId = processId,
+            };
         }
     }
 }
