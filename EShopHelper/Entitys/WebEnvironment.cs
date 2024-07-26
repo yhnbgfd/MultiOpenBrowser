@@ -18,6 +18,11 @@ namespace EShopHelper.Entitys
 
         [Column(IsIgnore = true)]
         public int Index { get; set; }
+        /// <summary>
+        /// 记录启动后的进程ID
+        /// </summary>
+        [Column(IsIgnore = true)]
+        public int? ProcessId { get; set; }
 
         public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
 

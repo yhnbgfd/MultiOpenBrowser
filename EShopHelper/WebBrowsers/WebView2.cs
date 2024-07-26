@@ -8,10 +8,12 @@ namespace EShopHelper.WebBrowsers
         {
         }
 
-        public override void Start(bool incognito = false)
+        public override int Start(bool incognito = false)
         {
             WebView2BrowserWindow webView2 = new WebView2BrowserWindow(_webEnvironment);
             webView2.Show();
+
+            return 0;
         }
     }
 }

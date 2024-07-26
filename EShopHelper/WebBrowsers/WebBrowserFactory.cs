@@ -14,17 +14,17 @@ namespace EShopHelper.WebBrowsers
             if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
             {
                 MsEdge msEdge = new(webEnvironment);
-                msEdge.Start(incognito);
+                webEnvironment.ProcessId = msEdge.Start(incognito);
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
             {
                 WebView2 webView2 = new(webEnvironment);
-                webView2.Start(incognito);
+                webEnvironment.ProcessId = webView2.Start(incognito);
             }
             else
             {
                 Chrome chrome = new(webEnvironment);
-                chrome.Start(incognito);
+                webEnvironment.ProcessId = chrome.Start(incognito);
             }
         }
     }

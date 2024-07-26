@@ -9,7 +9,7 @@ namespace EShopHelper.WebBrowsers
         {
         }
 
-        public override void Start(bool incognito = false)
+        public override int Start(bool incognito = false)
         {
             StringBuilder sb = new();
 
@@ -54,6 +54,8 @@ namespace EShopHelper.WebBrowsers
                 StartInfo = processStartInfo,
             };
             process.Start();
+
+            return process.Id;
         }
     }
 }

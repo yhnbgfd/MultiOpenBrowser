@@ -9,6 +9,6 @@
             _webEnvironment = webEnvironment;
         }
 
-        public abstract void Start(bool incognito = false);
+        public abstract int Start(bool incognito = false);
     }
 }

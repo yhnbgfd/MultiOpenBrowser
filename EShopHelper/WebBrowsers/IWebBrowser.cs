@@ -6,6 +6,6 @@
         /// 
         /// </summary>
         /// <param name="incognito">无痕模式</param>
-        void Start(bool incognito = false);
+        int Start(bool incognito = false);
     }
 }
