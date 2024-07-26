@@ -7,13 +7,13 @@ namespace MultiOpenBrowser.Base
     internal static class Global
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private static readonly string[] _Directory = ["Data"];
+        private static readonly string[] _createDirectorys = ["Data"];
 
         public static IFreeSql FSql { get; private set; }
 
         static Global()
         {
-            foreach (var dir in _Directory)
+            foreach (var dir in _createDirectorys)
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), dir);
                 if (!Directory.Exists(path))
