@@ -1,6 +1,7 @@
-﻿using EShopHelper.WebBrowsers;
+﻿using MultiOpenBrowser.Repositorys;
+using MultiOpenBrowser.WebBrowsers;
 
-namespace EShopHelper.Helpers
+namespace MultiOpenBrowser.Helpers
 {
     internal class ArgsHelper
     {

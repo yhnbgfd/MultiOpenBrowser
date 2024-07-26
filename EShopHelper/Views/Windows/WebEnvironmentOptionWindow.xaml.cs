@@ -1,8 +1,12 @@
-﻿using System.ComponentModel;
+﻿using MultiOpenBrowser.Base;
+using MultiOpenBrowser.Entitys;
+using MultiOpenBrowser.Helpers;
+using MultiOpenBrowser.Repositorys;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace EShopHelper.Views.Windows
+namespace MultiOpenBrowser.Views.Windows
 {
     public partial class WebEnvironmentOptionWindow : Window, INotifyPropertyChanged
     {

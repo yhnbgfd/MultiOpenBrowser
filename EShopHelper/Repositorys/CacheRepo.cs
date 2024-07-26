@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using MultiOpenBrowser.Entitys;
+using Newtonsoft.Json;
 
-namespace EShopHelper.Repositorys
+namespace MultiOpenBrowser.Repositorys
 {
     internal class CacheRepo(IUnitOfWork? uow) : BaseRepo<Cache>(uow, null, null)
     {

@@ -1,7 +1,8 @@
-﻿using static EShopHelper.Entitys.WebBrowser;
-using static EShopHelper.WebBrowsers.IWebBrowser;
+﻿using MultiOpenBrowser.Entitys;
+using static MultiOpenBrowser.Entitys.WebBrowser;
+using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
-namespace EShopHelper.WebBrowsers
+namespace MultiOpenBrowser.WebBrowsers
 {
     internal class WebBrowserFactory
     {

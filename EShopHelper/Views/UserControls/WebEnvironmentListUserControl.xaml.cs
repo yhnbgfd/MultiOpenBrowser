@@ -1,7 +1,11 @@
-﻿using System.Windows;
+﻿using MultiOpenBrowser.Base;
+using MultiOpenBrowser.Entitys;
+using MultiOpenBrowser.Helpers;
+using MultiOpenBrowser.Repositorys;
+using System.Windows;
 using System.Windows.Controls;
 
-namespace EShopHelper.Views.UserControls
+namespace MultiOpenBrowser.Views.UserControls
 {
     public partial class WebEnvironmentListUserControl : UserControl
     {

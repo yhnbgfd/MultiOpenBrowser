@@ -1,7 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using MultiOpenBrowser.Base;
+using MultiOpenBrowser.Base.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 
-namespace EShopHelper.Repositorys
+namespace MultiOpenBrowser.Repositorys
 {
     /// <summary>
     /// 标准仓储

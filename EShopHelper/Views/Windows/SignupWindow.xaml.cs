@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace EShopHelper.Views.Windows
+namespace MultiOpenBrowser.Views.Windows
 {
     public partial class SignupWindow : Window
     {

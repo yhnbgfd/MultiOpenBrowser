@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace EShopHelper.Views.UserControls
+namespace MultiOpenBrowser.Views.UserControls
 {
     public partial class WebView2BrowserUserControl : UserControl
     {

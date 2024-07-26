@@ -1,4 +1,4 @@
-﻿namespace EShopHelper.Base.Generic
+﻿namespace MultiOpenBrowser.Base.Generic
 {
     /// <summary>
     /// 分页返回值

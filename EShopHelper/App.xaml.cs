@@ -1,7 +1,8 @@
-﻿using System.Windows;
+﻿using MultiOpenBrowser.Helpers;
+using System.Windows;
 using System.Windows.Threading;
 
-namespace EShopHelper
+namespace MultiOpenBrowser
 {
     public partial class App : Application
     {

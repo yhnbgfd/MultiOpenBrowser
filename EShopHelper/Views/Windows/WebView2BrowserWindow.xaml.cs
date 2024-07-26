@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+﻿using MultiOpenBrowser.Entitys;
+using System.ComponentModel;
 using System.Windows;
 
-namespace EShopHelper.Views.Windows
+namespace MultiOpenBrowser.Views.Windows
 {
     public partial class WebView2BrowserWindow : Window, INotifyPropertyChanged
     {

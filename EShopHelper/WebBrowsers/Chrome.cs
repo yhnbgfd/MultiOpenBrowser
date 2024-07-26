@@ -1,8 +1,10 @@
-﻿using System.Diagnostics;
+﻿using MultiOpenBrowser.Base;
+using MultiOpenBrowser.Entitys;
+using System.Diagnostics;
 using System.Text;
-using static EShopHelper.WebBrowsers.IWebBrowser;
+using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
-namespace EShopHelper.WebBrowsers
+namespace MultiOpenBrowser.WebBrowsers
 {
     internal class Chrome : WebBrowserBase
     {

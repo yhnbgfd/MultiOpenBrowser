@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EShopHelper.Views.UserControls
+namespace MultiOpenBrowser.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for WebBrowserListItemUserControl.xaml

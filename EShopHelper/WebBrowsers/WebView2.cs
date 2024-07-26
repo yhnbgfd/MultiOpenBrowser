@@ -1,7 +1,8 @@
-﻿using EShopHelper.Views.Windows;
-using static EShopHelper.WebBrowsers.IWebBrowser;
+﻿using MultiOpenBrowser.Views.Windows;
+using MultiOpenBrowser.Entitys;
+using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
-namespace EShopHelper.WebBrowsers
+namespace MultiOpenBrowser.WebBrowsers
 {
     internal class WebView2 : WebBrowserBase
     {

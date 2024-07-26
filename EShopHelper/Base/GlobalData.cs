@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using MultiOpenBrowser.Entitys;
+using MultiOpenBrowser.Repositorys;
+using System.Reflection;
 
-namespace EShopHelper.Base
+namespace MultiOpenBrowser.Base
 {
     internal static class GlobalData
     {

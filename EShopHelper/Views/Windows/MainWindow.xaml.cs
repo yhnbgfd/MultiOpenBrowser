@@ -1,8 +1,11 @@
-﻿using System.Windows;
+﻿using MultiOpenBrowser.Base;
+using MultiOpenBrowser.Entitys;
+using MultiOpenBrowser.Repositorys;
+using System.Windows;
 using System.Windows.Controls;
-using WebBrowser = EShopHelper.Entitys.WebBrowser;
+using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 
-namespace EShopHelper.Views.Windows
+namespace MultiOpenBrowser.Views.Windows
 {
     public partial class MainWindow : Window
     {

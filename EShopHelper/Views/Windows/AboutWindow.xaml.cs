@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using MultiOpenBrowser.Base;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
-namespace EShopHelper.Views.Windows
+namespace MultiOpenBrowser.Views.Windows
 {
     public partial class AboutWindow : Window
     {

@@ -1,4 +1,4 @@
-﻿namespace EShopHelper.WebBrowsers
+﻿namespace MultiOpenBrowser.WebBrowsers
 {
     internal interface IWebBrowser
     {

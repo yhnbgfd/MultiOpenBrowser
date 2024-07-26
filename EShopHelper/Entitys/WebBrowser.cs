@@ -1,6 +1,7 @@
-﻿using System.ComponentModel;
+﻿using MultiOpenBrowser.Base;
+using System.ComponentModel;
 
-namespace EShopHelper.Entitys
+namespace MultiOpenBrowser.Entitys
 {
     /// <summary>
     /// 浏览器配置

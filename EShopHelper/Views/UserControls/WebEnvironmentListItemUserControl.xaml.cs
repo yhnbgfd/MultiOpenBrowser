@@ -1,13 +1,16 @@
-﻿using EShopHelper.Views.Windows;
-using EShopHelper.WebBrowsers;
+﻿using MultiOpenBrowser.Views.Windows;
+using MultiOpenBrowser.Base;
+using MultiOpenBrowser.Entitys;
+using MultiOpenBrowser.Repositorys;
+using MultiOpenBrowser.WebBrowsers;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using WebBrowser = EShopHelper.Entitys.WebBrowser;
+using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 
-namespace EShopHelper.Views.UserControls
+namespace MultiOpenBrowser.Views.UserControls
 {
     public partial class WebEnvironmentListItemUserControl : UserControl
     {

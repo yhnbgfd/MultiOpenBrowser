@@ -1,8 +1,9 @@
-﻿using System.IO;
+﻿using MultiOpenBrowser.Base;
+using System.IO;
 using System.Windows;
 using System.Windows.Shell;
 
-namespace EShopHelper.Helpers
+namespace MultiOpenBrowser.Helpers
 {
     internal static class JumpListHelper
     {

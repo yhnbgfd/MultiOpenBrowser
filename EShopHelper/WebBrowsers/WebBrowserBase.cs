@@ -1,6 +1,7 @@
-﻿using static EShopHelper.WebBrowsers.IWebBrowser;
+﻿using MultiOpenBrowser.Entitys;
+using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
-namespace EShopHelper.WebBrowsers
+namespace MultiOpenBrowser.WebBrowsers
 {
     internal abstract class WebBrowserBase : IWebBrowser
     {

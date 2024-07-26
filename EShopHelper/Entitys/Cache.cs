@@ -1,4 +1,4 @@
-﻿namespace EShopHelper.Entitys
+﻿namespace MultiOpenBrowser.Entitys
 {
     [Table(Name = nameof(Cache))]
     public class Cache

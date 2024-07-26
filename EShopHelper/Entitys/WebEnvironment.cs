@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+﻿using MultiOpenBrowser.Base;
+using System.ComponentModel;
 using System.IO;
 
-namespace EShopHelper.Entitys
+namespace MultiOpenBrowser.Entitys
 {
     /// <summary>
     /// 网络环境

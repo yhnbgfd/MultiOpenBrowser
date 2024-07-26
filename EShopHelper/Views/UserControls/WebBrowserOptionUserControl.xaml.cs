@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WebBrowser = EShopHelper.Entitys.WebBrowser;
+using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 
-namespace EShopHelper.Views.UserControls
+namespace MultiOpenBrowser.Views.UserControls
 {
     public partial class WebBrowserOptionUserControl : UserControl
     {

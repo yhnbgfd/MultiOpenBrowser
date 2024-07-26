@@ -1,4 +1,4 @@
-﻿namespace EShopHelper.Base
+﻿namespace MultiOpenBrowser.Base
 {
     internal static class EventBus
     {

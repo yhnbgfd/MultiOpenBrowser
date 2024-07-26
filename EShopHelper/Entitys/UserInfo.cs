@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EShopHelper.Entitys
+namespace MultiOpenBrowser.Entitys
 {
     [Table(Name = nameof(UserInfo))]
     public class UserInfo : INotifyPropertyChanged

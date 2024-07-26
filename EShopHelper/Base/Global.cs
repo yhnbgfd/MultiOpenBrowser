@@ -2,7 +2,7 @@
 using FreeSql.Internal;
 using System.IO;
 
-namespace EShopHelper.Base
+namespace MultiOpenBrowser.Base
 {
     internal static class Global
     {
