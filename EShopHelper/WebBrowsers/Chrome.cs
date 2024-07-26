@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text;
+using static EShopHelper.WebBrowsers.IWebBrowser;
 
 namespace EShopHelper.WebBrowsers
 {
@@ -9,7 +10,7 @@ namespace EShopHelper.WebBrowsers
         {
         }
 
-        public override int Start(bool incognito = false)
+        public override int Start(StartOption startOption)
         {
             StringBuilder sb = new();
 
@@ -35,7 +36,7 @@ namespace EShopHelper.WebBrowsers
             {
                 sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");
             }
-            if (incognito == true)
+            if (startOption.IncognitoMode == true)
             {
                 sb.Append("--incognito ");
             }

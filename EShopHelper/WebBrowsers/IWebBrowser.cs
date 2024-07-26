@@ -3,9 +3,19 @@
     internal interface IWebBrowser
     {
         /// <summary>
-        /// 
+        /// 启动浏览器
         /// </summary>
-        /// <param name="incognito">无痕模式</param>
-        int Start(bool incognito = false);
+        int Start(StartOption startOption);
+
+        /// <summary>
+        /// 浏览器启动参数
+        /// </summary>
+        public class StartOption
+        {
+            /// <summary>
+            /// 无痕模式
+            /// </summary>
+            public bool IncognitoMode { get; set; } = false;
+        }
     }
 }

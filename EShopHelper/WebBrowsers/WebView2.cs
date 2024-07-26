@@ -1,4 +1,5 @@
 ﻿using EShopHelper.Views.Windows;
+using static EShopHelper.WebBrowsers.IWebBrowser;
 
 namespace EShopHelper.WebBrowsers
 {
@@ -8,7 +9,7 @@ namespace EShopHelper.WebBrowsers
         {
         }
 
-        public override int Start(bool incognito = false)
+        public override int Start(StartOption startOption)
         {
             WebView2BrowserWindow webView2 = new WebView2BrowserWindow(_webEnvironment);
             webView2.Show();

@@ -28,7 +28,7 @@ namespace EShopHelper.Views.UserControls
         {
             try
             {
-                WebBrowserFactory.Start(WebEnvironment);
+                WebBrowserFactory.Start(WebEnvironment, new IWebBrowser.StartOption());
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace EShopHelper.Views.UserControls
         {
             try
             {
-                WebBrowserFactory.Start(WebEnvironment, true);
+                WebBrowserFactory.Start(WebEnvironment, new IWebBrowser.StartOption() { IncognitoMode = true });
             }
             catch (Exception ex)
             {

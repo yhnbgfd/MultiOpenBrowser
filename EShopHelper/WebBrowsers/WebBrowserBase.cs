@@ -1,4 +1,6 @@
-﻿namespace EShopHelper.WebBrowsers
+﻿using static EShopHelper.WebBrowsers.IWebBrowser;
+
+namespace EShopHelper.WebBrowsers
 {
     internal abstract class WebBrowserBase : IWebBrowser
     {
@@ -9,6 +11,6 @@
             _webEnvironment = webEnvironment;
         }
 
-        public abstract int Start(bool incognito = false);
+        public abstract int Start(StartOption startOption);
     }
 }

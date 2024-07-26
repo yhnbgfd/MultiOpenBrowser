@@ -38,7 +38,7 @@ namespace EShopHelper.Helpers
                         .FirstAsync();
                     if (webEnvironment != null)
                     {
-                        WebBrowserFactory.Start(webEnvironment);
+                        WebBrowserFactory.Start(webEnvironment, new IWebBrowser.StartOption());
                         Environment.Exit(0);
                     }
                 }
