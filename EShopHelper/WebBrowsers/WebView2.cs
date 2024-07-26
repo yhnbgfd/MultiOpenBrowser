@@ -9,12 +9,12 @@ namespace EShopHelper.WebBrowsers
         {
         }
 
-        public override int Start(StartOption startOption)
+        public override StartResult Start(StartOption startOption)
         {
             WebView2BrowserWindow webView2 = new WebView2BrowserWindow(_webEnvironment);
             webView2.Show();
 
-            return 0;
+            return StartResult.SuccessResult();
         }
     }
 }

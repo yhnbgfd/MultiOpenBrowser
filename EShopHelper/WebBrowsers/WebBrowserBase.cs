@@ -11,6 +11,6 @@ namespace EShopHelper.WebBrowsers
             _webEnvironment = webEnvironment;
         }
 
-        public abstract int Start(StartOption startOption);
+        public abstract StartResult Start(StartOption startOption);
     }
 }

@@ -10,7 +10,7 @@ namespace EShopHelper.WebBrowsers
         {
         }
 
-        public override int Start(StartOption startOption)
+        public override StartResult Start(StartOption startOption)
         {
             StringBuilder sb = new();
 
@@ -56,7 +56,7 @@ namespace EShopHelper.WebBrowsers
             };
             process.Start();
 
-            return process.Id;
+            return StartResult.SuccessResult(process.Id);
         }
     }
 }
