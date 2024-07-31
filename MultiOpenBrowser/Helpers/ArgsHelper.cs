@@ -32,10 +32,7 @@ namespace MultiOpenBrowser.Helpers
             {
                 if (int.TryParse(startWebEnvironmenArg, out var id))
                 {
-                    WebEnvironmentRepo webEnvironmentRepo = new(null);
-                    var webEnvironment = await webEnvironmentRepo.Select
-                        .Where(a => a.Id == id)
-                        .FirstAsync();
+                    var webEnvironment = await new WebEnvironmentRepo(null).GetAsync(id);
                     if (webEnvironment != null)
                     {
                         WebBrowserFactory.Start(webEnvironment, new IWebBrowser.StartOption());
