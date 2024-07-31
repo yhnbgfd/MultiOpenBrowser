@@ -9,6 +9,11 @@ namespace MultiOpenBrowser.WebBrowsers
         {
         }
 
+        public override string? GetArguments(StartOption startOption)
+        {
+            return null;
+        }
+
         public override StartResult Start(StartOption startOption)
         {
             WebView2BrowserWindow webView2 = new WebView2BrowserWindow(_webEnvironment);

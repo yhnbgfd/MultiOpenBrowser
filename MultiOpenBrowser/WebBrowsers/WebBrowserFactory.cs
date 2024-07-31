@@ -5,6 +5,34 @@ namespace MultiOpenBrowser.WebBrowsers
 {
     internal class WebBrowserFactory
     {
+        public static (TypeEnum? type, string? arguments) GetArguments(WebEnvironment? webEnvironment, StartOption startOption)
+        {
+            if (webEnvironment == null)
+            {
+                return (null, null);
+            }
+
+            string? startResult;
+
+            if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
+            {
+                MsEdge msEdge = new(webEnvironment);
+                startResult = msEdge.GetArguments(startOption);
+            }
+            else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
+            {
+                WebView2 webView2 = new(webEnvironment);
+                startResult = webView2.GetArguments(startOption);
+            }
+            else
+            {
+                Chrome chrome = new(webEnvironment);
+                startResult = chrome.GetArguments(startOption);
+            }
+
+            return (webEnvironment.WebBrowser.Type, startResult);
+        }
+
         public static void Start(WebEnvironment? webEnvironment, StartOption startOption)
         {
             if (webEnvironment == null)

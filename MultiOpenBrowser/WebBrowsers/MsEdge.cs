@@ -10,7 +10,7 @@ namespace MultiOpenBrowser.WebBrowsers
         {
         }
 
-        public override StartResult Start(StartOption startOption)
+        public override string? GetArguments(StartOption startOption)
         {
             StringBuilder sb = new();
 
@@ -45,10 +45,15 @@ namespace MultiOpenBrowser.WebBrowsers
                 sb.Append($"--user-agent=\"{_webEnvironment.WebBrowser.UserAgent}\" ");
             }
 
+            return sb.ToString();
+        }
+
+        public override StartResult Start(StartOption startOption)
+        {
             ProcessStartInfo processStartInfo = new()
             {
                 FileName = GlobalData.MsEdgePath,
-                Arguments = sb.ToString(),
+                Arguments = GetArguments(startOption),
             };
             Process process = new()
             {

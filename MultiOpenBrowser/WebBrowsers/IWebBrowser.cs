@@ -3,6 +3,13 @@
     internal interface IWebBrowser
     {
         /// <summary>
+        /// 获取启动参数
+        /// </summary>
+        /// <param name="startOption"></param>
+        /// <returns></returns>
+        string? GetArguments(StartOption startOption);
+
+        /// <summary>
         /// 启动浏览器
         /// </summary>
         StartResult Start(StartOption startOption);
