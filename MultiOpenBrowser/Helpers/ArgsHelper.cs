@@ -36,7 +36,7 @@ namespace MultiOpenBrowser.Helpers
                     if (webEnvironment != null)
                     {
                         WebBrowserFactory.Start(webEnvironment, new IWebBrowser.StartOption());
-                        Environment.Exit(0);
+                        //Environment.Exit(0);
                     }
                 }
             }
