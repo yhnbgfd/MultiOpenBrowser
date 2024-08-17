@@ -17,17 +17,17 @@ namespace MultiOpenBrowser.WebBrowsers
             if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
             {
                 MsEdge msEdge = new(webEnvironment);
-                startResult = msEdge.GetArguments(startOption);
+                startResult = msEdge.GetStartupArguments(startOption);
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
             {
                 WebView2 webView2 = new(webEnvironment);
-                startResult = webView2.GetArguments(startOption);
+                startResult = webView2.GetStartupArguments(startOption);
             }
             else
             {
                 Chrome chrome = new(webEnvironment);
-                startResult = chrome.GetArguments(startOption);
+                startResult = chrome.GetStartupArguments(startOption);
             }
 
             return (webEnvironment.WebBrowser.Type, startResult);

@@ -11,7 +11,7 @@ namespace MultiOpenBrowser.WebBrowsers
             _webEnvironment = webEnvironment;
         }
 
-        public abstract string? GetArguments(StartOption startOption);
+        public abstract string? GetStartupArguments(StartOption startOption);
         public abstract StartResult Start(StartOption startOption);
     }
 }

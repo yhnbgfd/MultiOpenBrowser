@@ -10,7 +10,7 @@ namespace MultiOpenBrowser.WebBrowsers
         {
         }
 
-        public override string? GetArguments(StartOption startOption)
+        public override string? GetStartupArguments(StartOption startOption)
         {
             StringBuilder sb = new();
 
@@ -53,7 +53,7 @@ namespace MultiOpenBrowser.WebBrowsers
             ProcessStartInfo processStartInfo = new()
             {
                 FileName = GlobalData.MsEdgePath,
-                Arguments = GetArguments(startOption),
+                Arguments = GetStartupArguments(startOption),
             };
             Process process = new()
             {

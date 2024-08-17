@@ -9,7 +9,7 @@ namespace MultiOpenBrowser.WebBrowsers
         {
         }
 
-        public override string? GetArguments(StartOption startOption)
+        public override string? GetStartupArguments(StartOption startOption)
         {
             return null;
         }

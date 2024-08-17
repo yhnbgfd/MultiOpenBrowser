@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="startOption"></param>
         /// <returns></returns>
-        string? GetArguments(StartOption startOption);
+        string? GetStartupArguments(StartOption startOption);
 
         /// <summary>
         /// 启动浏览器
