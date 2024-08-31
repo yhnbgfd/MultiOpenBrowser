@@ -4,12 +4,8 @@ using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.WebBrowsers
 {
-    internal class Chrome : WebBrowserBase
+    internal class Chrome(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
-        public Chrome(WebEnvironment webEnvironment) : base(webEnvironment)
-        {
-        }
-
         public override string? GetStartupArguments(StartOption startOption)
         {
             StringBuilder sb = new();

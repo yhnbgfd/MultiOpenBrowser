@@ -7,7 +7,7 @@
         /// <summary>
         /// 默认浏览器数据文件夹
         /// </summary>
-        public string DefaultWebBrowserDataPath { get; set; } = "";
+        public string DefaultWebBrowserDataPath { get; set; } = string.Empty;
         /// <summary>
         /// 默认 User-Agent
         /// </summary>

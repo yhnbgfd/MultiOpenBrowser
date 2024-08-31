@@ -4,12 +4,8 @@ using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.WebBrowsers
 {
-    internal class MsEdge : WebBrowserBase
+    internal class MsEdge(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
-        public MsEdge(WebEnvironment webEnvironment) : base(webEnvironment)
-        {
-        }
-
         public override string? GetStartupArguments(StartOption startOption)
         {
             StringBuilder sb = new();

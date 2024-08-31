@@ -22,41 +22,25 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            switch (WebBrowser.Type)
+            this.ComboBox_Type.SelectedIndex = WebBrowser.Type switch
             {
-                case WebBrowser.TypeEnum.Chrome:
-                    this.ComboBox_Type.SelectedIndex = 0;
-                    break;
-                case WebBrowser.TypeEnum.MsEdge:
-                    this.ComboBox_Type.SelectedIndex = 1;
-                    break;
-                case WebBrowser.TypeEnum.WebView2:
-                    this.ComboBox_Type.SelectedIndex = 2;
-                    break;
-                default:
-                    this.ComboBox_Type.SelectedIndex = 0;
-                    break;
-            }
+                WebBrowser.TypeEnum.Chrome => 0,
+                WebBrowser.TypeEnum.MsEdge => 1,
+                WebBrowser.TypeEnum.WebView2 => 2,
+                _ => 0,
+            };
         }
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string? text = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Content as string;
-            switch (text)
+            WebBrowser.Type = text switch
             {
-                case "Google Chrome":
-                    WebBrowser.Type = WebBrowser.TypeEnum.Chrome;
-                    break;
-                case "Microsoft Edge":
-                    WebBrowser.Type = WebBrowser.TypeEnum.MsEdge;
-                    break;
-                case "Microsoft Edge WebView2":
-                    WebBrowser.Type = WebBrowser.TypeEnum.WebView2;
-                    break;
-                default:
-                    WebBrowser.Type = WebBrowser.TypeEnum.Chrome;
-                    break;
-            }
+                "Google Chrome" => WebBrowser.TypeEnum.Chrome,
+                "Microsoft Edge" => WebBrowser.TypeEnum.MsEdge,
+                "Microsoft Edge WebView2" => WebBrowser.TypeEnum.WebView2,
+                _ => WebBrowser.TypeEnum.Chrome,
+            };
         }
     }
 }
