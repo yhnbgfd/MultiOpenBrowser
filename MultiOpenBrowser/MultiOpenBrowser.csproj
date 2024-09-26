@@ -9,6 +9,11 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <AssemblyTitle>浏览器多开助手</AssemblyTitle>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +24,7 @@
     <PackageReference Include="FreeSql" Version="3.2.833" />
     <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.833" />
     <PackageReference Include="FreeSql.Repository" Version="3.2.833" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2739.15" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="Obfuscar" Version="2.2.39">
@@ -38,6 +43,18 @@
     <None Update="obfuscar.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="FreeSql" />
+    <Using Include="FreeSql.DataAnnotations" />
+    <Using Include="MultiOpenBrowser.Base" />
+    <Using Include="MultiOpenBrowser.Base.Generic" />
+    <Using Include="MultiOpenBrowser.Entitys" />
+    <Using Include="MultiOpenBrowser.Helpers" />
+    <Using Include="MultiOpenBrowser.Repositorys" />
+    <Using Include="NLog" />
+    <Using Include="System.ComponentModel" />
   </ItemGroup>
 
 </Project>
