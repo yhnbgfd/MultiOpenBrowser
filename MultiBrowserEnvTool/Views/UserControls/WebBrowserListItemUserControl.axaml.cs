@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace MultiBrowserEnvTool;
+namespace MultiBrowserEnvTool.Views;
 
 public partial class WebBrowserListItemUserControl : UserControl
 {
