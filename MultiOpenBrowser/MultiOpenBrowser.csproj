@@ -24,10 +24,10 @@
     <PackageReference Include="FreeSql" Version="3.2.833" />
     <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.833" />
     <PackageReference Include="FreeSql.Repository" Version="3.2.833" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2849.39" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NLog" Version="5.3.4" />
-    <PackageReference Include="Obfuscar" Version="2.2.39">
+    <PackageReference Include="Obfuscar" Version="2.2.40">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
