@@ -20,9 +20,9 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Height="28" Header="文件">
-                <MenuItem Header="设置" />
+                <MenuItem Click="MenuItem_Options_Click" Header="设置" />
                 <Separator />
-                <MenuItem Header="关闭" />
+                <MenuItem Click="MenuItem_Exit_Click" Header="关闭" />
             </MenuItem>
             <MenuItem x:Name="MenuItem_WebBrowser" Header="浏览器" />
             <MenuItem Header="浏览器环境">
