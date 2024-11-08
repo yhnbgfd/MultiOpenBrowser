@@ -6,12 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="#FFF3F3F3"
+    Background="#FFF0F0F0"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <DockPanel>
         <ScrollViewer>
-            <WrapPanel x:Name="StackPanel_WebEnvironmentList" />
+            <WrapPanel x:Name="StackPanel_WebEnvironmentList" Margin="5,0,5,0" />
         </ScrollViewer>
     </DockPanel>
 </UserControl>
