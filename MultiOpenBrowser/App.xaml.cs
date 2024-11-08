@@ -22,9 +22,6 @@ namespace MultiOpenBrowser
         {
             _logger.Info($"Application_Startup {string.Join(" ", e.Args)}");
 
-#if DEBUG
-            //await ArgsHelper.StartWebEnvironmentAsync("--start-web-environment=21");
-#endif
             await ArgsHelper.StartWebEnvironmentAsync(e.Args);
 
             StartupUri = new Uri("Views/Windows/MainWindow.xaml", UriKind.Relative);
