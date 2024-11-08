@@ -1,5 +1,6 @@
 ﻿using MultiOpenBrowser.Views.Windows;
 using MultiOpenBrowser.WebBrowsers;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -139,12 +140,25 @@ namespace MultiOpenBrowser.Views.UserControls
                 WebEnvironment = newWebEnvironment
             }.ShowDialog();
 
-            if (dialogResult == true)
+            if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
             {
                 FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
             }
 
             EventBus.NotifyWebEnvironmentChange?.Invoke();
+        }
+
+        private void MenuItem_OpenDataFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
+            if (WebEnvironment.WebBrowserDataPath != null && Directory.Exists(WebEnvironment.WebBrowserDataPath))
+            {
+                Process.Start("explorer.exe", WebEnvironment.WebBrowserDataPath);
+            }
         }
     }
 }
