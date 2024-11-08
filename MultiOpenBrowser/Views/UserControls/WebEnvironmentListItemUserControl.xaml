@@ -50,6 +50,7 @@
                     <MenuItem Height="30" Header="More">
                         <MenuItem Click="Button_StartWebEnvironmentIncognito_Click" Header="Incognito" />
                         <MenuItem Click="Button_EditWebEnvironment_Click" Header="Edit" />
+                        <MenuItem Click="MenuItem_Copy_Click" Header="Copy" />
                         <MenuItem Click="Button_DeleteWebEnvironment_Click" Header="Delete" />
                     </MenuItem>
                 </Menu>

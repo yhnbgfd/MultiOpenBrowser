@@ -60,19 +60,21 @@ namespace MultiOpenBrowser.Views.UserControls
                 WebEnvironmentRepo webEnvironmentRepo = new(uow);
                 await webEnvironmentRepo.DeleteAsync(WebEnvironment);
 
+                uow.Commit();
+
                 if (!string.IsNullOrWhiteSpace(WebEnvironment.WebBrowserDataPath) && Directory.Exists(WebEnvironment.WebBrowserDataPath))
                 {
                     Directory.Delete(WebEnvironment.WebBrowserDataPath, true);
                 }
-
-                uow.Commit();
-
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
             catch (Exception ex)
             {
                 uow.Rollback();
                 _logger.Error(ex);
+            }
+            finally
+            {
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
         }
 
@@ -113,6 +115,36 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 _logger.Error(ex);
             }
+        }
+
+        private void MenuItem_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
+            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
+
+            var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
+
+            newWebEnvironment.Id = 0;
+            newWebEnvironment.WebBrowser.Id = 0;
+            newWebEnvironment.Name = newWebEnvironment.Name + " Copy";
+            newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
+
+            var dialogResult = new WebEnvironmentOptionWindow()
+            {
+                Owner = Application.Current.MainWindow,
+                WebEnvironment = newWebEnvironment
+            }.ShowDialog();
+
+            if (dialogResult == true)
+            {
+                FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
+            }
+
+            EventBus.NotifyWebEnvironmentChange?.Invoke();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace MultiOpenBrowser.Views.Windows
 
                 EventBus.NotifyWebEnvironmentChange?.Invoke();
 
+                this.DialogResult = true;
                 this.Close();
             }
             catch (Exception ex)
@@ -50,6 +51,7 @@ namespace MultiOpenBrowser.Views.Windows
 
         private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
     }
