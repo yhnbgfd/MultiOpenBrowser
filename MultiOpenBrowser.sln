@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiBrowserEnvTool", "MultiBrowserEnvTool\MultiBrowserEnvTool.csproj", "{011310F5-2DDA-44F4-93E3-1FCC2E44ADFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiBrowserEnvTool.Desktop", "MultiBrowserEnvTool.Desktop\MultiBrowserEnvTool.Desktop.csproj", "{B3E52F77-66DB-40CA-A616-B3297FDAD4CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{3CB95145-7106-4C16-9965-BD6EC3812659}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB95145-7106-4C16-9965-BD6EC3812659}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CB95145-7106-4C16-9965-BD6EC3812659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011310F5-2DDA-44F4-93E3-1FCC2E44ADFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011310F5-2DDA-44F4-93E3-1FCC2E44ADFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011310F5-2DDA-44F4-93E3-1FCC2E44ADFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011310F5-2DDA-44F4-93E3-1FCC2E44ADFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E52F77-66DB-40CA-A616-B3297FDAD4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E52F77-66DB-40CA-A616-B3297FDAD4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E52F77-66DB-40CA-A616-B3297FDAD4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E52F77-66DB-40CA-A616-B3297FDAD4CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

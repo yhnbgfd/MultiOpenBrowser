@@ -1,10 +1,10 @@
 ﻿using MultiOpenBrowser.Views.Windows;
 using MultiOpenBrowser.WebBrowsers;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
@@ -13,8 +13,8 @@ namespace MultiOpenBrowser.Views.UserControls
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public WebEnvironment WebEnvironment { get; set; }
-        public WebBrowser WebBrowser { get; set; }
+        public WebEnvironment WebEnvironment { get; private set; }
+        public WebBrowser WebBrowser { get; private set; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
@@ -61,19 +61,21 @@ namespace MultiOpenBrowser.Views.UserControls
                 WebEnvironmentRepo webEnvironmentRepo = new(uow);
                 await webEnvironmentRepo.DeleteAsync(WebEnvironment);
 
+                uow.Commit();
+
                 if (!string.IsNullOrWhiteSpace(WebEnvironment.WebBrowserDataPath) && Directory.Exists(WebEnvironment.WebBrowserDataPath))
                 {
                     Directory.Delete(WebEnvironment.WebBrowserDataPath, true);
                 }
-
-                uow.Commit();
-
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
             catch (Exception ex)
             {
                 uow.Rollback();
                 _logger.Error(ex);
+            }
+            finally
+            {
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
         }
 
@@ -96,12 +98,12 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.Background = Brushes.WhiteSmoke;
+            //this.Border_Main.Background = Brushes.WhiteSmoke;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.Background = Brushes.White;
+            //this.Border_Main.Background = Brushes.White;
         }
 
         private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)
@@ -113,6 +115,49 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
+            }
+        }
+
+        private void MenuItem_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
+            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
+
+            var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
+
+            newWebEnvironment.Id = 0;
+            newWebEnvironment.WebBrowser.Id = 0;
+            newWebEnvironment.Name = newWebEnvironment.Name + " Copy";
+            newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
+
+            var dialogResult = new WebEnvironmentOptionWindow()
+            {
+                Owner = Application.Current.MainWindow,
+                WebEnvironment = newWebEnvironment
+            }.ShowDialog();
+
+            if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
+            {
+                FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
+            }
+
+            EventBus.NotifyWebEnvironmentChange?.Invoke();
+        }
+
+        private void MenuItem_OpenDataFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
+            if (WebEnvironment.WebBrowserDataPath != null && Directory.Exists(WebEnvironment.WebBrowserDataPath))
+            {
+                Process.Start("explorer.exe", WebEnvironment.WebBrowserDataPath);
             }
         }
     }

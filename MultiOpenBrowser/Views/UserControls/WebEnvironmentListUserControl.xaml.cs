@@ -33,7 +33,7 @@ namespace MultiOpenBrowser.Views.UserControls
                 WebEnvironmentRepo webEnvironmentRepo = new(null);
                 GlobalData.WebEnvironmentList = await webEnvironmentRepo.Select
                     .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
-                    .OrderBy(a => a.Order)
+                    .OrderByDescending(a => a.Order)
                     .OrderBy(a => a.Id)
                     .ToListAsync();
 
