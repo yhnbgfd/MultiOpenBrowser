@@ -81,7 +81,7 @@ namespace MultiOpenBrowser.Views.Windows
 
             MenuItem menuItemAdd = new()
             {
-                Header = "添加浏览器",
+                Header = "Add Browser",
             };
             menuItemAdd.Click += MenuItem_AddWebBrowser_Click;
             this.MenuItem_WebBrowser.Items.Add(menuItemAdd);
@@ -103,7 +103,7 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem addEnvMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "添加浏览器环境",
+                        Header = "Add Environment",
                     };
                     addEnvMenuItem.Click += MenuItem_WebBrowser_AddByWebEnvironment_Click;
                     menuItem.Items.Add(addEnvMenuItem);
@@ -113,7 +113,7 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem editMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "编辑",
+                        Header = "Edit",
                     };
                     editMenuItem.Click += MenuItem_WebBrowser_EditWebBrowser_Click; ;
                     menuItem.Items.Add(editMenuItem);
@@ -121,7 +121,7 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem deleteMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "删除",
+                        Header = "Delete",
                     };
                     deleteMenuItem.Click += MenuItem_WebBrowser_DeleteWebBrowser_Click; ;
                     menuItem.Items.Add(deleteMenuItem);
