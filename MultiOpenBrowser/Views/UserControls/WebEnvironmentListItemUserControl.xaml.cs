@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
@@ -13,8 +12,8 @@ namespace MultiOpenBrowser.Views.UserControls
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public WebEnvironment WebEnvironment { get; set; }
-        public WebBrowser WebBrowser { get; set; }
+        public WebEnvironment WebEnvironment { get; private set; }
+        public WebBrowser WebBrowser { get; private set; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
@@ -96,12 +95,12 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.Background = Brushes.WhiteSmoke;
+            //this.Border_Main.Background = Brushes.WhiteSmoke;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.Background = Brushes.White;
+            //this.Border_Main.Background = Brushes.White;
         }
 
         private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)
