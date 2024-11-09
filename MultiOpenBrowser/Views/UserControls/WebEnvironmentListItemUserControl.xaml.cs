@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
@@ -22,6 +23,16 @@ namespace MultiOpenBrowser.Views.UserControls
             DataContext = this;
             WebEnvironment = webEnvironment;
             WebBrowser = WebEnvironment.WebBrowser;
+            if (WebBrowser.Type == WebBrowser.TypeEnum.Chrome)
+            {
+                var uriSource = new Uri(@"/MultiOpenBrowser;component/Views/UserControls/GoogleChrome.png", UriKind.Relative);
+                this.Image_Icon.Source = new BitmapImage(uriSource);
+            }
+            else
+            {
+                var uriSource = new Uri(@"/MultiOpenBrowser;component/Views/UserControls/MicrosoftEdge.png", UriKind.Relative);
+                this.Image_Icon.Source = new BitmapImage(uriSource);
+            }
         }
 
         private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)
@@ -98,12 +109,12 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            //this.Border_Main.Background = Brushes.WhiteSmoke;
+            this.Image_Icon.Opacity = 0.2;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
         {
-            //this.Border_Main.Background = Brushes.White;
+            this.Image_Icon.Opacity = 0.1;
         }
 
         private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)

@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="260"
+    Height="44"
     MouseEnter="UserControl_MouseEnter"
     MouseLeave="UserControl_MouseLeave"
     mc:Ignorable="d">
@@ -14,6 +15,16 @@
             Background="White"
             BorderThickness="2"
             CornerRadius="4" />
+        <Image
+            x:Name="Image_Icon"
+            Margin="3,3,3,3"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            d:Source="/Views/UserControls/GoogleChrome.png"
+            Opacity="0.1"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            SnapsToDevicePixels="True"
+            UseLayoutRounding="True" />
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
