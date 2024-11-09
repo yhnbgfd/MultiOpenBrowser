@@ -25,6 +25,8 @@
             MsEdge = 2,
             [Description("Microsoft Edge WebView2")]
             WebView2 = 3,
+            [Description("Firefox")]
+            Firefox = 4,
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

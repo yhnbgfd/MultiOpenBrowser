@@ -45,6 +45,7 @@
                 <ComboBoxItem Content="Google Chrome" />
                 <ComboBoxItem Content="Microsoft Edge" />
                 <ComboBoxItem Content="Microsoft Edge WebView2" />
+                <ComboBoxItem Content="Firefox" />
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="99">

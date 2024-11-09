@@ -109,7 +109,7 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.Image_Icon.Opacity = 0.2;
+            this.Image_Icon.Opacity = 0.15;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
