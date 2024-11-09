@@ -44,11 +44,14 @@
                     Content="Run" />
                 <Menu
                     Grid.Column="1"
-                    Width="45"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#FFDDDDDD">
-                    <MenuItem Height="30" Header="More">
+                    <MenuItem
+                        Width="45"
+                        Height="30"
+                        BorderThickness="0,0,0,0"
+                        Header="More">
                         <MenuItem Click="Button_StartWebEnvironmentIncognito_Click" Header="Incognito" />
                         <MenuItem Click="Button_EditWebEnvironment_Click" Header="Edit" />
                         <MenuItem Click="MenuItem_OpenDataFolder_Click" Header="Open Data Folder" />
