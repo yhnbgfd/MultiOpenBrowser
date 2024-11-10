@@ -28,8 +28,6 @@
             <MenuItem Header="Help">
                 <MenuItem Click="MenuItem_About_Click" Header="Check for Updates" />
                 <Separator />
-                <MenuItem Click="MenuItem_About_Click" Header="Register" />
-                <Separator />
                 <MenuItem Click="MenuItem_About_Click" Header="About" />
             </MenuItem>
         </Menu>

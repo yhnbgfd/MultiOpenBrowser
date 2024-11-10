@@ -16,7 +16,7 @@ namespace MultiOpenBrowser.Helpers
                 ShowRecentCategory = false
             };
 
-            foreach (var item in GlobalData.WebEnvironmentList.Take(12))
+            foreach (var item in GlobalData.WebEnvironmentList)
             {
                 var (type, arguments) = WebBrowserFactory.GetArguments(item, new IWebBrowser.StartOption());
 
@@ -53,6 +53,14 @@ namespace MultiOpenBrowser.Helpers
                 ApplicationPath = GlobalData.ChromePath,
             };
             jumpList.JumpItems.Add(taskChrome);
+
+            JumpTask taskEdge = new()
+            {
+                Title = "Microsoft Edge",
+                IconResourcePath = GlobalData.MsEdgePath,
+                ApplicationPath = GlobalData.MsEdgePath,
+            };
+            jumpList.JumpItems.Add(taskEdge);
 
             JumpList.SetJumpList(Application.Current, jumpList);
         }
