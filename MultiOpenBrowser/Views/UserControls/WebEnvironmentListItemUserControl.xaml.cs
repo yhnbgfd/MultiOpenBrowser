@@ -109,12 +109,12 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.Image_Icon.Opacity = 0.15;
+            this.Image_Icon.Opacity = 0.1;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.Image_Icon.Opacity = 0.1;
+            this.Image_Icon.Opacity = 0.05;
         }
 
         private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)

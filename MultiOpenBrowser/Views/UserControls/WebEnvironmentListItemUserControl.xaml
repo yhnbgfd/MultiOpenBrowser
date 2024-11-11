@@ -21,7 +21,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             d:Source="/Views/UserControls/GoogleChrome.png"
-            Opacity="0.1"
+            Opacity="0.05"
             RenderOptions.BitmapScalingMode="HighQuality"
             SnapsToDevicePixels="True"
             UseLayoutRounding="True" />
