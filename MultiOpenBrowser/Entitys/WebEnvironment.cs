@@ -22,6 +22,19 @@ namespace MultiOpenBrowser.Entitys
         /// </summary>
         [Column(IsIgnore = true)]
         public int? ProcessId { get; set; }
+        [Column(IsIgnore = true)]
+        public string? NameUI
+        {
+            get
+            {
+                int maxLength = 40;
+                if (Name?.Length > maxLength)
+                {
+                    return Name.Substring(0, maxLength - 3) + "...";
+                }
+                return Name;
+            }
+        }
 
         public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
 
