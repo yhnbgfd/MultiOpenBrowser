@@ -7,12 +7,9 @@ namespace MultiOpenBrowser.Views.UserControls
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        internal static List<WebEnvironment> WebEnvironmentList => GlobalData.WebEnvironmentList;
-
         public WebEnvironmentListUserControl()
         {
             InitializeComponent();
-            DataContext = this;
             EventBus.NotifyWebEnvironmentChange += EventBus_NotifyWebEnvironmentChange;
         }
 
@@ -37,10 +34,10 @@ namespace MultiOpenBrowser.Views.UserControls
                     .OrderBy(a => a.Id)
                     .ToListAsync();
 
-                _logger.Info($"WebEnvironmentList Count={WebEnvironmentList.Count}");
+                _logger.Info($"WebEnvironmentList Count={GlobalData.WebEnvironmentList.Count}");
 
                 this.StackPanel_WebEnvironmentList.Children.Clear();
-                foreach (var item in WebEnvironmentList.Select((value, i) => new { i, value }))
+                foreach (var item in GlobalData.WebEnvironmentList.Select((value, i) => new { i, value }))
                 {
                     item.value.Index = item.i + 1;
                     WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value);
