@@ -27,7 +27,7 @@ namespace MultiOpenBrowser.Entitys
         {
             get
             {
-                int maxLength = 40;
+                int maxLength = 24;
                 if (Name?.Length > maxLength)
                 {
                     return Name.Substring(0, maxLength - 3) + "...";
