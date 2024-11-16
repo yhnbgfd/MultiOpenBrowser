@@ -30,19 +30,20 @@ namespace MultiOpenBrowser
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             MessageBox.Show(e.Exception.ToString(), "DispatcherUnhandledException");
-            Environment.Exit(1);
+            e.Handled = true;
+            //Environment.Exit(1);
         }
 
         private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
             MessageBox.Show(e.Exception.ToString(), "UnhandledException");
-            Environment.Exit(1);
+            //Environment.Exit(1);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             MessageBox.Show((e.ExceptionObject as Exception)?.ToString(), "UnobservedTaskException");
-            Environment.Exit(1);
+            //Environment.Exit(1);
         }
     }
 }
