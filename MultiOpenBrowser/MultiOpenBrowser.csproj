@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <AssemblyTitle>浏览器多开助手</AssemblyTitle>
+    <AssemblyTitle>MultiOpenBrowser</AssemblyTitle>
     <ErrorReport>none</ErrorReport>
   </PropertyGroup>
 
