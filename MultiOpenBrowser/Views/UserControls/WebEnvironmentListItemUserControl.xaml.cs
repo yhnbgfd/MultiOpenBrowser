@@ -136,27 +136,37 @@ namespace MultiOpenBrowser.Views.UserControls
                 return;
             }
 
-            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
-
-            var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
-
-            newWebEnvironment.Id = 0;
-            newWebEnvironment.WebBrowser.Id = 0;
-            newWebEnvironment.Name = newWebEnvironment.Name + " Copy";
-            newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
-
-            var dialogResult = new WebEnvironmentOptionWindow()
+            try
             {
-                Owner = Application.Current.MainWindow,
-                WebEnvironment = newWebEnvironment
-            }.ShowDialog();
+                EventBus.LockUI?.Invoke();
 
-            if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
-            {
-                FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
+                var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
+
+                var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
+
+                newWebEnvironment.Id = 0;
+                newWebEnvironment.Order = 0;
+                newWebEnvironment.WebBrowser.Id = 0;
+                newWebEnvironment.Name = newWebEnvironment.Name + " Copy";
+                newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
+
+                var dialogResult = new WebEnvironmentOptionWindow()
+                {
+                    Owner = Application.Current.MainWindow,
+                    WebEnvironment = newWebEnvironment
+                }.ShowDialog();
+
+                if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
+                {
+                    FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
+                }
+
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
-
-            EventBus.NotifyWebEnvironmentChange?.Invoke();
+            finally
+            {
+                EventBus.UnlockUI?.Invoke();
+            }
         }
 
         private void MenuItem_OpenDataFolder_Click(object sender, RoutedEventArgs e)

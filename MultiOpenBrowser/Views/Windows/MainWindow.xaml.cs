@@ -73,6 +73,18 @@ namespace MultiOpenBrowser.Views.Windows
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await CreateWebBrowserMenuItemsAsync();
+            EventBus.UnlockUI += UnlockUIHandle;
+            EventBus.LockUI += LockUIHandle;
+        }
+
+        private async Task UnlockUIHandle()
+        {
+            this.DockPanel_Main.IsEnabled = true;
+        }
+
+        private async Task LockUIHandle()
+        {
+            this.DockPanel_Main.IsEnabled = false;
         }
 
         private async Task CreateWebBrowserMenuItemsAsync()
@@ -162,6 +174,12 @@ namespace MultiOpenBrowser.Views.Windows
             WebBrowser webBrowser = ((sender as MenuItem)!.Tag as WebBrowser)!;
             await new WebBrowserRepo(null).DeleteAsync(webBrowser);
             await CreateWebBrowserMenuItemsAsync();
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            EventBus.LockUI -= LockUIHandle;
+            EventBus.UnlockUI -= UnlockUIHandle;
         }
     }
 }

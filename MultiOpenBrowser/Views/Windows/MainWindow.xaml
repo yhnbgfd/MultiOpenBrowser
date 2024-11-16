@@ -12,9 +12,10 @@
     MinHeight="200"
     Closed="Window_Closed"
     Loaded="Window_Loaded"
+    Unloaded="Window_Unloaded"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <DockPanel>
+    <DockPanel x:Name="DockPanel_Main">
         <Menu DockPanel.Dock="Top">
             <MenuItem Height="28" Header="File">
                 <MenuItem Click="MenuItem_Options_Click" Header="Options" />
