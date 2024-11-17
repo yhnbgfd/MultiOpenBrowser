@@ -9,7 +9,6 @@
         public string MachineCode { get; set; } = string.Empty;
         public DateTimeOffset Expired { get; set; } = DateTimeOffset.MinValue;
 
-
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

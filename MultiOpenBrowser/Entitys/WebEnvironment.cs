@@ -38,13 +38,13 @@ namespace MultiOpenBrowser.Entitys
 
         public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public static WebEnvironment Default => new()
         {
             Name = "MyWebEnvironment",
             WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}"),
         };
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public object Clone()
         {

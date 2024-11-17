@@ -98,6 +98,7 @@ namespace MultiOpenBrowser.Views.UserControls
             }
 
             var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
+
             new WebEnvironmentOptionWindow()
             {
                 Owner = Application.Current.MainWindow,

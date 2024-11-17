@@ -12,10 +12,25 @@
         public int Order { get; set; }
         public bool IsTemplate { get; set; } = false;
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
+        public string? ExePath { get; set; }
         public string? UserAgent { get; set; }
         public string? ProxyServer { get; set; }
         public bool DisableWebSecurity { get; set; } = false;
         public string? Arguments { get; set; }
+
+        [Column(IsIgnore = true)]
+        public static WebBrowser Default => new()
+        {
+            Name = "MyWebBrowser",
+            UserAgent = GlobalData.Option.DefaultUserAgent,
+        };
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
 
         public enum TypeEnum
         {
@@ -27,19 +42,8 @@
             WebView2 = 3,
             [Description("Firefox")]
             Firefox = 4,
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public static WebBrowser Default => new()
-        {
-            Name = "MyWebBrowser",
-            UserAgent = GlobalData.Option.DefaultUserAgent,
-        };
-
-        public object Clone()
-        {
-            return MemberwiseClone();
+            [Description("Other")]
+            Other = 99,
         }
     }
 }
