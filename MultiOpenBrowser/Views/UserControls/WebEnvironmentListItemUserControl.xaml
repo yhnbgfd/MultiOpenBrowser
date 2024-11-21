@@ -11,7 +11,7 @@
     mc:Ignorable="d">
     <Border
         x:Name="Border_Main"
-        Background="White"
+        Background="#FFF9F9F9"
         BorderThickness="2"
         CornerRadius="4">
         <Grid>
@@ -34,7 +34,7 @@
                 TextWrapping="Wrap" />
             <Grid
                 Grid.Column="1"
-                Margin="3,0,3,0"
+                Margin="5,0,5,0"
                 VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

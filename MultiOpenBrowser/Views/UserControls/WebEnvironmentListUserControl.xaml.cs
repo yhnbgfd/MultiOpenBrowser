@@ -43,6 +43,7 @@ namespace MultiOpenBrowser.Views.UserControls
                     }
                     this.TabControl_Group.Items.Add(new TabItem()
                     {
+                        IsSelected = true,
                         Header = "ALL",
                         Content = new ScrollViewer() { Content = wrapPanel },
                     });

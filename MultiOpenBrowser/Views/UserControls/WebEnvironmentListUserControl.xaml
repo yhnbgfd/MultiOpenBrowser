@@ -10,6 +10,6 @@
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <DockPanel>
-        <TabControl x:Name="TabControl_Group" />
+        <TabControl x:Name="TabControl_Group" BorderThickness="0,1,0,0" />
     </DockPanel>
 </UserControl>
