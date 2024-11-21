@@ -27,21 +27,43 @@ namespace MultiOpenBrowser.Views.UserControls
         {
             try
             {
-                WebEnvironmentRepo webEnvironmentRepo = new(null);
-                GlobalData.WebEnvironmentList = await webEnvironmentRepo.Select
-                    .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
-                    .OrderByDescending(a => a.Order)
-                    .OrderBy(a => a.Id)
-                    .ToListAsync();
+                await WebEnvironmentGroupRepo.LoadAsync();
+                await WebEnvironmentRepo.LoadAsync();
 
+                _logger.Info($"WebEnvironmenGrouptList Count={GlobalData.WebEnvironmentGroupList.Count}");
                 _logger.Info($"WebEnvironmentList Count={GlobalData.WebEnvironmentList.Count}");
 
                 this.StackPanel_WebEnvironmentList.Children.Clear();
-                foreach (var item in GlobalData.WebEnvironmentList.Select((value, i) => new { i, value }))
+                foreach (var webEnv in GlobalData.WebEnvironmentList.Select((value, i) => new { i, value }))
                 {
-                    item.value.Index = item.i + 1;
-                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(item.value);
+                    webEnv.value.Index = webEnv.i + 1;
+                    WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(webEnv.value);
                     this.StackPanel_WebEnvironmentList.Children.Add(webEnvironmentListItemUserControl);
+                }
+
+                foreach (var group in GlobalData.WebEnvironmentGroupList)
+                {
+                    WrapPanel wrapPanel = new()
+                    {
+                        Margin = new Thickness(5, 0, 5, 0),
+                    };
+                    TabItem tabItem = new()
+                    {
+                        Header = group.Name,
+                        Content = new ScrollViewer()
+                        {
+                            Content = wrapPanel,
+                        },
+                    };
+
+                    foreach (var webEnv in GlobalData.WebEnvironmentList.Where(a => a.WebEnvironmentGroupId == group.Id).Select((value, i) => new { i, value }))
+                    {
+                        webEnv.value.Index = webEnv.i + 1;
+                        WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(webEnv.value);
+                        wrapPanel.Children.Add(webEnvironmentListItemUserControl);
+                    }
+
+                    this.TabControl_Group.Items.Add(tabItem);
                 }
 
                 JumpListHelper.SetJumpList();

@@ -24,6 +24,9 @@
             </MenuItem>
             <MenuItem x:Name="MenuItem_WebBrowser" Header="Browser" />
             <MenuItem Header="Environment">
+                <MenuItem Header="Group">
+                    <MenuItem Click="MenuItem_AddWebEnvironmentGroup_Click" Header="Add Group" />
+                </MenuItem>
                 <MenuItem Click="MenuItem_AddWebEnvironment_Click" Header="Add Environment" />
             </MenuItem>
             <MenuItem Header="Help">

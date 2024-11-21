@@ -12,6 +12,7 @@ namespace MultiOpenBrowser.Entitys
         public int Id { get; set; }
         public string? Name { get; set; }
         public int Order { get; set; }
+        public int? WebEnvironmentGroupId { get; set; }
         public int? WebBrowserId { get; set; }
         public string? WebBrowserDataPath { get; set; }
 
@@ -37,6 +38,7 @@ namespace MultiOpenBrowser.Entitys
         }
 
         public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
+        public WebEnvironmentGroup? WebEnvironmentGroup { get; set; }
 
         public static WebEnvironment Default => new()
         {

@@ -181,5 +181,10 @@ namespace MultiOpenBrowser.Views.Windows
             EventBus.LockUI -= LockUIHandle;
             EventBus.UnlockUI -= UnlockUIHandle;
         }
+
+        private void MenuItem_AddWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

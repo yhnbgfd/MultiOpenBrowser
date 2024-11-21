@@ -9,27 +9,22 @@
     MouseEnter="UserControl_MouseEnter"
     MouseLeave="UserControl_MouseLeave"
     mc:Ignorable="d">
-    <Grid>
-        <Border
-            x:Name="Border_Main"
-            Background="White"
-            BorderThickness="2"
-            CornerRadius="4" />
-        <Image
-            x:Name="Image_Icon"
-            Margin="3,3,3,3"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            d:Source="/Views/UserControls/GoogleChrome.png"
-            Opacity="0.05"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            SnapsToDevicePixels="True"
-            UseLayoutRounding="True" />
-        <Grid Margin="5">
+    <Border
+        x:Name="Border_Main"
+        Background="White"
+        BorderThickness="2"
+        CornerRadius="4">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
+            <Image
+                x:Name="Image_Icon"
+                HorizontalAlignment="Left"
+                d:Source="/Views/UserControls/GoogleChrome.png"
+                Opacity="0.05"
+                RenderOptions.BitmapScalingMode="HighQuality" />
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
@@ -39,7 +34,7 @@
                 TextWrapping="Wrap" />
             <Grid
                 Grid.Column="1"
-                Margin="2"
+                Margin="3,0,3,0"
                 VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -73,5 +68,5 @@
                 </Menu>
             </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

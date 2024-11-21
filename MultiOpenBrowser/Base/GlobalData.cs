@@ -10,6 +10,7 @@ namespace MultiOpenBrowser.Base
         internal static Option Option { get; set; }
         internal static UserInfo? UserInfo { get; set; }
         internal static List<WebEnvironment> WebEnvironmentList { get; set; } = [];
+        internal static List<WebEnvironmentGroup> WebEnvironmentGroupList { get; set; } = [];
 
         static GlobalData()
         {
