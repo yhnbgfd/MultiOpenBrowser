@@ -32,7 +32,7 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Text="浏览器类型"
+                Text="WebBrowser Type"
                 TextWrapping="Wrap" />
             <ComboBox
                 x:Name="ComboBox_Type"
@@ -59,7 +59,7 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Text="Exe Path"
+                Text="WebBrowser Exe Path"
                 TextWrapping="Wrap" />
             <TextBox
                 Grid.Column="1"
@@ -140,13 +140,13 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Text="禁用浏览器安全" />
+                Text="Disable WebSecurity" />
             <CheckBox
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Content="(可解决部分网站跨域报错)"
+                Content="(It can solve the cross-domain error of some websites)"
                 IsChecked="{Binding WebBrowser.DisableWebSecurity}" />
         </Grid>
         <Grid Grid.Row="6" Grid.ColumnSpan="99">
@@ -158,7 +158,7 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Text="启动参数" />
+                Text="Startup Arguments" />
             <TextBox
                 Grid.Column="1"
                 Width="400"
