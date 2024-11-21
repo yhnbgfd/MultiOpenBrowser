@@ -10,6 +10,7 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <AssemblyTitle>MultiOpenBrowser</AssemblyTitle>
     <ErrorReport>none</ErrorReport>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
