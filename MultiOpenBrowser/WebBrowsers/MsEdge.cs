@@ -48,7 +48,7 @@ namespace MultiOpenBrowser.WebBrowsers
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = GlobalData.MsEdgePath,
+                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()

@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Options Window"
     Width="600"
-    Height="200"
+    Height="250"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.InputBindings>
@@ -29,6 +29,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
@@ -38,7 +40,7 @@
                 Margin="10,0,10,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Text="Default WebBrowser DataPath"
+                Text="Default DataPath"
                 TextWrapping="Wrap" />
             <TextBox
                 Grid.Column="1"

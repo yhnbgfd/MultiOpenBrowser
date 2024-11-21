@@ -48,7 +48,7 @@ namespace MultiOpenBrowser.WebBrowsers
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = GlobalData.ChromePath,
+                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.ChromePath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()

@@ -44,6 +44,7 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message);
             }
         }
 
@@ -83,6 +84,7 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 uow.Rollback();
                 _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message);
             }
             finally
             {
@@ -127,6 +129,7 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message);
             }
         }
 

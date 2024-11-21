@@ -24,6 +24,11 @@ namespace MultiOpenBrowser.WebBrowsers
                 WebView2 webView2 = new(webEnvironment);
                 startResult = webView2.GetStartupArguments(startOption);
             }
+            else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
+            {
+                CustomizeBrowser customizeBrowser = new(webEnvironment);
+                startResult = customizeBrowser.GetStartupArguments(startOption);
+            }
             else
             {
                 Chrome chrome = new(webEnvironment);
@@ -51,6 +56,11 @@ namespace MultiOpenBrowser.WebBrowsers
             {
                 WebView2 webView2 = new(webEnvironment);
                 startResult = webView2.Start(startOption);
+            }
+            else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
+            {
+                CustomizeBrowser customizeBrowser = new(webEnvironment);
+                startResult = customizeBrowser.Start(startOption);
             }
             else
             {
