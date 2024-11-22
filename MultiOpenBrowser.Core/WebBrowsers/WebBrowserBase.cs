@@ -2,7 +2,7 @@
 
 namespace MultiOpenBrowser.Core.WebBrowsers
 {
-    public abstract class WebBrowserBase(WebEnvironment webEnvironment) : IWebBrowser
+    internal abstract class WebBrowserBase(WebEnvironment webEnvironment) : IWebBrowser
     {
         protected WebEnvironment _webEnvironment = webEnvironment;
 
