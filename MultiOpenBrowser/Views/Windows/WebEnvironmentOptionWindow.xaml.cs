@@ -1,7 +1,4 @@
-﻿using MultiOpenBrowser.Core.Base;
-using MultiOpenBrowser.Core.Entitys;
-using MultiOpenBrowser.Core.Helpers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace MultiOpenBrowser.Views.Windows
@@ -49,6 +46,7 @@ namespace MultiOpenBrowser.Views.Windows
             {
                 uow.Rollback();
                 _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message);
             }
         }
 

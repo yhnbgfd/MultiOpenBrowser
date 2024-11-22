@@ -1,6 +1,5 @@
 ﻿using FreeSql.Aop;
 using FreeSql.Internal;
-using System.IO;
 
 namespace MultiOpenBrowser.Core.Base
 {

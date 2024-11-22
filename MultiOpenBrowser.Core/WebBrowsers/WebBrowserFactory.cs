@@ -19,12 +19,6 @@ namespace MultiOpenBrowser.Core.WebBrowsers
                 MsEdge msEdge = new(webEnvironment);
                 startResult = msEdge.GetStartupArguments(startOption);
             }
-            else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
-            {
-                //WebView2 webView2 = new(webEnvironment);
-                //startResult = webView2.GetStartupArguments(startOption);
-                throw new NotImplementedException();
-            }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {
                 CustomizeBrowser customizeBrowser = new(webEnvironment);
@@ -52,12 +46,6 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             {
                 MsEdge msEdge = new(webEnvironment);
                 startResult = msEdge.Start(startOption);
-            }
-            else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
-            {
-                //WebView2 webView2 = new(webEnvironment);
-                //startResult = webView2.Start(startOption);
-                throw new NotImplementedException();
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {

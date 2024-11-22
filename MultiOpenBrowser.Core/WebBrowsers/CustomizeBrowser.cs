@@ -9,7 +9,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
         {
             if (string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ExePath))
             {
-                throw new ArgumentNullException(nameof(_webEnvironment.WebBrowser.ExePath));
+                throw new Exception("Need ExePath");
             }
 
             ProcessStartInfo processStartInfo = new()

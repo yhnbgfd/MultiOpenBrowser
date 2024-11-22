@@ -8,6 +8,8 @@ namespace MultiOpenBrowser.Helpers
 {
     public static class JumpListHelper
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public static void SetJumpList()
         {
             JumpList jumpList = new()

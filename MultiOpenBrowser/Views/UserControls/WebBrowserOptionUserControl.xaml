@@ -45,7 +45,6 @@
                 SelectionChanged="ComboBox_Type_SelectionChanged">
                 <ComboBoxItem Content="Google Chrome" />
                 <ComboBoxItem Content="Microsoft Edge" />
-                <ComboBoxItem Content="Microsoft Edge WebView2" />
                 <ComboBoxItem Content="Firefox" />
                 <ComboBoxItem Content="Other" />
             </ComboBox>

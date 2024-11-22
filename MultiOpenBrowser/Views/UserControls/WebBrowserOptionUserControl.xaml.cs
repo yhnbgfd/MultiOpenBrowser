@@ -26,9 +26,8 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 WebBrowser.TypeEnum.Chrome => 0,
                 WebBrowser.TypeEnum.MsEdge => 1,
-                WebBrowser.TypeEnum.WebView2 => 2,
-                WebBrowser.TypeEnum.Firefox => 3,
-                WebBrowser.TypeEnum.Other => 4,
+                WebBrowser.TypeEnum.Firefox => 2,
+                WebBrowser.TypeEnum.Other => 3,
                 _ => 0,
             };
         }
@@ -40,7 +39,6 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 "Google Chrome" => WebBrowser.TypeEnum.Chrome,
                 "Microsoft Edge" => WebBrowser.TypeEnum.MsEdge,
-                "Microsoft Edge WebView2" => WebBrowser.TypeEnum.WebView2,
                 "Firefox" => WebBrowser.TypeEnum.Firefox,
                 "Other" => WebBrowser.TypeEnum.Other,
                 _ => WebBrowser.TypeEnum.Chrome,
