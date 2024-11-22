@@ -1,4 +1,4 @@
-﻿namespace MultiOpenBrowser.Entitys
+﻿namespace MultiOpenBrowser.Core.Entitys
 {
     public class Option : INotifyPropertyChanged
     {

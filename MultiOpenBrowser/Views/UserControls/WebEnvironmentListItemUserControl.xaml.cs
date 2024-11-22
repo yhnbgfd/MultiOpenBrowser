@@ -1,12 +1,15 @@
-﻿using MultiOpenBrowser.Views.Windows;
-using MultiOpenBrowser.WebBrowsers;
+﻿using MultiOpenBrowser.Core.Base;
+using MultiOpenBrowser.Core.Entitys;
+using MultiOpenBrowser.Core.Helpers;
+using MultiOpenBrowser.Core.WebBrowsers;
+using MultiOpenBrowser.Views.Windows;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
+using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
 {

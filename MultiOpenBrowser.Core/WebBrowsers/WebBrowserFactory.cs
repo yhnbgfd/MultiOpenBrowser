@@ -1,9 +1,9 @@
-﻿using static MultiOpenBrowser.Entitys.WebBrowser;
-using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
+﻿using static MultiOpenBrowser.Core.Entitys.WebBrowser;
+using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
-namespace MultiOpenBrowser.WebBrowsers
+namespace MultiOpenBrowser.Core.WebBrowsers
 {
-    internal class WebBrowserFactory
+    public class WebBrowserFactory
     {
         public static (TypeEnum? type, string? arguments) GetArguments(WebEnvironment? webEnvironment, StartOption startOption)
         {
@@ -21,8 +21,9 @@ namespace MultiOpenBrowser.WebBrowsers
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
             {
-                WebView2 webView2 = new(webEnvironment);
-                startResult = webView2.GetStartupArguments(startOption);
+                //WebView2 webView2 = new(webEnvironment);
+                //startResult = webView2.GetStartupArguments(startOption);
+                throw new NotImplementedException();
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {
@@ -54,8 +55,9 @@ namespace MultiOpenBrowser.WebBrowsers
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.WebView2)
             {
-                WebView2 webView2 = new(webEnvironment);
-                startResult = webView2.Start(startOption);
+                //WebView2 webView2 = new(webEnvironment);
+                //startResult = webView2.Start(startOption);
+                throw new NotImplementedException();
             }
             else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {

@@ -1,4 +1,4 @@
-﻿namespace MultiOpenBrowser.Entitys
+﻿namespace MultiOpenBrowser.Core.Entitys
 {
     [Table(Name = nameof(Cache))]
     public class Cache

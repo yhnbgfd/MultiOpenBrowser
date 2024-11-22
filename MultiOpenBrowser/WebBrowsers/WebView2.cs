@@ -1,5 +1,6 @@
-﻿using MultiOpenBrowser.Views.Windows;
-using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
+﻿using MultiOpenBrowser.Core.WebBrowsers;
+using MultiOpenBrowser.Views.Windows;
+using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.WebBrowsers
 {

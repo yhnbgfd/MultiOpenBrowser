@@ -1,10 +1,8 @@
-﻿using System.IO;
-
-namespace MultiOpenBrowser.Helpers
+﻿namespace MultiOpenBrowser.Core.Helpers
 {
-    internal class FileHelper
+    public class FileHelper
     {
-        internal static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+        public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
         {
             // Get information about the source directory
             var dir = new DirectoryInfo(sourceDir);

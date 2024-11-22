@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Text;
-using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
+using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
-namespace MultiOpenBrowser.WebBrowsers
+namespace MultiOpenBrowser.Core.WebBrowsers
 {
     internal class Chrome(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {

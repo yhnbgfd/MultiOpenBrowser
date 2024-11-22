@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using static MultiOpenBrowser.WebBrowsers.IWebBrowser;
+using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
-namespace MultiOpenBrowser.WebBrowsers
+namespace MultiOpenBrowser.Core.WebBrowsers
 {
     internal class CustomizeBrowser(WebEnvironment webEnvironment) : Chrome(webEnvironment)
     {

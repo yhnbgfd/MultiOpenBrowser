@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using MultiOpenBrowser.Core.Base;
+using MultiOpenBrowser.Core.Entitys;
+using MultiOpenBrowser.Core.Helpers;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MultiOpenBrowser.Views.Windows

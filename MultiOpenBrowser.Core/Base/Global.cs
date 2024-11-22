@@ -2,9 +2,9 @@
 using FreeSql.Internal;
 using System.IO;
 
-namespace MultiOpenBrowser.Base
+namespace MultiOpenBrowser.Core.Base
 {
-    internal static class Global
+    public static class Global
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private static readonly string[] _createDirectorys = ["Data"];

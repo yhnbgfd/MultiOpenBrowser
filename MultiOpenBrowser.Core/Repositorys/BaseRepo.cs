@@ -1,13 +1,13 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace MultiOpenBrowser.Repositorys
+namespace MultiOpenBrowser.Core.Repositorys
 {
     /// <summary>
     /// 标准仓储
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal class BaseRepo<T> : BaseRepository<T> where T : class
+    public class BaseRepo<T> : BaseRepository<T> where T : class
     {
         /// <summary>
         /// 更新全部数据 UpdateDiy.Where("1=1")

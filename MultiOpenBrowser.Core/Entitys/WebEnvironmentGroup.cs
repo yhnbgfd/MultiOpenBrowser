@@ -1,4 +1,4 @@
-﻿namespace MultiOpenBrowser.Entitys
+﻿namespace MultiOpenBrowser.Core.Entitys
 {
     [Table(Name = nameof(WebEnvironmentGroup))]
     public class WebEnvironmentGroup

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace MultiOpenBrowser.Entitys
+namespace MultiOpenBrowser.Core.Entitys
 {
     /// <summary>
     /// 网络环境
@@ -39,6 +39,7 @@ namespace MultiOpenBrowser.Entitys
 
         public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
         public WebEnvironmentGroup? WebEnvironmentGroup { get; set; }
+        public string? WebEnvironmentGroupName => WebEnvironmentGroup?.Name;
 
         public static WebEnvironment Default => new()
         {

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using MultiOpenBrowser.Core.Base;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 

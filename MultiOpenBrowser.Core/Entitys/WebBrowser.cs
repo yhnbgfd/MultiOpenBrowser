@@ -1,4 +1,4 @@
-﻿namespace MultiOpenBrowser.Entitys
+﻿namespace MultiOpenBrowser.Core.Entitys
 {
     /// <summary>
     /// 浏览器配置

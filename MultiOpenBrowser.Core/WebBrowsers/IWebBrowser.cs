@@ -1,6 +1,6 @@
-﻿namespace MultiOpenBrowser.WebBrowsers
+﻿namespace MultiOpenBrowser.Core.WebBrowsers
 {
-    internal interface IWebBrowser
+    public interface IWebBrowser
     {
         /// <summary>
         /// 获取启动参数

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace MultiOpenBrowser.Repositorys
+namespace MultiOpenBrowser.Core.Repositorys
 {
-    internal class CacheRepo(IUnitOfWork? uow) : BaseRepo<Cache>(uow, null, null)
+    public class CacheRepo(IUnitOfWork? uow) : BaseRepo<Cache>(uow, null, null)
     {
         public static async Task SetAsync(string key, object? value, DateTimeOffset? expired, CancellationToken cancellationToken = default)
         {

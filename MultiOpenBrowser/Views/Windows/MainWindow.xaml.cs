@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using MultiOpenBrowser.Core.Base;
+using MultiOpenBrowser.Core.Entitys;
+using System.Windows;
 using System.Windows.Controls;
-using WebBrowser = MultiOpenBrowser.Entitys.WebBrowser;
+using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.Windows
 {

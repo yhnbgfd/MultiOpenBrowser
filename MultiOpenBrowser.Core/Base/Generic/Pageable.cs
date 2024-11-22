@@ -1,4 +1,4 @@
-﻿namespace MultiOpenBrowser.Base.Generic
+﻿namespace MultiOpenBrowser.Core.Base.Generic
 {
     /// <summary>
     /// 分页返回值

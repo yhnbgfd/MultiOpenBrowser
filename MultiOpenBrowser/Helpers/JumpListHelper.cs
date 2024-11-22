@@ -1,14 +1,14 @@
-﻿using MultiOpenBrowser.WebBrowsers;
+﻿using MultiOpenBrowser.Core.WebBrowsers;
 using System.IO;
 using System.Windows;
 using System.Windows.Shell;
-using static MultiOpenBrowser.Entitys.WebBrowser;
+using static MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Helpers
 {
-    internal static class JumpListHelper
+    public static class JumpListHelper
     {
-        internal static void SetJumpList()
+        public static void SetJumpList()
         {
             JumpList jumpList = new()
             {

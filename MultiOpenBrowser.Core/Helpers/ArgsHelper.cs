@@ -1,12 +1,12 @@
-﻿using MultiOpenBrowser.WebBrowsers;
+﻿using MultiOpenBrowser.Core.WebBrowsers;
 
-namespace MultiOpenBrowser.Helpers
+namespace MultiOpenBrowser.Core.Helpers
 {
-    internal class ArgsHelper
+    public class ArgsHelper
     {
-        internal const string Start_Web_Environment = "--start-web-environment";
+        public const string Start_Web_Environment = "--start-web-environment";
 
-        internal static string? GetArgsValue(string key, params string[] args)
+        public static string? GetArgsValue(string key, params string[] args)
         {
             var arg = args.FirstOrDefault(a => a.StartsWith($"{key}="));
             if (arg != null)
@@ -25,7 +25,7 @@ namespace MultiOpenBrowser.Helpers
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        internal static async Task StartWebEnvironmentAsync(params string[] args)
+        public static async Task StartWebEnvironmentAsync(params string[] args)
         {
             var startWebEnvironmenArg = GetArgsValue(Start_Web_Environment, args);
             if (startWebEnvironmenArg != null)
