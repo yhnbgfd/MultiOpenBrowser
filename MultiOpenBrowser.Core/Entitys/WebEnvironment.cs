@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace MultiOpenBrowser.Core.Entitys
+﻿namespace MultiOpenBrowser.Core.Entitys
 {
     /// <summary>
     /// 网络环境

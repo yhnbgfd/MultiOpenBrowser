@@ -20,32 +20,39 @@ namespace MultiOpenBrowser.Helpers
 
             foreach (var item in GlobalData.WebEnvironmentList)
             {
-                var (type, arguments) = WebBrowserFactory.GetArguments(item, new IWebBrowser.StartOption());
-
-                JumpTask task = new();
-                task.Title = item.Name;
-
-                if (type == TypeEnum.MsEdge)
+                try
                 {
-                    task.Arguments = arguments;
-                    task.IconResourcePath = GlobalData.MsEdgePath;
-                    task.ApplicationPath = GlobalData.MsEdgePath;
-                }
-                else if (type == TypeEnum.Chrome)
-                {
-                    task.Arguments = arguments;
-                    task.IconResourcePath = GlobalData.ChromePath;
-                    task.ApplicationPath = GlobalData.ChromePath;
-                }
-                else
-                {
-                    task.Arguments = $"{ArgsHelper.Start_Web_Environment}={item.Id}";
-                    task.IconResourcePath = Environment.ProcessPath;
-                    task.ApplicationPath = Environment.ProcessPath;
-                    task.WorkingDirectory = Directory.GetCurrentDirectory();
-                }
+                    var (type, arguments) = WebBrowserFactory.GetArguments(item, new IWebBrowser.StartOption());
 
-                jumpList.JumpItems.Add(task);
+                    JumpTask task = new();
+                    task.Title = item.Name;
+
+                    if (type == TypeEnum.MsEdge)
+                    {
+                        task.Arguments = arguments;
+                        task.IconResourcePath = GlobalData.MsEdgePath;
+                        task.ApplicationPath = GlobalData.MsEdgePath;
+                    }
+                    else if (type == TypeEnum.Chrome)
+                    {
+                        task.Arguments = arguments;
+                        task.IconResourcePath = GlobalData.ChromePath;
+                        task.ApplicationPath = GlobalData.ChromePath;
+                    }
+                    else
+                    {
+                        task.Arguments = $"{ArgsHelper.Start_Web_Environment}={item.Id}";
+                        task.IconResourcePath = Environment.ProcessPath;
+                        task.ApplicationPath = Environment.ProcessPath;
+                        task.WorkingDirectory = Directory.GetCurrentDirectory();
+                    }
+
+                    jumpList.JumpItems.Add(task);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
             }
 
             JumpTask taskChrome = new()
