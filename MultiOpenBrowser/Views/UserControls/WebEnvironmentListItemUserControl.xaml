@@ -22,7 +22,7 @@
             <Image
                 x:Name="Image_Icon"
                 HorizontalAlignment="Left"
-                d:Source="/Views/UserControls/GoogleChrome.png"
+                d:Source="/Assets/GoogleChrome.png"
                 Opacity="0.05"
                 RenderOptions.BitmapScalingMode="HighQuality" />
             <TextBlock

@@ -1,7 +1,4 @@
-﻿using MultiOpenBrowser.Core.Base;
-using MultiOpenBrowser.Core.Entitys;
-using MultiOpenBrowser.Core.Helpers;
-using MultiOpenBrowser.Core.WebBrowsers;
+﻿using MultiOpenBrowser.Core.WebBrowsers;
 using MultiOpenBrowser.Views.Windows;
 using System.Diagnostics;
 using System.IO;
@@ -28,12 +25,12 @@ namespace MultiOpenBrowser.Views.UserControls
             WebBrowser = WebEnvironment.WebBrowser;
             if (WebBrowser.Type == WebBrowser.TypeEnum.Chrome)
             {
-                var uriSource = new Uri(@"/MultiOpenBrowser;component/Views/UserControls/GoogleChrome.png", UriKind.Relative);
+                var uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/GoogleChrome.png", UriKind.Relative);
                 this.Image_Icon.Source = new BitmapImage(uriSource);
             }
             else
             {
-                var uriSource = new Uri(@"/MultiOpenBrowser;component/Views/UserControls/MicrosoftEdge.png", UriKind.Relative);
+                var uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/MicrosoftEdge.png", UriKind.Relative);
                 this.Image_Icon.Source = new BitmapImage(uriSource);
             }
         }

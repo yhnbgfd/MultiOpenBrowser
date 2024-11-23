@@ -43,8 +43,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Views\UserControls\GoogleChrome.png" />
-    <Resource Include="Views\UserControls\MicrosoftEdge.png" />
+    <Resource Include="Assets\GoogleChrome.png" />
+    <Resource Include="Assets\MicrosoftEdge.png" />
   </ItemGroup>
 
   <ItemGroup>
