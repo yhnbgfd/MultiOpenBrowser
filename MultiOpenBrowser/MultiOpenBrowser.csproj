@@ -57,10 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="FreeSql" />
-    <Using Include="FreeSql.DataAnnotations" />
     <Using Include="MultiOpenBrowser.Core.Base" />
-    <Using Include="MultiOpenBrowser.Core.Base.Generic" />
     <Using Include="MultiOpenBrowser.Core.Entitys" />
     <Using Include="MultiOpenBrowser.Helpers" />
     <Using Include="MultiOpenBrowser.Core.Helpers" />
