@@ -1,4 +1,5 @@
 # MultiOpenBrowser
 
-![image](https://github.com/user-attachments/assets/3be3525b-b069-42d3-8f1b-5aa6d426d3fd)
+![image](https://github.com/user-attachments/assets/74420eec-d478-44de-8a5f-011ef9e98087)
+
 
