@@ -7,6 +7,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
         protected WebEnvironment _webEnvironment = webEnvironment;
 
         public abstract string? GetStartupArguments(StartOption startOption);
+        public abstract string? GetStartupCmd(StartOption startOption);
         public abstract StartResult Start(StartOption startOption);
     }
 }

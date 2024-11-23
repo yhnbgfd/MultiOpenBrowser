@@ -185,5 +185,17 @@ namespace MultiOpenBrowser.Views.UserControls
                 Process.Start("explorer.exe", WebEnvironment.WebBrowserDataPath);
             }
         }
+
+        private void MenuItem_CopyStartupCMD_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
+            var cmd = WebBrowserFactory.GetStartupCmd(WebEnvironment, new IWebBrowser.StartOption());
+
+            Clipboard.SetText(cmd);
+        }
     }
 }

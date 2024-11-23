@@ -44,6 +44,13 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             return sb.ToString();
         }
 
+        public override string? GetStartupCmd(StartOption startOption)
+        {
+            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath;
+            var aguments = GetStartupArguments(startOption);
+            return $"{exePath} {aguments}";
+        }
+
         public override StartResult Start(StartOption startOption)
         {
             ProcessStartInfo processStartInfo = new()

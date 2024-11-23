@@ -5,6 +5,13 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 {
     internal class CustomizeBrowser(WebEnvironment webEnvironment) : Chrome(webEnvironment)
     {
+        public override string? GetStartupCmd(StartOption startOption)
+        {
+            var exePath = _webEnvironment.WebBrowser.ExePath;
+            var aguments = GetStartupArguments(startOption);
+            return $"{exePath} {aguments}";
+        }
+
         public override StartResult Start(StartOption startOption)
         {
             if (string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ExePath))
