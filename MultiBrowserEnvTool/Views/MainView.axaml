@@ -17,25 +17,5 @@
         -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Height="28" Header="文件">
-                <MenuItem Click="MenuItem_Options_Click" Header="设置" />
-                <Separator />
-                <MenuItem Click="MenuItem_Exit_Click" Header="关闭" />
-            </MenuItem>
-            <MenuItem x:Name="MenuItem_WebBrowser" Header="浏览器" />
-            <MenuItem Header="浏览器环境">
-                <MenuItem Header="添加浏览器环境" />
-            </MenuItem>
-            <MenuItem Header="帮助">
-                <MenuItem Header="检查更新" />
-                <Separator />
-                <MenuItem Header="注册" />
-                <Separator />
-                <MenuItem Header="关于" />
-            </MenuItem>
-        </Menu>
-        <views:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />
-    </DockPanel>
+    <DockPanel x:Name="DockPanel_Main" />
 </UserControl>
