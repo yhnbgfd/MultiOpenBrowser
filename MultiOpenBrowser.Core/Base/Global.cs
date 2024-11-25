@@ -6,13 +6,13 @@ namespace MultiOpenBrowser.Core.Base
     public static class Global
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private static readonly string[] _createDirectorys = ["Data"];
+        private static readonly string[] _autoCreateDirectorys = ["Data"];
 
         public static IFreeSql FSql { get; private set; }
 
         static Global()
         {
-            foreach (var dir in _createDirectorys)
+            foreach (var dir in _autoCreateDirectorys)
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), dir);
                 if (!Directory.Exists(path))
@@ -83,5 +83,6 @@ namespace MultiOpenBrowser.Core.Base
                 _logger.Warn($"FreeSql.SyncStructure: {Environment.NewLine}{e.Sql.Trim()}");
             }
         }
+
     }
 }

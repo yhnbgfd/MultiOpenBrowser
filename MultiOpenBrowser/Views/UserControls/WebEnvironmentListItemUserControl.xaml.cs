@@ -188,14 +188,22 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void MenuItem_CopyStartupCMD_Click(object sender, RoutedEventArgs e)
         {
-            if (WebEnvironment == null)
+            try
             {
-                return;
+                if (WebEnvironment == null)
+                {
+                    return;
+                }
+
+                var cmd = WebBrowserFactory.GetStartupCmd(WebEnvironment, new IWebBrowser.StartOption());
+
+                Clipboard.SetText(cmd, TextDataFormat.Text);
             }
-
-            var cmd = WebBrowserFactory.GetStartupCmd(WebEnvironment, new IWebBrowser.StartOption());
-
-            Clipboard.SetText(cmd);
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message);
+            }
         }
     }
 }
