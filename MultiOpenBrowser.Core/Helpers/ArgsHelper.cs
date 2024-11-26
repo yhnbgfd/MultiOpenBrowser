@@ -35,7 +35,7 @@ namespace MultiOpenBrowser.Core.Helpers
                     var webEnvironment = await new WebEnvironmentRepo(null).GetAsync(id);
                     if (webEnvironment != null)
                     {
-                        WebBrowserFactory.Start(webEnvironment, new IWebBrowser.StartOption());
+                        new WebBrowserFactory(webEnvironment).Start(new IWebBrowser.StartOption());
                         //Environment.Exit(0);
                     }
                 }

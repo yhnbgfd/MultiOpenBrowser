@@ -22,18 +22,18 @@ namespace MultiOpenBrowser.Helpers
             {
                 try
                 {
-                    var (type, arguments) = WebBrowserFactory.GetArguments(item, new IWebBrowser.StartOption());
+                    var arguments = new WebBrowserFactory(item).GetStartupArguments(new IWebBrowser.StartOption());
 
                     JumpTask task = new();
                     task.Title = item.Name;
 
-                    if (type == TypeEnum.MsEdge)
+                    if (item.WebBrowser.Type == TypeEnum.MsEdge)
                     {
                         task.Arguments = arguments;
                         task.IconResourcePath = GlobalData.MsEdgePath;
                         task.ApplicationPath = GlobalData.MsEdgePath;
                     }
-                    else if (type == TypeEnum.Chrome)
+                    else if (item.WebBrowser.Type == TypeEnum.Chrome)
                     {
                         task.Arguments = arguments;
                         task.IconResourcePath = GlobalData.ChromePath;

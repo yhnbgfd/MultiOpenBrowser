@@ -39,7 +39,7 @@ namespace MultiOpenBrowser.Views.UserControls
         {
             try
             {
-                WebBrowserFactory.Start(WebEnvironment, new IWebBrowser.StartOption());
+                new WebBrowserFactory(WebEnvironment).Start(new IWebBrowser.StartOption());
             }
             catch (Exception ex)
             {
@@ -124,7 +124,7 @@ namespace MultiOpenBrowser.Views.UserControls
         {
             try
             {
-                WebBrowserFactory.Start(WebEnvironment, new IWebBrowser.StartOption() { IncognitoMode = true });
+                new WebBrowserFactory(WebEnvironment).Start(new IWebBrowser.StartOption() { IncognitoMode = true });
             }
             catch (Exception ex)
             {
@@ -195,7 +195,7 @@ namespace MultiOpenBrowser.Views.UserControls
                     return;
                 }
 
-                var cmd = WebBrowserFactory.GetStartupCmd(WebEnvironment, new IWebBrowser.StartOption());
+                var cmd = new WebBrowserFactory(WebEnvironment).GetStartupCmd(new IWebBrowser.StartOption());
 
                 Clipboard.SetText(cmd, TextDataFormat.Text);
             }

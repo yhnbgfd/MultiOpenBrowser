@@ -1,84 +1,56 @@
-﻿using static MultiOpenBrowser.Core.Entitys.WebBrowser;
+﻿using Autofac;
+using static MultiOpenBrowser.Core.Entitys.WebBrowser;
 using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.Core.WebBrowsers
 {
-    public class WebBrowserFactory
+    public class WebBrowserFactory(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
-        public static (TypeEnum? type, string? arguments) GetArguments(WebEnvironment webEnvironment, StartOption startOption)
+        public override string? GetStartupArguments(StartOption startOption)
         {
             string? startResult;
 
-            if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
-            {
-                MsEdge msEdge = new(webEnvironment);
-                startResult = msEdge.GetStartupArguments(startOption);
-            }
-            else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
-            {
-                CustomizeBrowser customizeBrowser = new(webEnvironment);
-                startResult = customizeBrowser.GetStartupArguments(startOption);
-            }
-            else
-            {
-                Chrome chrome = new(webEnvironment);
-                startResult = chrome.GetStartupArguments(startOption);
-            }
+            var browser = Global.Container.ResolveKeyed<WebBrowserBase>(_webEnvironment.WebBrowser.Type, new NamedParameter("webEnvironment", _webEnvironment));
+            startResult = browser.GetStartupArguments(startOption);
 
-            return (webEnvironment.WebBrowser.Type, startResult);
+            return startResult;
         }
 
-        public static string? GetStartupCmd(WebEnvironment webEnvironment, StartOption startOption)
+        public override string? GetStartupCmd(StartOption startOption)
         {
-            string? exePath;
-            string? aguments;
+            var browser = Global.Container.ResolveKeyed<WebBrowserBase>(_webEnvironment.WebBrowser.Type, new NamedParameter("webEnvironment", _webEnvironment));
+            var aguments = browser.GetStartupArguments(startOption);
 
-            if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
+            string? exePath;
+            if (_webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
             {
-                MsEdge msEdge = new(webEnvironment);
-                exePath = webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath;
-                aguments = msEdge.GetStartupArguments(startOption);
+                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath;
             }
-            else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
+            else if (_webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {
-                CustomizeBrowser customizeBrowser = new(webEnvironment);
-                exePath = webEnvironment.WebBrowser.ExePath;
-                aguments = customizeBrowser.GetStartupArguments(startOption);
+                exePath = _webEnvironment.WebBrowser.ExePath;
             }
             else
             {
-                Chrome chrome = new(webEnvironment);
-                exePath = webEnvironment.WebBrowser.ExePath ?? GlobalData.ChromePath;
-                aguments = chrome.GetStartupArguments(startOption);
+                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.ChromePath;
             }
 
             return $"{exePath} {aguments}";
         }
 
-        public static void Start(WebEnvironment webEnvironment, StartOption startOption)
+        public override StartResult Start(StartOption startOption)
         {
             StartResult startResult;
 
-            if (webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
-            {
-                MsEdge msEdge = new(webEnvironment);
-                startResult = msEdge.Start(startOption);
-            }
-            else if (webEnvironment.WebBrowser.Type == TypeEnum.Other)
-            {
-                CustomizeBrowser customizeBrowser = new(webEnvironment);
-                startResult = customizeBrowser.Start(startOption);
-            }
-            else
-            {
-                Chrome chrome = new(webEnvironment);
-                startResult = chrome.Start(startOption);
-            }
+            var browser = Global.Container.ResolveKeyed<WebBrowserBase>(_webEnvironment.WebBrowser.Type, new NamedParameter("webEnvironment", _webEnvironment));
+            startResult = browser.Start(startOption);
 
             if (startResult.IsSuccess == true)
             {
-                webEnvironment.ProcessId = startResult.ProcessId;
+                _webEnvironment.ProcessId = startResult.ProcessId;
             }
+
+            return startResult;
         }
     }
 }

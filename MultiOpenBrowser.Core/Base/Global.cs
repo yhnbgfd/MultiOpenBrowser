@@ -1,5 +1,9 @@
-﻿using FreeSql.Aop;
+﻿using Autofac;
+using FreeSql.Aop;
 using FreeSql.Internal;
+using MultiOpenBrowser.Core.WebBrowsers;
+using static MultiOpenBrowser.Core.Entitys.WebBrowser;
+using IContainer = Autofac.IContainer;
 
 namespace MultiOpenBrowser.Core.Base
 {
@@ -9,6 +13,7 @@ namespace MultiOpenBrowser.Core.Base
         private static readonly string[] _autoCreateDirectorys = ["Data"];
 
         public static IFreeSql FSql { get; private set; }
+        public static IContainer Container { get; private set; }
 
         static Global()
         {
@@ -31,6 +36,12 @@ namespace MultiOpenBrowser.Core.Base
             FSql.Aop.SyncStructureAfter += FSqlAop_SyncStructureAfter;
             FSql.Aop.ConfigEntityProperty += FSqlAop_ConfigEntityProperty;
             FSql.Aop.CurdAfter += FSqlAop_CurdAfter;
+
+            var builder = new ContainerBuilder();
+            builder.RegisterType<Chrome>().Keyed<WebBrowserBase>(TypeEnum.Chrome);
+            builder.RegisterType<MsEdge>().Keyed<WebBrowserBase>(TypeEnum.MsEdge);
+            builder.RegisterType<CustomizeBrowser>().Keyed<WebBrowserBase>(TypeEnum.Other);
+            Container = builder.Build();
         }
 
         /// <summary>
