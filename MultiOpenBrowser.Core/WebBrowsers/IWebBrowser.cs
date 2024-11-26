@@ -10,6 +10,13 @@
         string? GetStartupArguments(StartOption startOption);
 
         /// <summary>
+        /// 获取启动命令
+        /// </summary>
+        /// <param name="startOption"></param>
+        /// <returns></returns>
+        string? GetStartupCmd(StartOption startOption);
+
+        /// <summary>
         /// 启动浏览器
         /// </summary>
         StartResult Start(StartOption startOption);
