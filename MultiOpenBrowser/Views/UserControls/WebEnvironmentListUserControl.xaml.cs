@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Core.Base;
-using MultiOpenBrowser.Core.Helpers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace MultiOpenBrowser.Views.UserControls

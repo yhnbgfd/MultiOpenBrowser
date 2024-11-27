@@ -101,13 +101,11 @@ namespace MultiOpenBrowser.Views.UserControls
 
             var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
 
-            new WebEnvironmentOptionWindow()
+            var dialogResult = new WebEnvironmentOptionWindow()
             {
                 Owner = Application.Current.MainWindow,
                 WebEnvironment = newWebEnvironment
             }.ShowDialog();
-
-            EventBus.NotifyWebEnvironmentChange?.Invoke();
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
@@ -164,8 +162,6 @@ namespace MultiOpenBrowser.Views.UserControls
                 {
                     FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
                 }
-
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
             finally
             {
