@@ -29,7 +29,7 @@
                 int maxLength = 24;
                 if (Name?.Length > maxLength)
                 {
-                    return Name.Substring(0, maxLength - 3) + "...";
+                    return string.Concat(Name.AsSpan(0, maxLength - 3), "...");
                 }
                 return Name;
             }

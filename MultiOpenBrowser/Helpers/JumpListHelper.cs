@@ -18,22 +18,22 @@ namespace MultiOpenBrowser.Helpers
                 ShowRecentCategory = false
             };
 
-            foreach (var item in GlobalData.WebEnvironmentList)
+            foreach (var webEnv in GlobalData.WebEnvironmentList)
             {
                 try
                 {
-                    var arguments = new WebBrowserFactory(item).GetStartupArguments(new IWebBrowser.StartOption());
+                    var arguments = new WebBrowserFactory(webEnv).GetStartupArguments(new IWebBrowser.StartOption());
 
                     JumpTask task = new();
-                    task.Title = item.Name;
+                    task.Title = webEnv.Name;
 
-                    if (item.WebBrowser.Type == TypeEnum.MsEdge)
+                    if (webEnv.WebBrowser.Type == TypeEnum.MsEdge)
                     {
                         task.Arguments = arguments;
                         task.IconResourcePath = GlobalData.MsEdgePath;
                         task.ApplicationPath = GlobalData.MsEdgePath;
                     }
-                    else if (item.WebBrowser.Type == TypeEnum.Chrome)
+                    else if (webEnv.WebBrowser.Type == TypeEnum.Chrome)
                     {
                         task.Arguments = arguments;
                         task.IconResourcePath = GlobalData.ChromePath;
@@ -41,7 +41,7 @@ namespace MultiOpenBrowser.Helpers
                     }
                     else
                     {
-                        task.Arguments = $"{ArgsHelper.Start_Web_Environment}={item.Id}";
+                        task.Arguments = $"{ArgsHelper.Start_Web_Environment}={webEnv.Id}";
                         task.IconResourcePath = Environment.ProcessPath;
                         task.ApplicationPath = Environment.ProcessPath;
                         task.WorkingDirectory = Directory.GetCurrentDirectory();

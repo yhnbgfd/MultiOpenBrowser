@@ -148,18 +148,22 @@ namespace MultiOpenBrowser.Views.Windows
         {
             this.MenuItem_WebEnvironment.Items.Clear();
 
-            MenuItem menuItemAdd1 = new()
             {
-                Header = "Add Group",
-            };
-            menuItemAdd1.Click += MenuItem_AddWebEnvironmentGroup_Click;
-            this.MenuItem_WebEnvironment.Items.Add(menuItemAdd1);
-            MenuItem menuItemAdd2 = new()
+                MenuItem menuItemAdd2 = new()
+                {
+                    Header = "Add Environment",
+                };
+                menuItemAdd2.Click += MenuItem_AddWebEnvironment_Click;
+                this.MenuItem_WebEnvironment.Items.Add(menuItemAdd2);
+            }
             {
-                Header = "Add Environment",
-            };
-            menuItemAdd2.Click += MenuItem_AddWebEnvironment_Click;
-            this.MenuItem_WebEnvironment.Items.Add(menuItemAdd2);
+                MenuItem menuItemAdd1 = new()
+                {
+                    Header = "Add Group",
+                };
+                menuItemAdd1.Click += MenuItem_AddWebEnvironmentGroup_Click;
+                this.MenuItem_WebEnvironment.Items.Add(menuItemAdd1);
+            }
 
             var list = await new WebEnvironmentGroupRepo(null).Select.OrderBy(a => a.Id).Take(10).ToListAsync();
             if (list.Count != 0)
@@ -261,7 +265,7 @@ namespace MultiOpenBrowser.Views.Windows
         private async void MenuItem_AddWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
         {
             new WebEnvironmentGroupOptionWindow() { Owner = this }.ShowDialog();
-            await CreateWebBrowserMenuItemsAsync();
+            await CreateWebEnvironmentGroupMenuItemsAsync();
         }
     }
 }
