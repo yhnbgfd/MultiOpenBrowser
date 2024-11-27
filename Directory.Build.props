@@ -7,6 +7,6 @@
     <Copyright>© 2024 - HANG</Copyright>
     <Nullable>enable</Nullable>
     <AvaloniaVersion>11.2.2</AvaloniaVersion>
-    <Version>1.0.2.0</Version>
+    <Version>1.0.3.0</Version>
   </PropertyGroup>
 </Project>
