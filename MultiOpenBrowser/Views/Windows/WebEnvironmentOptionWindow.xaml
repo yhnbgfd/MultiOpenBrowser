@@ -85,7 +85,8 @@
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
                 AcceptsReturn="True"
-                Text="{Binding WebEnvironment.WebEnvironmentGroupName, Mode=OneWay}"
+                IsReadOnly="True"
+                Text="{Binding WebEnvironmentGroup.Name, Mode=OneWay}"
                 TextWrapping="Wrap" />
             <Grid Grid.Row="3" Grid.ColumnSpan="99">
                 <UserControls:WebBrowserOptionUserControl WebBrowser="{Binding WebBrowser}" />

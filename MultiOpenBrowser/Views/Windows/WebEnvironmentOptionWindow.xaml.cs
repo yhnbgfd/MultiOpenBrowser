@@ -9,6 +9,7 @@ namespace MultiOpenBrowser.Views.Windows
 
         public WebEnvironment WebEnvironment { get; set; } = WebEnvironment.Default;
         public WebBrowser? WebBrowser { get; set; }
+        public WebEnvironmentGroup? WebEnvironmentGroup { get; set; }
 
         public WebEnvironmentOptionWindow()
         {
@@ -19,6 +20,7 @@ namespace MultiOpenBrowser.Views.Windows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WebBrowser ??= this.WebEnvironment.WebBrowser;
+            WebEnvironmentGroup ??= this.WebEnvironment.WebEnvironmentGroup;
         }
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -29,6 +31,7 @@ namespace MultiOpenBrowser.Views.Windows
                 WebBrowserRepo webBrowserRepo = new(uow);
                 WebEnvironment.WebBrowser = await webBrowserRepo.InsertOrUpdateAsync(WebBrowser!);
                 WebEnvironment.WebBrowserId = WebEnvironment.WebBrowser!.Id;
+                WebEnvironment.WebEnvironmentGroupId = WebEnvironmentGroup?.Id;
 
                 WebEnvironmentRepo webEnvironmentRepo = new(uow);
                 await webEnvironmentRepo.InsertOrUpdateAsync(WebEnvironment);
