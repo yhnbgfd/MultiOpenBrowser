@@ -38,6 +38,17 @@
         public WebBrowser WebBrowser { get; set; } = WebBrowser.Default;
         public WebEnvironmentGroup? WebEnvironmentGroup { get; set; }
         public string? WebEnvironmentGroupName => WebEnvironmentGroup?.Name;
+        public string? ToolTip
+        {
+            get
+            {
+                if (NameUI == Name)
+                {
+                    return null;
+                }
+                return Name;
+            }
+        }
 
         public static WebEnvironment Default => new()
         {

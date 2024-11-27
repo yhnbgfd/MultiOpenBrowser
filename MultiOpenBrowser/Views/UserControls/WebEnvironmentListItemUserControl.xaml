@@ -31,7 +31,8 @@
                 d:Text="MyWebEnvironment"
                 Text="{Binding WebEnvironment.NameUI}"
                 TextAlignment="Center"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap"
+                ToolTip="{Binding WebEnvironment.ToolTip}" />
             <Grid
                 Grid.Column="1"
                 Margin="5,0,5,0"
