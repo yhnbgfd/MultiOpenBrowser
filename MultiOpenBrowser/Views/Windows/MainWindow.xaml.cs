@@ -1,6 +1,4 @@
-﻿using MultiOpenBrowser.Core.Base;
-using MultiOpenBrowser.Core.Entitys;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
@@ -82,11 +80,13 @@ namespace MultiOpenBrowser.Views.Windows
         private async Task UnlockUIHandle()
         {
             this.DockPanel_Main.IsEnabled = true;
+            await Task.CompletedTask;
         }
 
         private async Task LockUIHandle()
         {
             this.DockPanel_Main.IsEnabled = false;
+            await Task.CompletedTask;
         }
 
         private async Task CreateWebBrowserMenuItemsAsync()
@@ -186,7 +186,7 @@ namespace MultiOpenBrowser.Views.Windows
 
         private void MenuItem_AddWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
         {
-
+            new WebEnvironmentGroupOptionWindow() { Owner = this }.ShowDialog();
         }
     }
 }
