@@ -1,5 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.Windows
 {
@@ -19,8 +21,34 @@ namespace MultiOpenBrowser.Views.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            {
+                ComboBoxItem comboBoxItem = new()
+                {
+                    Content = "No Group",
+                };
+                this.ComboBox_Group.Items.Add(comboBoxItem);
+            }
+            foreach (var group in GlobalData.WebEnvironmentGroupList)
+            {
+                ComboBoxItem comboBoxItem = new()
+                {
+                    Content = group.Name,
+                    Tag = group
+                };
+                this.ComboBox_Group.Items.Add(comboBoxItem);
+            }
+
             WebBrowser ??= this.WebEnvironment.WebBrowser;
             WebEnvironmentGroup ??= this.WebEnvironment.WebEnvironmentGroup;
+
+            if (WebEnvironmentGroup != null)
+            {
+                this.ComboBox_Group.SelectedIndex = GlobalData.WebEnvironmentGroupList.FindIndex(0, a => a.Name == WebEnvironmentGroup.Name) + 1;
+            }
+            else
+            {
+                this.ComboBox_Group.SelectedIndex = 0;
+            }
         }
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -57,6 +85,12 @@ namespace MultiOpenBrowser.Views.Windows
         {
             this.DialogResult = false;
             this.Close();
+        }
+
+        private void ComboBox_Group_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            WebEnvironmentGroup? tag = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Tag as WebEnvironmentGroup;
+            WebEnvironmentGroup = tag;
         }
     }
 }

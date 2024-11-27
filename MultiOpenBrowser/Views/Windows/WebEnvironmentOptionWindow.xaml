@@ -76,18 +76,16 @@
                 VerticalAlignment="Center"
                 Text="Group"
                 TextWrapping="Wrap" />
-            <TextBox
+            <ComboBox
+                x:Name="ComboBox_Group"
                 Grid.Row="2"
                 Grid.Column="1"
-                Width="400"
-                MinHeight="30"
+                Width="200"
+                Height="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                AcceptsReturn="True"
-                IsReadOnly="True"
-                Text="{Binding WebEnvironmentGroup.Name, Mode=OneWay}"
-                TextWrapping="Wrap" />
+                SelectionChanged="ComboBox_Group_SelectionChanged" />
             <Grid Grid.Row="3" Grid.ColumnSpan="99">
                 <UserControls:WebBrowserOptionUserControl WebBrowser="{Binding WebBrowser}" />
             </Grid>
