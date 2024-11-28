@@ -24,4 +24,7 @@
 	<Module file="$(InPath)\MultiOpenBrowser.dll" >
 		<SkipType name="*AnonymousType*" skipProperties="true" skipMethods="true" skipFields="true" skipEvents="true" skipStringHiding="true"/>
 	</Module>
+	<Module file="$(InPath)\MultiOpenBrowser.Core.dll" >
+		<SkipType name="*AnonymousType*" skipProperties="true" skipMethods="true" skipFields="true" skipEvents="true" skipStringHiding="true"/>
+	</Module>
 </Obfuscator>
