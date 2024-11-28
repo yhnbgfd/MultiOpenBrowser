@@ -120,7 +120,7 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = "Add Environment",
                     };
-                    addEnvMenuItem.Click += MenuItem_WebBrowser_AddByWebEnvironment_Click;
+                    addEnvMenuItem.Click += MenuItem_AddWebEnvironmentUseWebBrowser_Click;
                     menuItem.Items.Add(addEnvMenuItem);
 
                     menuItem.Items.Add(new Separator());
@@ -130,7 +130,7 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = "Edit",
                     };
-                    editMenuItem.Click += MenuItem_WebBrowser_EditWebBrowser_Click; ;
+                    editMenuItem.Click += MenuItem_EditWebBrowser_Click;
                     menuItem.Items.Add(editMenuItem);
 
                     MenuItem deleteMenuItem = new()
@@ -138,7 +138,7 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = "Delete",
                     };
-                    deleteMenuItem.Click += MenuItem_WebBrowser_DeleteWebBrowser_Click; ;
+                    deleteMenuItem.Click += MenuItem_DeleteWebBrowser_Click;
                     menuItem.Items.Add(deleteMenuItem);
                 }
             }
@@ -184,7 +184,7 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = "Add Environment",
                     };
-                    addEnvMenuItem.Click += MenuItem_WebEnvironmentGroup_AddByWebEnvironment_Click;
+                    addEnvMenuItem.Click += MenuItem_AddWebEnvironmentUseWebEnvironmentGroup_Click;
                     menuItem.Items.Add(addEnvMenuItem);
 
                     menuItem.Items.Add(new Separator());
@@ -194,7 +194,7 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = "Edit",
                     };
-                    //editMenuItem.Click += MenuItem_WebBrowser_EditWebBrowser_Click; ;
+                    editMenuItem.Click += MenuItem_EditWebEnvironmentGroup_Click;
                     menuItem.Items.Add(editMenuItem);
 
                     MenuItem deleteMenuItem = new()
@@ -202,13 +202,13 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = "Delete",
                     };
-                    //deleteMenuItem.Click += MenuItem_WebBrowser_DeleteWebBrowser_Click; ;
+                    deleteMenuItem.Click += MenuItem_DeleteWebEnvironmentGroup_Click;
                     menuItem.Items.Add(deleteMenuItem);
                 }
             }
         }
 
-        private void MenuItem_WebBrowser_AddByWebEnvironment_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_AddWebEnvironmentUseWebBrowser_Click(object sender, RoutedEventArgs e)
         {
             WebBrowser tag = ((sender as MenuItem)!.Tag as WebBrowser)!;
 
@@ -223,7 +223,7 @@ namespace MultiOpenBrowser.Views.Windows
             }.ShowDialog();
         }
 
-        private void MenuItem_WebEnvironmentGroup_AddByWebEnvironment_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_AddWebEnvironmentUseWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
         {
             WebEnvironmentGroup tag = ((sender as MenuItem)!.Tag as WebEnvironmentGroup)!;
 
@@ -236,24 +236,55 @@ namespace MultiOpenBrowser.Views.Windows
             }.ShowDialog();
         }
 
-        private async void MenuItem_WebBrowser_EditWebBrowser_Click(object sender, RoutedEventArgs e)
+        private async void MenuItem_EditWebBrowser_Click(object sender, RoutedEventArgs e)
         {
             WebBrowser webBrowser = ((sender as MenuItem)!.Tag as WebBrowser)!;
 
             var newWebBrowser = (WebBrowser)webBrowser.Clone();
-            new WebBrowserOptionWindow()
+            var dialogResult = new WebBrowserOptionWindow()
             {
                 Owner = this,
                 WebBrowser = newWebBrowser
             }.ShowDialog();
-            await CreateWebBrowserMenuItemsAsync();
+
+            if (dialogResult == true)
+            {
+                await CreateWebBrowserMenuItemsAsync();
+            }
         }
 
-        private async void MenuItem_WebBrowser_DeleteWebBrowser_Click(object sender, RoutedEventArgs e)
+        private async void MenuItem_EditWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
+        {
+            WebEnvironmentGroup tag = ((sender as MenuItem)!.Tag as WebEnvironmentGroup)!;
+
+            var newGroup = (WebEnvironmentGroup)tag.Clone();
+            var dialogResult = new WebEnvironmentGroupOptionWindow()
+            {
+                Owner = this,
+                WebEnvironmentGroup = newGroup
+            }.ShowDialog();
+
+            if (dialogResult == true)
+            {
+                await CreateWebEnvironmentGroupMenuItemsAsync();
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
+            }
+        }
+
+        private async void MenuItem_DeleteWebBrowser_Click(object sender, RoutedEventArgs e)
         {
             WebBrowser webBrowser = ((sender as MenuItem)!.Tag as WebBrowser)!;
             await new WebBrowserRepo(null).DeleteAsync(webBrowser);
             await CreateWebBrowserMenuItemsAsync();
+        }
+
+        private async void MenuItem_DeleteWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
+        {
+            WebEnvironmentGroup tag = ((sender as MenuItem)!.Tag as WebEnvironmentGroup)!;
+            await new WebEnvironmentGroupRepo(null).DeleteAsync(tag);
+            await CreateWebEnvironmentGroupMenuItemsAsync();
+
+            EventBus.NotifyWebEnvironmentChange?.Invoke();
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
@@ -264,8 +295,12 @@ namespace MultiOpenBrowser.Views.Windows
 
         private async void MenuItem_AddWebEnvironmentGroup_Click(object sender, RoutedEventArgs e)
         {
-            new WebEnvironmentGroupOptionWindow() { Owner = this }.ShowDialog();
-            await CreateWebEnvironmentGroupMenuItemsAsync();
+            var dialogResult = new WebEnvironmentGroupOptionWindow() { Owner = this }.ShowDialog();
+            if (dialogResult == true)
+            {
+                await CreateWebEnvironmentGroupMenuItemsAsync();
+                EventBus.NotifyWebEnvironmentChange?.Invoke();
+            }
         }
     }
 }
