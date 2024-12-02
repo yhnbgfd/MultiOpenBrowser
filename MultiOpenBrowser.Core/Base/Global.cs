@@ -40,6 +40,7 @@ namespace MultiOpenBrowser.Core.Base
             var builder = new ContainerBuilder();
             builder.RegisterType<Chrome>().Keyed<WebBrowserBase>(TypeEnum.Chrome);
             builder.RegisterType<MsEdge>().Keyed<WebBrowserBase>(TypeEnum.MsEdge);
+            builder.RegisterType<Firefox>().Keyed<WebBrowserBase>(TypeEnum.Firefox);
             builder.RegisterType<CustomizeBrowser>().Keyed<WebBrowserBase>(TypeEnum.Other);
             Container = builder.Build();
         }
