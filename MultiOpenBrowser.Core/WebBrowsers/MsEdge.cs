@@ -46,7 +46,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 
         public override string? GetStartupCmd(StartOption startOption)
         {
-            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath;
+            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath;
             var aguments = GetStartupArguments(startOption);
             return $"{exePath} {aguments}";
         }
@@ -55,7 +55,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath,
+                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()

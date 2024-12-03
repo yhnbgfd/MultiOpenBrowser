@@ -24,11 +24,11 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             string? exePath;
             if (_webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
             {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.MsEdgePath;
+                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath;
             }
             else if (_webEnvironment.WebBrowser.Type == TypeEnum.Firefox)
             {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.FirefoxPath;
+                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
             }
             else if (_webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {
@@ -36,7 +36,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             }
             else
             {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.ChromePath;
+                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.ChromePath;
             }
 
             return $"{exePath} {aguments}";

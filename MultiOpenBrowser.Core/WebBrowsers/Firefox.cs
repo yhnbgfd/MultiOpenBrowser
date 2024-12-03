@@ -40,7 +40,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 
         public override string? GetStartupCmd(StartOption startOption)
         {
-            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.FirefoxPath;
+            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
             var aguments = GetStartupArguments(startOption);
             return $"{exePath} {aguments}";
         }
@@ -49,7 +49,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.FirefoxPath,
+                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()

@@ -30,14 +30,14 @@ namespace MultiOpenBrowser.Helpers
                     if (webEnv.WebBrowser.Type == TypeEnum.MsEdge)
                     {
                         task.Arguments = arguments;
-                        task.IconResourcePath = GlobalData.MsEdgePath;
-                        task.ApplicationPath = GlobalData.MsEdgePath;
+                        task.IconResourcePath = GlobalData.Option.MsEdgePath;
+                        task.ApplicationPath = GlobalData.Option.MsEdgePath;
                     }
                     else if (webEnv.WebBrowser.Type == TypeEnum.Chrome)
                     {
                         task.Arguments = arguments;
-                        task.IconResourcePath = GlobalData.ChromePath;
-                        task.ApplicationPath = GlobalData.ChromePath;
+                        task.IconResourcePath = GlobalData.Option.ChromePath;
+                        task.ApplicationPath = GlobalData.Option.ChromePath;
                     }
                     else
                     {
@@ -58,16 +58,16 @@ namespace MultiOpenBrowser.Helpers
             JumpTask taskChrome = new()
             {
                 Title = "Google Chrome",
-                IconResourcePath = GlobalData.ChromePath,
-                ApplicationPath = GlobalData.ChromePath,
+                IconResourcePath = GlobalData.Option.ChromePath,
+                ApplicationPath = GlobalData.Option.ChromePath,
             };
             jumpList.JumpItems.Add(taskChrome);
 
             JumpTask taskEdge = new()
             {
                 Title = "Microsoft Edge",
-                IconResourcePath = GlobalData.MsEdgePath,
-                ApplicationPath = GlobalData.MsEdgePath,
+                IconResourcePath = GlobalData.Option.MsEdgePath,
+                ApplicationPath = GlobalData.Option.MsEdgePath,
             };
             jumpList.JumpItems.Add(taskEdge);
 
