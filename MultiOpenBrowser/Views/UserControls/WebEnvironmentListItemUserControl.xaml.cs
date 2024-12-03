@@ -23,16 +23,20 @@ namespace MultiOpenBrowser.Views.UserControls
             DataContext = this;
             WebEnvironment = webEnvironment;
             WebBrowser = WebEnvironment.WebBrowser;
-            if (WebBrowser.Type == WebBrowser.TypeEnum.Chrome)
+            Uri uriSource;
+            if (WebBrowser.Type == WebBrowser.TypeEnum.MsEdge)
             {
-                var uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/GoogleChrome.png", UriKind.Relative);
-                this.Image_Icon.Source = new BitmapImage(uriSource);
+                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/MicrosoftEdge.png", UriKind.Relative);
+            }
+            else if (WebBrowser.Type == WebBrowser.TypeEnum.Firefox)
+            {
+                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/Firefox.png", UriKind.Relative);
             }
             else
             {
-                var uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/MicrosoftEdge.png", UriKind.Relative);
-                this.Image_Icon.Source = new BitmapImage(uriSource);
+                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/GoogleChrome.png", UriKind.Relative);
             }
+            this.Image_Icon.Source = new BitmapImage(uriSource);
         }
 
         private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)

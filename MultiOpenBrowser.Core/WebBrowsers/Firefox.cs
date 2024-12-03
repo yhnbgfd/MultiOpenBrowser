@@ -34,7 +34,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             }
             if (startOption.IncognitoMode == true)
             {
-                sb.Append("--incognito ");
+                //TODO
             }
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.UserAgent))
             {

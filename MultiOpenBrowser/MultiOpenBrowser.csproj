@@ -18,8 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\UserControls\GoogleChrome.png" />
-    <None Remove="Views\UserControls\MicrosoftEdge.png" />
+    <None Remove="Assets\Firefox.png" />
+    <None Remove="Assets\GoogleChrome.png" />
+    <None Remove="Assets\MicrosoftEdge.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Firefox.png" />
     <Resource Include="Assets\GoogleChrome.png" />
     <Resource Include="Assets\MicrosoftEdge.png" />
   </ItemGroup>
