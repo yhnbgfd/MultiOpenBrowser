@@ -15,7 +15,7 @@ namespace MultiOpenBrowser.Views.Windows
 
         private async void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            await CacheRepo.SetAsync("Option", Option, null);
+            await CacheRepo.SetAsync(nameof(Option), Option, null);
             this.Close();
         }
 
