@@ -105,7 +105,7 @@ namespace MultiOpenBrowser.Views.UserControls
 
             var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
 
-            var dialogResult = new WebEnvironmentOptionWindow()
+            _ = new WebEnvironmentOptionWindow()
             {
                 Owner = Application.Current.MainWindow,
                 WebEnvironment = newWebEnvironment
@@ -153,7 +153,7 @@ namespace MultiOpenBrowser.Views.UserControls
                 newWebEnvironment.Id = 0;
                 newWebEnvironment.Order = 0;
                 newWebEnvironment.WebBrowser.Id = 0;
-                newWebEnvironment.Name = newWebEnvironment.Name + " Copy";
+                newWebEnvironment.Name += " Copy";
                 newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
 
                 var dialogResult = new WebEnvironmentOptionWindow()
