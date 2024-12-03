@@ -28,10 +28,6 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             {
                 sb.Append("--disable-web-security ");//可解决跨域报错
             }
-            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.Arguments))
-            {
-                sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");
-            }
             if (startOption.IncognitoMode == true)
             {
                 sb.Append("--incognito ");
@@ -39,6 +35,10 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.UserAgent))
             {
                 sb.Append($"--user-agent=\"{_webEnvironment.WebBrowser.UserAgent}\" ");
+            }
+            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.Arguments))
+            {
+                sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");
             }
 
             return sb.ToString();
