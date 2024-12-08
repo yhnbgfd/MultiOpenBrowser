@@ -42,12 +42,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                SelectionChanged="ComboBox_Type_SelectionChanged">
-                <ComboBoxItem Content="Google Chrome" />
-                <ComboBoxItem Content="Microsoft Edge" />
-                <ComboBoxItem Content="Firefox" />
-                <ComboBoxItem Content="Other" />
-            </ComboBox>
+                SelectionChanged="ComboBox_Type_SelectionChanged" />
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>

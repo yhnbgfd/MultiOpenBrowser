@@ -22,27 +22,24 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.ComboBox_Type.SelectedIndex = WebBrowser.Type switch
+            foreach (WebBrowser.TypeEnum type in Enum.GetValues<WebBrowser.TypeEnum>())
             {
-                WebBrowser.TypeEnum.Chrome => 0,
-                WebBrowser.TypeEnum.MsEdge => 1,
-                WebBrowser.TypeEnum.Firefox => 2,
-                WebBrowser.TypeEnum.Other => 3,
-                _ => 0,
-            };
+                this.ComboBox_Type.Items.Add(type.ToString());
+            }
+            this.ComboBox_Type.SelectedItem = WebBrowser.Type.ToString();
         }
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string? text = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Content as string;
-            WebBrowser.Type = text switch
+            if (Enum.TryParse(text, out WebBrowser.TypeEnum type))
             {
-                "Google Chrome" => WebBrowser.TypeEnum.Chrome,
-                "Microsoft Edge" => WebBrowser.TypeEnum.MsEdge,
-                "Firefox" => WebBrowser.TypeEnum.Firefox,
-                "Other" => WebBrowser.TypeEnum.Other,
-                _ => WebBrowser.TypeEnum.Chrome,
-            };
+                WebBrowser.Type = type;
+            }
+            else
+            {
+                WebBrowser.Type = WebBrowser.TypeEnum.Chrome;
+            }
         }
     }
 }
