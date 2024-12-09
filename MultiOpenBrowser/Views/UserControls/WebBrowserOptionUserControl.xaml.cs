@@ -31,7 +31,8 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string? text = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Content as string;
+            //string? text = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Content as string;
+            string? text = (sender as ComboBox)?.SelectedItem as string;
             if (Enum.TryParse(text, out WebBrowser.TypeEnum type))
             {
                 WebBrowser.Type = type;
