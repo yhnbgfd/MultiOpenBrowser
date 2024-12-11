@@ -40,6 +40,8 @@
             MsEdge = 2,
             [Description("Firefox")]
             Firefox = 4,
+            [Description("Browser360")]
+            Browser360 = 5,
             [Description("Other")]
             Other = 99,
         }

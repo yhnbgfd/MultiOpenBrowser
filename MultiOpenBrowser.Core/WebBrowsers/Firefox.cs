@@ -6,30 +6,32 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 {
     internal class Firefox(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
+        protected override string ArgumentPrefix => "-";
+
         public override string? GetStartupArguments(StartOption startOption)
         {
             StringBuilder sb = new();
 
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowserDataPath))
             {
-                sb.Append($"-profile \"{_webEnvironment.WebBrowserDataPath}\" ");
+                AppendArgument(sb, "profile", _webEnvironment.WebBrowserDataPath);
             }
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ProxyServer))
             {
-                // 似乎不支持
+                AppendArgument(sb, "proxy-server", _webEnvironment.WebBrowser.ProxyServer);
             }
-            if (_webEnvironment.WebBrowser.DisableWebSecurity)
-            {
-                // 似乎不支持
-            }
+
             if (startOption.IncognitoMode == true)
             {
-                sb.Append("-private ");
+                AppendArgument(sb, "private-window");
             }
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.UserAgent))
             {
-                // 似乎不支持
+                // Firefox 通过 about:config 或扩展来修改 UserAgent
             }
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.Arguments))
             {
                 sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");

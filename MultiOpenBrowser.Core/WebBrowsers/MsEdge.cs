@@ -12,30 +12,37 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowserDataPath))
             {
-                sb.Append($"--user-data-dir=\"{_webEnvironment.WebBrowserDataPath}\" ");
+                AppendArgument(sb, "user-data-dir", _webEnvironment.WebBrowserDataPath);
             }
-            sb.Append("--no-first-run ");
-            sb.Append("--no-default-browser-check ");
+
+            AppendArgument(sb, "no-first-run");
+            AppendArgument(sb, "no-default-browser-check");
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ProxyServer))
             {
-                sb.Append($"--proxy-server=\"{_webEnvironment.WebBrowser.ProxyServer}\" ");
+                AppendArgument(sb, "proxy-server", _webEnvironment.WebBrowser.ProxyServer);
             }
-            sb.Append("--restore-last-session ");
-            sb.Append("--hide-crash-restore-bubble ");
-            sb.Append("--flag-switches-begin ");
-            sb.Append("--flag-switches-end ");
+
+            AppendArgument(sb, "restore-last-session");
+            AppendArgument(sb, "hide-crash-restore-bubble");
+            AppendArgument(sb, "flag-switches-begin");
+            AppendArgument(sb, "flag-switches-end");
+
             if (_webEnvironment.WebBrowser.DisableWebSecurity)
             {
-                sb.Append("--disable-web-security ");//可解决跨域报错
+                AppendArgument(sb, "disable-web-security");
             }
+
             if (startOption.IncognitoMode == true)
             {
-                sb.Append("--inprivate ");
+                AppendArgument(sb, "inprivate");  // Edge 使用 inprivate 而不是 incognito
             }
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.UserAgent))
             {
-                sb.Append($"--user-agent=\"{_webEnvironment.WebBrowser.UserAgent}\" ");
+                AppendArgument(sb, "user-agent", _webEnvironment.WebBrowser.UserAgent);
             }
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.Arguments))
             {
                 sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");

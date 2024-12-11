@@ -30,6 +30,10 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             {
                 exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
             }
+            else if (_webEnvironment.WebBrowser.Type == TypeEnum.Browser360)
+            {
+                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.Browser360Path;
+            }
             else if (_webEnvironment.WebBrowser.Type == TypeEnum.Other)
             {
                 exePath = _webEnvironment.WebBrowser.ExePath;
