@@ -48,7 +48,7 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Start WebEnvironment Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -59,7 +59,7 @@ namespace MultiOpenBrowser.Views.UserControls
                 return;
             }
 
-            var result = MessageBox.Show(Application.Current.MainWindow, "Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel);
+            var result = MessageBox.Show(Application.Current.MainWindow, "Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Cancel)
             {
                 return;
@@ -88,7 +88,7 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 uow.Rollback();
                 _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Delete WebEnvironment Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -131,7 +131,7 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Start WebEnvironment Incognito Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -202,7 +202,7 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Copy Startup CMD Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

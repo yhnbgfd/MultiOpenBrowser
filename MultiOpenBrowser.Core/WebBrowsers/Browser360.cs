@@ -23,7 +23,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             // 360浏览器特有的一些参数
             sb.Append("--360browser ");
             sb.Append("--no-sandbox ");
-            
+
             if (_webEnvironment.WebBrowser.DisableWebSecurity)
             {
                 sb.Append("--disable-web-security ");
@@ -67,4 +67,4 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             return StartResult.SuccessResult(process.Id);
         }
     }
-} 
+}

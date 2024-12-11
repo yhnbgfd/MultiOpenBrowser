@@ -77,7 +77,7 @@ namespace MultiOpenBrowser.Views.Windows
             {
                 uow.Rollback();
                 _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Save WebEnvironment Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
