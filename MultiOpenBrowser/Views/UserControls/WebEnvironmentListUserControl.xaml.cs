@@ -31,12 +31,15 @@ namespace MultiOpenBrowser.Views.UserControls
                 await WebEnvironmentRepo.LoadAsync();
 
                 this.TabControl_Group.Items.Clear();
+
+                // ALL分组
                 {
                     WrapPanel wrapPanel = new()
                     {
                         Margin = new Thickness(5, 0, 5, 0),
                     };
-                    foreach (var webEnv in GlobalData.WebEnvironmentList.Select((value, i) => new { i, value }))
+                    var list = GlobalData.WebEnvironmentList.Select((value, i) => new { i, value });
+                    foreach (var webEnv in list)
                     {
                         webEnv.value.Index = webEnv.i + 1;
                         wrapPanel.Children.Add(new WebEnvironmentListItemUserControl(webEnv.value));
@@ -44,18 +47,22 @@ namespace MultiOpenBrowser.Views.UserControls
                     this.TabControl_Group.Items.Add(new TabItem()
                     {
                         IsSelected = true,
-                        Header = "ALL",
+                        Header = "全部",
                         Content = new ScrollViewer() { Content = wrapPanel },
                     });
                 }
 
+                // 自定义分组
                 foreach (var group in GlobalData.WebEnvironmentGroupList)
                 {
                     WrapPanel wrapPanel = new()
                     {
                         Margin = new Thickness(5, 0, 5, 0),
                     };
-                    foreach (var webEnv in GlobalData.WebEnvironmentList.Where(a => a.WebEnvironmentGroupId == group.Id).Select((value, i) => new { i, value }))
+                    var list = GlobalData.WebEnvironmentList
+                        .Where(a => a.WebEnvironmentGroupId == group.Id)
+                        .Select((value, i) => new { i, value });
+                    foreach (var webEnv in list)
                     {
                         webEnv.value.Index = webEnv.i + 1;
                         wrapPanel.Children.Add(new WebEnvironmentListItemUserControl(webEnv.value));
@@ -63,6 +70,27 @@ namespace MultiOpenBrowser.Views.UserControls
                     this.TabControl_Group.Items.Add(new TabItem()
                     {
                         Header = group.Name,
+                        Content = new ScrollViewer() { Content = wrapPanel },
+                    });
+                }
+
+                // 未分组
+                {
+                    WrapPanel wrapPanel = new()
+                    {
+                        Margin = new Thickness(5, 0, 5, 0),
+                    };
+                    var list = GlobalData.WebEnvironmentList
+                        .Where(a => a.WebEnvironmentGroupId == null || !GlobalData.WebEnvironmentGroupList.Any(b => b.Id == a.WebEnvironmentGroupId))
+                        .Select((value, i) => new { i, value });
+                    foreach (var webEnv in list)
+                    {
+                        webEnv.value.Index = webEnv.i + 1;
+                        wrapPanel.Children.Add(new WebEnvironmentListItemUserControl(webEnv.value));
+                    }
+                    this.TabControl_Group.Items.Add(new TabItem()
+                    {
+                        Header = "未分组",
                         Content = new ScrollViewer() { Content = wrapPanel },
                     });
                 }

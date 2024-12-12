@@ -16,6 +16,8 @@ namespace MultiOpenBrowser.Views.UserControls
 
         public WebEnvironment WebEnvironment { get; private set; }
         public WebBrowser WebBrowser { get; private set; }
+        public double IconOpacityDefault { get; set; } = 0.1;
+        public double IconOpacityFocus { get; set; } = 0.2;
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
@@ -114,12 +116,12 @@ namespace MultiOpenBrowser.Views.UserControls
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.Image_Icon.Opacity = 0.1;
+            this.Image_Icon.Opacity = IconOpacityFocus;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.Image_Icon.Opacity = 0.05;
+            this.Image_Icon.Opacity = IconOpacityDefault;
         }
 
         private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)

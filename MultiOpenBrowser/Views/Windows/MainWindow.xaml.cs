@@ -146,6 +146,7 @@ namespace MultiOpenBrowser.Views.Windows
 
         private async Task CreateWebEnvironmentGroupMenuItemsAsync()
         {
+            this.MenuItem_WebEnvironmentGroup.Items.Clear();
             this.MenuItem_WebEnvironment.Items.Clear();
 
             {
@@ -162,13 +163,13 @@ namespace MultiOpenBrowser.Views.Windows
                     Header = "Add Group",
                 };
                 menuItemAdd1.Click += MenuItem_AddWebEnvironmentGroup_Click;
-                this.MenuItem_WebEnvironment.Items.Add(menuItemAdd1);
+                this.MenuItem_WebEnvironmentGroup.Items.Add(menuItemAdd1);
             }
 
             var list = await new WebEnvironmentGroupRepo(null).Select.OrderBy(a => a.Id).Take(10).ToListAsync();
             if (list.Count != 0)
             {
-                this.MenuItem_WebEnvironment.Items.Add(new Separator());
+                this.MenuItem_WebEnvironmentGroup.Items.Add(new Separator());
 
                 foreach (var wb in list)
                 {
@@ -177,7 +178,7 @@ namespace MultiOpenBrowser.Views.Windows
                         Tag = wb,
                         Header = wb.Name,
                     };
-                    this.MenuItem_WebEnvironment.Items.Add(menuItem);
+                    this.MenuItem_WebEnvironmentGroup.Items.Add(menuItem);
 
                     MenuItem addEnvMenuItem = new()
                     {

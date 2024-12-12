@@ -23,6 +23,7 @@
                 <MenuItem Click="MenuItem_Exit_Click" Header="Exit" />
             </MenuItem>
             <MenuItem x:Name="MenuItem_WebBrowser" Header="Browser" />
+            <MenuItem x:Name="MenuItem_WebEnvironmentGroup" Header="Group" />
             <MenuItem x:Name="MenuItem_WebEnvironment" Header="Environment" />
             <MenuItem Header="Help">
                 <MenuItem Click="MenuItem_About_Click" Header="Check for Updates" />
