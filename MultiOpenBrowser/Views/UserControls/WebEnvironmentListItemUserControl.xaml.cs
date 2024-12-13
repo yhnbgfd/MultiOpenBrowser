@@ -34,6 +34,10 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/Firefox.png", UriKind.Relative);
             }
+            else if (WebBrowser.Type == WebBrowser.TypeEnum.Browser360)
+            {
+                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/360_browser.png", UriKind.Relative);
+            }
             else
             {
                 uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/GoogleChrome.png", UriKind.Relative);

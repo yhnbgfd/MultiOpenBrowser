@@ -18,6 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\360_browser.png" />
     <None Remove="Assets\Firefox.png" />
     <None Remove="Assets\GoogleChrome.png" />
     <None Remove="Assets\MicrosoftEdge.png" />
@@ -43,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\360_browser.png" />
     <Resource Include="Assets\Firefox.png" />
     <Resource Include="Assets\GoogleChrome.png" />
     <Resource Include="Assets\MicrosoftEdge.png" />
