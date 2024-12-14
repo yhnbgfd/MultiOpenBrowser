@@ -17,15 +17,15 @@
     mc:Ignorable="d">
     <DockPanel x:Name="DockPanel_Main">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Height="28" Header="File">
+            <MenuItem Height="28" Header="{DynamicResource Menu_File}">
                 <MenuItem Click="MenuItem_Options_Click" Header="Options" />
                 <Separator />
                 <MenuItem Click="MenuItem_Exit_Click" Header="Exit" />
             </MenuItem>
-            <MenuItem x:Name="MenuItem_WebBrowser" Header="Browser" />
-            <MenuItem x:Name="MenuItem_WebEnvironmentGroup" Header="Group" />
-            <MenuItem x:Name="MenuItem_WebEnvironment" Header="Environment" />
-            <MenuItem Header="Help">
+            <MenuItem x:Name="MenuItem_WebBrowser" Header="{DynamicResource Menu_Browser}" />
+            <MenuItem x:Name="MenuItem_WebEnvironmentGroup" Header="{DynamicResource Menu_Group}" />
+            <MenuItem x:Name="MenuItem_WebEnvironment" Header="{DynamicResource Menu_Environment}" />
+            <MenuItem Header="{DynamicResource Menu_Help}">
                 <MenuItem Click="MenuItem_About_Click" Header="Check for Updates" />
                 <Separator />
                 <MenuItem Click="MenuItem_About_Click" Header="About" />
