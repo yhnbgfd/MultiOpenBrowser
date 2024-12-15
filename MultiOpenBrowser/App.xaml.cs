@@ -16,6 +16,16 @@ namespace MultiOpenBrowser
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             // 专门捕获Task异常
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+
+            EventBus.OnLanguageChange += OnLanguageChangeHandle;
+        }
+
+        private void OnLanguageChangeHandle(string langName)
+        {
+            if (Application.LoadComponent(new Uri(@"Views\Resources\" + langName + ".xaml", UriKind.Relative)) is ResourceDictionary langRd)
+            {
+                Resources.MergedDictionaries[0] = langRd;
+            }
         }
 
         private async void Application_Startup(object sender, StartupEventArgs e)

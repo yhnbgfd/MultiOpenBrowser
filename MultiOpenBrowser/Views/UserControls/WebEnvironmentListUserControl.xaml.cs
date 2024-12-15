@@ -44,12 +44,13 @@ namespace MultiOpenBrowser.Views.UserControls
                         webEnv.value.Index = webEnv.i + 1;
                         wrapPanel.Children.Add(new WebEnvironmentListItemUserControl(webEnv.value));
                     }
-                    this.TabControl_Group.Items.Add(new TabItem()
+                    TabItem tabItem = new()
                     {
                         IsSelected = true,
-                        Header = "全部",
                         Content = new ScrollViewer() { Content = wrapPanel },
-                    });
+                    };
+                    tabItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Group_All");
+                    this.TabControl_Group.Items.Add(tabItem);
                 }
 
                 // 自定义分组
@@ -88,11 +89,13 @@ namespace MultiOpenBrowser.Views.UserControls
                         webEnv.value.Index = webEnv.i + 1;
                         wrapPanel.Children.Add(new WebEnvironmentListItemUserControl(webEnv.value));
                     }
-                    this.TabControl_Group.Items.Add(new TabItem()
+                    TabItem tabItem = new()
                     {
-                        Header = "未分组",
+                        Header = FindResource("Group_Other"),
                         Content = new ScrollViewer() { Content = wrapPanel },
-                    });
+                    };
+                    tabItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Group_Other");
+                    this.TabControl_Group.Items.Add(tabItem);
                 }
 
                 JumpListHelper.SetJumpList();

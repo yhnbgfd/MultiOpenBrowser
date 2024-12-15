@@ -303,5 +303,15 @@ namespace MultiOpenBrowser.Views.Windows
                 EventBus.NotifyWebEnvironmentChange?.Invoke();
             }
         }
+
+        private void MenuItem_ZhCN_Click(object sender, RoutedEventArgs e)
+        {
+            EventBus.OnLanguageChange?.Invoke("ZhCN");
+        }
+
+        private void MenuItem_EnUS_Click(object sender, RoutedEventArgs e)
+        {
+            EventBus.OnLanguageChange?.Invoke("EnUS");
+        }
     }
 }

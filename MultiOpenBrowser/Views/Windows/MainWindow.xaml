@@ -18,17 +18,21 @@
     <DockPanel x:Name="DockPanel_Main">
         <Menu DockPanel.Dock="Top">
             <MenuItem Height="28" Header="{DynamicResource Menu_File}">
-                <MenuItem Click="MenuItem_Options_Click" Header="Options" />
+                <MenuItem Click="MenuItem_Options_Click" Header="{DynamicResource Menu_Options}" />
                 <Separator />
-                <MenuItem Click="MenuItem_Exit_Click" Header="Exit" />
+                <MenuItem Click="MenuItem_Exit_Click" Header="{DynamicResource Menu_Exit}" />
             </MenuItem>
             <MenuItem x:Name="MenuItem_WebBrowser" Header="{DynamicResource Menu_Browser}" />
             <MenuItem x:Name="MenuItem_WebEnvironmentGroup" Header="{DynamicResource Menu_Group}" />
             <MenuItem x:Name="MenuItem_WebEnvironment" Header="{DynamicResource Menu_Environment}" />
+            <MenuItem Header="{DynamicResource Menu_Language}">
+                <MenuItem Click="MenuItem_ZhCN_Click" Header="{DynamicResource Menu_Language_ZhCN}" />
+                <MenuItem Click="MenuItem_EnUS_Click" Header="{DynamicResource Menu_Language_EnUS}" />
+            </MenuItem>
             <MenuItem Header="{DynamicResource Menu_Help}">
-                <MenuItem Click="MenuItem_About_Click" Header="Check for Updates" />
+                <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource Menu_CheckForUpdates}" />
                 <Separator />
-                <MenuItem Click="MenuItem_About_Click" Header="About" />
+                <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource Menu_About}" />
             </MenuItem>
         </Menu>
         <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />

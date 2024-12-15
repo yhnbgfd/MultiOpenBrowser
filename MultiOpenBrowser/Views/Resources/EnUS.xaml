@@ -3,10 +3,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="Menu_File">File</sys:String>
+    <sys:String x:Key="Menu_Options">Options</sys:String>
+    <sys:String x:Key="Menu_Exit">Exit</sys:String>
     <sys:String x:Key="Menu_Browser">Browser</sys:String>
     <sys:String x:Key="Menu_Group">Group</sys:String>
     <sys:String x:Key="Menu_Environment">Environment</sys:String>
+    <sys:String x:Key="Menu_Language">Language</sys:String>
+    <sys:String x:Key="Menu_Language_ZhCN">简体中文</sys:String>
+    <sys:String x:Key="Menu_Language_EnUS">English</sys:String>
     <sys:String x:Key="Menu_Help">Help</sys:String>
+    <sys:String x:Key="Menu_CheckForUpdates">Check for Updates</sys:String>
+    <sys:String x:Key="Menu_About">About</sys:String>
     <sys:String x:Key="Group_All">All</sys:String>
-    <sys:String x:Key="Group_Other">NotGroup</sys:String>
+    <sys:String x:Key="Group_Other">NoGroup</sys:String>
 </ResourceDictionary>
