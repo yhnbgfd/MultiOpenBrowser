@@ -1,7 +1,8 @@
 ﻿using MultiOpenBrowser.Core.WebBrowsers;
+using System.IO;
 using System.Windows;
 using System.Windows.Shell;
-using static MultiOpenBrowser.Core.Entitys.WebBrowser;
+using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.Helpers
 {
@@ -21,34 +22,20 @@ namespace MultiOpenBrowser.Helpers
             {
                 try
                 {
-                    var arguments = new WebBrowserFactory(webEnv).GetStartupArguments(new IWebBrowser.StartOption());
+                    WebBrowserFactory webBrowserFactory = new(webEnv);
+                    if (!File.Exists(webBrowserFactory.WebBrowserInstance.ExePath))
+                    {
+                        continue;
+                    }
 
                     JumpTask task = new()
                     {
                         Title = webEnv.Name,
-                        Description = webEnv.Name
+                        Description = webEnv.Name,
+                        Arguments = webBrowserFactory.GetStartupArguments(StartOption.Default),
+                        ApplicationPath = webBrowserFactory.WebBrowserInstance.ExePath,
+                        IconResourcePath = webBrowserFactory.WebBrowserInstance.ExePath,
                     };
-
-                    if (webEnv.WebBrowser.Type == TypeEnum.MsEdge)
-                    {
-                        task.Arguments = arguments;
-                        task.IconResourcePath = GlobalData.Option.MsEdgePath;
-                        task.ApplicationPath = GlobalData.Option.MsEdgePath;
-                    }
-                    else if (webEnv.WebBrowser.Type == TypeEnum.Chrome)
-                    {
-                        task.Arguments = arguments;
-                        task.IconResourcePath = GlobalData.Option.ChromePath;
-                        task.ApplicationPath = GlobalData.Option.ChromePath;
-                    }
-                    else
-                    {
-                        //task.Arguments = $"{ArgsHelper.Start_Web_Environment}={webEnv.Id}";
-                        //task.IconResourcePath = Environment.ProcessPath;
-                        //task.ApplicationPath = Environment.ProcessPath;
-                        //task.WorkingDirectory = Directory.GetCurrentDirectory();
-                        continue;
-                    }
 
                     jumpList.JumpItems.Add(task);
                 }

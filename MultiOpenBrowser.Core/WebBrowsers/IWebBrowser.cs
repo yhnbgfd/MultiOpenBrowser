@@ -30,6 +30,8 @@
             /// 无痕模式
             /// </summary>
             public bool IncognitoMode { get; set; } = false;
+
+            public static StartOption Default => new();
         }
 
         /// <summary>

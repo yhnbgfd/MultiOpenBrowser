@@ -12,6 +12,9 @@
         public int Order { get; set; }
         public bool IsTemplate { get; set; } = false;
         public TypeEnum Type { get; set; } = TypeEnum.Chrome;
+        /// <summary>
+        /// 自定义浏览器程序exe文件目录
+        /// </summary>
         public string? ExePath { get; set; }
         public string? UserAgent { get; set; }
         public string? ProxyServer { get; set; }
