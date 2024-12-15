@@ -13,7 +13,7 @@ namespace MultiOpenBrowser.Core.Base
         static GlobalData()
         {
             AppVersion = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            Option = CacheRepo.Get<Option>(nameof(Option)) ?? new();
+            Option = CacheHelper.Get<Option>(nameof(Option)) ?? new();
         }
     }
 }

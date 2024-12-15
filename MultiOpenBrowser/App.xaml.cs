@@ -26,7 +26,7 @@ namespace MultiOpenBrowser
             {
                 Resources.MergedDictionaries[0] = langRd;
                 GlobalData.Option.Language = langName;
-                await CacheRepo.SetAsync(nameof(Option), GlobalData.Option, null);
+                await CacheHelper.SetAsync(nameof(Option), GlobalData.Option);
             }
         }
 

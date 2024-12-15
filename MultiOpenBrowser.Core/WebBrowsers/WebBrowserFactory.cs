@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using static MultiOpenBrowser.Core.Entitys.WebBrowser;
 using static MultiOpenBrowser.Core.WebBrowsers.IWebBrowser;
 
 namespace MultiOpenBrowser.Core.WebBrowsers
@@ -21,27 +20,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             var browser = Global.Container.ResolveKeyed<WebBrowserBase>(_webEnvironment.WebBrowser.Type, new NamedParameter("webEnvironment", _webEnvironment));
             var aguments = browser.GetStartupArguments(startOption);
 
-            string? exePath;
-            if (_webEnvironment.WebBrowser.Type == TypeEnum.MsEdge)
-            {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath;
-            }
-            else if (_webEnvironment.WebBrowser.Type == TypeEnum.Firefox)
-            {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
-            }
-            else if (_webEnvironment.WebBrowser.Type == TypeEnum.Browser360)
-            {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.Browser360Path;
-            }
-            else if (_webEnvironment.WebBrowser.Type == TypeEnum.Other)
-            {
-                exePath = _webEnvironment.WebBrowser.ExePath;
-            }
-            else
-            {
-                exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.ChromePath;
-            }
+            string? exePath = browser.ExePath;
 
             return $"{exePath} {aguments}";
         }

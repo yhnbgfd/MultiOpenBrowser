@@ -13,10 +13,10 @@ namespace MultiOpenBrowser.Views.Windows
             InitializeComponent();
             DataContext = this;
 
-            var topCache = CacheRepo.Get("MainWindow_Top");
-            var leftCache = CacheRepo.Get("MainWindow_Left");
-            var widthCache = CacheRepo.Get("MainWindow_Width");
-            var heightCache = CacheRepo.Get("MainWindow_Height");
+            var topCache = CacheHelper.Get("MainWindow_Top");
+            var leftCache = CacheHelper.Get("MainWindow_Left");
+            var widthCache = CacheHelper.Get("MainWindow_Width");
+            var heightCache = CacheHelper.Get("MainWindow_Height");
             if (topCache != null && leftCache != null && widthCache != null && heightCache != null)
             {
                 _ = double.TryParse(topCache, out var top);
@@ -64,10 +64,10 @@ namespace MultiOpenBrowser.Views.Windows
 
         private async void Window_Closed(object sender, EventArgs e)
         {
-            await CacheRepo.SetAsync("MainWindow_Top", this.Top, null);
-            await CacheRepo.SetAsync("MainWindow_Left", this.Left, null);
-            await CacheRepo.SetAsync("MainWindow_Width", this.Width, null);
-            await CacheRepo.SetAsync("MainWindow_Height", this.Height, null);
+            await CacheHelper.SetAsync("MainWindow_Top", this.Top);
+            await CacheHelper.SetAsync("MainWindow_Left", this.Left);
+            await CacheHelper.SetAsync("MainWindow_Width", this.Width);
+            await CacheHelper.SetAsync("MainWindow_Height", this.Height);
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)

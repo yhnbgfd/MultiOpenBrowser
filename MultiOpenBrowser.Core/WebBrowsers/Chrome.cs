@@ -6,6 +6,8 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 {
     internal class Chrome(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
+        public override string? ExePath => _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.ChromePath;
+
         public override string? GetStartupArguments(StartOption startOption)
         {
             StringBuilder sb = new();
