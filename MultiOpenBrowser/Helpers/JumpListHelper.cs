@@ -1,5 +1,4 @@
 ﻿using MultiOpenBrowser.Core.WebBrowsers;
-using System.IO;
 using System.Windows;
 using System.Windows.Shell;
 using static MultiOpenBrowser.Core.Entitys.WebBrowser;
@@ -24,8 +23,11 @@ namespace MultiOpenBrowser.Helpers
                 {
                     var arguments = new WebBrowserFactory(webEnv).GetStartupArguments(new IWebBrowser.StartOption());
 
-                    JumpTask task = new();
-                    task.Title = webEnv.Name;
+                    JumpTask task = new()
+                    {
+                        Title = webEnv.Name,
+                        Description = webEnv.Name
+                    };
 
                     if (webEnv.WebBrowser.Type == TypeEnum.MsEdge)
                     {
@@ -41,10 +43,11 @@ namespace MultiOpenBrowser.Helpers
                     }
                     else
                     {
-                        task.Arguments = $"{ArgsHelper.Start_Web_Environment}={webEnv.Id}";
-                        task.IconResourcePath = Environment.ProcessPath;
-                        task.ApplicationPath = Environment.ProcessPath;
-                        task.WorkingDirectory = Directory.GetCurrentDirectory();
+                        //task.Arguments = $"{ArgsHelper.Start_Web_Environment}={webEnv.Id}";
+                        //task.IconResourcePath = Environment.ProcessPath;
+                        //task.ApplicationPath = Environment.ProcessPath;
+                        //task.WorkingDirectory = Directory.GetCurrentDirectory();
+                        continue;
                     }
 
                     jumpList.JumpItems.Add(task);
@@ -57,7 +60,7 @@ namespace MultiOpenBrowser.Helpers
 
             JumpTask taskChrome = new()
             {
-                Title = "Google Chrome",
+                Title = "SYS: Google Chrome",
                 IconResourcePath = GlobalData.Option.ChromePath,
                 ApplicationPath = GlobalData.Option.ChromePath,
             };
@@ -65,7 +68,7 @@ namespace MultiOpenBrowser.Helpers
 
             JumpTask taskEdge = new()
             {
-                Title = "Microsoft Edge",
+                Title = "SYS: Microsoft Edge",
                 IconResourcePath = GlobalData.Option.MsEdgePath,
                 ApplicationPath = GlobalData.Option.MsEdgePath,
             };
