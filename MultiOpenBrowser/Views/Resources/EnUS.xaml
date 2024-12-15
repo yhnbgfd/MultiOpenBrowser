@@ -16,4 +16,6 @@
     <sys:String x:Key="Menu_About">About</sys:String>
     <sys:String x:Key="Group_All">All</sys:String>
     <sys:String x:Key="Group_Other">NoGroup</sys:String>
+    <sys:String x:Key="Btn_Run">Run</sys:String>
+    <sys:String x:Key="Btn_More">More</sys:String>
 </ResourceDictionary>

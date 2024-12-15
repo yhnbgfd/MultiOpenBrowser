@@ -48,17 +48,16 @@
                     BorderBrush="#FFDDDDDD"
                     BorderThickness="0,0,0,0"
                     Click="Button_StartWebEnvironment_Click"
-                    Content="Run" />
+                    Content="{DynamicResource Btn_Run}" />
                 <Menu
                     Grid.Column="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#FFDDDDDD">
                     <MenuItem
-                        Width="45"
                         Height="30"
                         BorderThickness="0,0,0,0"
-                        Header="More">
+                        Header="{DynamicResource Btn_More}">
                         <MenuItem Click="Button_StartWebEnvironmentIncognito_Click" Header="Incognito" />
                         <MenuItem Click="Button_EditWebEnvironment_Click" Header="Edit" />
                         <MenuItem Click="MenuItem_OpenDataFolder_Click" Header="Open Data Folder" />
