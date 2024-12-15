@@ -6,7 +6,7 @@ using static MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Helpers
 {
-    public static class JumpListHelper
+    internal static class JumpListHelper
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 

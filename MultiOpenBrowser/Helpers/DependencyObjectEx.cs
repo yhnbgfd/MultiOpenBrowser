@@ -2,7 +2,7 @@
 
 namespace MultiOpenBrowser.Helpers
 {
-    public static class DependencyObjectEx
+    internal static class DependencyObjectEx
     {
         public static void SetDynamicResourceKey(this DependencyObject obj, DependencyProperty prop, object resourceKey)
         {
