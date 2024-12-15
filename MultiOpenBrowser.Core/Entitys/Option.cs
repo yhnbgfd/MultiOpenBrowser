@@ -2,6 +2,7 @@
 {
     public class Option : INotifyPropertyChanged
     {
+        public string? Language { get; set; }
         /// <summary>
         /// 默认浏览器数据文件夹
         /// </summary>

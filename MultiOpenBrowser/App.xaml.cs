@@ -20,11 +20,13 @@ namespace MultiOpenBrowser
             EventBus.OnLanguageChange += OnLanguageChangeHandle;
         }
 
-        private void OnLanguageChangeHandle(string langName)
+        private async void OnLanguageChangeHandle(string langName)
         {
             if (Application.LoadComponent(new Uri(@"Views\Resources\" + langName + ".xaml", UriKind.Relative)) is ResourceDictionary langRd)
             {
                 Resources.MergedDictionaries[0] = langRd;
+                GlobalData.Option.Language = langName;
+                await CacheRepo.SetAsync(nameof(Option), GlobalData.Option, null);
             }
         }
 
@@ -33,6 +35,11 @@ namespace MultiOpenBrowser
             _logger.Info($"Application_Startup {string.Join(" ", e.Args)}");
 
             await ArgsHelper.StartWebEnvironmentAsync(e.Args);
+
+            if (!string.IsNullOrWhiteSpace(GlobalData.Option.Language))
+            {
+                OnLanguageChangeHandle(GlobalData.Option.Language!);
+            }
 
             StartupUri = new Uri("Views/Windows/MainWindow.xaml", UriKind.Relative);
         }
