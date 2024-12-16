@@ -14,6 +14,9 @@
     <sys:String x:Key="Menu_Help">Help</sys:String>
     <sys:String x:Key="Menu_CheckForUpdates">Check for Updates</sys:String>
     <sys:String x:Key="Menu_About">About</sys:String>
+    <sys:String x:Key="Menu_DEBUG">DEBUG</sys:String>
+    <sys:String x:Key="Menu_DEBUG_OpenLogFolder">Open Log Folder</sys:String>
+    <sys:String x:Key="Menu_DEBUG_OpenExeFolder">Open Exe Folder</sys:String>
 
     <sys:String x:Key="Group_All">All</sys:String>
     <sys:String x:Key="Group_Other">NoGroup</sys:String>

@@ -14,6 +14,9 @@
     <sys:String x:Key="Menu_Help">帮助</sys:String>
     <sys:String x:Key="Menu_CheckForUpdates">检查更新</sys:String>
     <sys:String x:Key="Menu_About">关于</sys:String>
+    <sys:String x:Key="Menu_DEBUG">DEBUG</sys:String>
+    <sys:String x:Key="Menu_DEBUG_OpenLogFolder">Open Log Folder</sys:String>
+    <sys:String x:Key="Menu_DEBUG_OpenExeFolder">Open Exe Folder</sys:String>
 
     <sys:String x:Key="Group_All">全部</sys:String>
     <sys:String x:Key="Group_Other">未分组</sys:String>

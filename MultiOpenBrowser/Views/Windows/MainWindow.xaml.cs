@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
@@ -12,6 +14,10 @@ namespace MultiOpenBrowser.Views.Windows
         {
             InitializeComponent();
             DataContext = this;
+
+#if !DEBUG
+            MenuItem_DEBUG.Visibility = Visibility.Collapsed;
+#endif
 
             var topCache = CacheHelper.Get("MainWindow_Top");
             var leftCache = CacheHelper.Get("MainWindow_Left");
@@ -312,6 +318,18 @@ namespace MultiOpenBrowser.Views.Windows
         private void MenuItem_EnUS_Click(object sender, RoutedEventArgs e)
         {
             EventBus.OnLanguageChange?.Invoke("EnUS");
+        }
+
+        private void MenuItem_OpenExeFolder_Click(object sender, RoutedEventArgs e)
+        {
+            var path = Directory.GetCurrentDirectory();
+            Process.Start("explorer.exe", path);
+        }
+
+        private void MenuItem_OpenLogFolder_Click(object sender, RoutedEventArgs e)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+            Process.Start("explorer.exe", path);
         }
     }
 }

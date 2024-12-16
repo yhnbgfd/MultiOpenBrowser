@@ -34,6 +34,10 @@
                 <Separator />
                 <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource Menu_About}" />
             </MenuItem>
+            <MenuItem x:Name="MenuItem_DEBUG" Header="{DynamicResource Menu_DEBUG}">
+                <MenuItem Click="MenuItem_OpenExeFolder_Click" Header="{DynamicResource Menu_DEBUG_OpenExeFolder}" />
+                <MenuItem Click="MenuItem_OpenLogFolder_Click" Header="{DynamicResource Menu_DEBUG_OpenLogFolder}" />
+            </MenuItem>
         </Menu>
         <UserControls:WebEnvironmentListUserControl x:Name="WebEnvironmentListUC" />
     </DockPanel>
