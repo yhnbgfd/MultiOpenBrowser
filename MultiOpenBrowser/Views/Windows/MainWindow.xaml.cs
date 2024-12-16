@@ -277,7 +277,7 @@ namespace MultiOpenBrowser.Views.Windows
             if (dialogResult == true)
             {
                 await CreateWebEnvironmentGroupMenuItemsAsync();
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
+                EventBus.OnWebEnvironmentListChange?.Invoke();
             }
         }
 
@@ -294,7 +294,7 @@ namespace MultiOpenBrowser.Views.Windows
             await new WebEnvironmentGroupRepo(null).DeleteAsync(tag);
             await CreateWebEnvironmentGroupMenuItemsAsync();
 
-            EventBus.NotifyWebEnvironmentChange?.Invoke();
+            EventBus.OnWebEnvironmentListChange?.Invoke();
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
@@ -309,7 +309,7 @@ namespace MultiOpenBrowser.Views.Windows
             if (dialogResult == true)
             {
                 await CreateWebEnvironmentGroupMenuItemsAsync();
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
+                EventBus.OnWebEnvironmentListChange?.Invoke();
             }
         }
 

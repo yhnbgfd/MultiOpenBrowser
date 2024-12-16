@@ -10,7 +10,7 @@ namespace MultiOpenBrowser.Views.UserControls
         public WebEnvironmentListUserControl()
         {
             InitializeComponent();
-            EventBus.NotifyWebEnvironmentChange += EventBus_NotifyWebEnvironmentChange;
+            EventBus.OnWebEnvironmentListChange += EventBus_NotifyWebEnvironmentChange;
         }
 
         private async Task EventBus_NotifyWebEnvironmentChange()

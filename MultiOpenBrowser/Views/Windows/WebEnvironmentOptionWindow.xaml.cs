@@ -68,7 +68,7 @@ namespace MultiOpenBrowser.Views.Windows
 
                 JumpListHelper.SetJumpList();
 
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
+                EventBus.OnWebEnvironmentListChange?.Invoke();
 
                 this.DialogResult = true;
                 this.Close();

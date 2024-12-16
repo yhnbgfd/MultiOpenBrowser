@@ -98,7 +98,7 @@ namespace MultiOpenBrowser.Views.UserControls
             }
             finally
             {
-                EventBus.NotifyWebEnvironmentChange?.Invoke();
+                EventBus.OnWebEnvironmentListChange?.Invoke();
             }
         }
 
