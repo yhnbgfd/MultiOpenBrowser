@@ -6,6 +6,7 @@ namespace MultiOpenBrowser.Views.Windows
 {
     public partial class AboutWindow : Window
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         public string? AppVersion => GlobalData.AppVersion;
 
         public AboutWindow()

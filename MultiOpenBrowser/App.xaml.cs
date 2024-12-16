@@ -32,7 +32,9 @@ namespace MultiOpenBrowser
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
-            _logger.Info($"Application_Startup {string.Join(" ", e.Args)}");
+            _logger.Info($"=============== Application_Startup ===============");
+            _logger.Info($"Args={string.Join(" ", e.Args)}");
+            _logger.Info($"AppVersion={GlobalData.AppVersion}");
 
             await ArgsHelper.StartWebEnvironmentAsync(e.Args);
 

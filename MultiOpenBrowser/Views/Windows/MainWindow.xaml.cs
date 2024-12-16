@@ -8,6 +8,7 @@ namespace MultiOpenBrowser.Views.Windows
 {
     public partial class MainWindow : Window
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         internal static UserInfo? UserInfo => GlobalData.UserInfo;
 
         public MainWindow()
@@ -74,6 +75,8 @@ namespace MultiOpenBrowser.Views.Windows
             await CacheHelper.SetAsync("MainWindow_Left", this.Left);
             await CacheHelper.SetAsync("MainWindow_Width", this.Width);
             await CacheHelper.SetAsync("MainWindow_Height", this.Height);
+
+            _logger.Info("MainWindow_Closed");
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)

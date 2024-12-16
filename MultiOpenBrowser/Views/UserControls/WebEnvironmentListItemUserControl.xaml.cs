@@ -65,7 +65,7 @@ namespace MultiOpenBrowser.Views.UserControls
                 return;
             }
 
-            var result = MessageBox.Show(Application.Current.MainWindow, "Delete WebEnvironment ?", "Delete WebEnvironment", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show(Application.Current.MainWindow, $"Delete WebEnvironment: {WebEnvironment.Name} ?", "Delete WebEnvironment", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Cancel)
             {
                 return;
