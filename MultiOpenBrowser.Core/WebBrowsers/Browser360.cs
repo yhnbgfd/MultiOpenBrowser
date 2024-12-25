@@ -6,6 +6,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 {
     internal class Browser360(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
+        public override string Icon => "360_browser.png";
         public override string? ExePath => _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.Browser360Path;
 
         public override string? GetStartupArguments(StartOption startOption)

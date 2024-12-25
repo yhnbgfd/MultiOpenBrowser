@@ -25,23 +25,11 @@ namespace MultiOpenBrowser.Views.UserControls
             DataContext = this;
             WebEnvironment = webEnvironment;
             WebBrowser = WebEnvironment.WebBrowser;
-            Uri uriSource;
-            if (WebBrowser.Type == WebBrowser.TypeEnum.MsEdge)
-            {
-                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/MicrosoftEdge.png", UriKind.Relative);
-            }
-            else if (WebBrowser.Type == WebBrowser.TypeEnum.Firefox)
-            {
-                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/Firefox.png", UriKind.Relative);
-            }
-            else if (WebBrowser.Type == WebBrowser.TypeEnum.Browser360)
-            {
-                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/360_browser.png", UriKind.Relative);
-            }
-            else
-            {
-                uriSource = new Uri(@"/MultiOpenBrowser;component/Assets/GoogleChrome.png", UriKind.Relative);
-            }
+
+            WebBrowserFactory webBrowserFactory = new(WebEnvironment);
+            var iconName = webBrowserFactory.WebBrowserInstance.Icon;
+            var iconPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", iconName);
+            Uri uriSource = new(iconPath);
             this.Image_Icon.Source = new BitmapImage(uriSource);
         }
 

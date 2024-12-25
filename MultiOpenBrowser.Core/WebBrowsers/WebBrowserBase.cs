@@ -8,6 +8,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
         protected WebEnvironment _webEnvironment = webEnvironment;
 
         protected virtual string ArgumentPrefix => "--";
+        public virtual string Icon => string.Empty;
         public virtual string? ExePath => _webEnvironment.WebBrowser.ExePath;
 
         public abstract string? GetStartupArguments(StartOption startOption);

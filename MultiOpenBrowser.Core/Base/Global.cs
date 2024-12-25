@@ -10,7 +10,7 @@ namespace MultiOpenBrowser.Core.Base
     public static class Global
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private static readonly string[] _autoCreateDirectorys = ["Data"];
+        private static readonly string[] _autoCreateDirectorys = ["Data", "Assets", "Logs"];
 
         public static IFreeSql FSql { get; private set; }
         public static IContainer Container { get; private set; }

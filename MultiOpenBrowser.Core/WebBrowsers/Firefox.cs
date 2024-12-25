@@ -7,6 +7,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
     internal class Firefox(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
         protected override string ArgumentPrefix => "-";
+        public override string Icon => "Firefox.png";
         public override string? ExePath => _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
 
         public override string? GetStartupArguments(StartOption startOption)

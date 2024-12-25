@@ -135,16 +135,16 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem editMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "Edit",
                     };
+                    editMenuItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Edit");
                     editMenuItem.Click += MenuItem_EditWebBrowser_Click;
                     menuItem.Items.Add(editMenuItem);
 
                     MenuItem deleteMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "Delete",
                     };
+                    deleteMenuItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Delete");
                     deleteMenuItem.Click += MenuItem_DeleteWebBrowser_Click;
                     menuItem.Items.Add(deleteMenuItem);
                 }
@@ -196,16 +196,16 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem editMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "Edit",
                     };
+                    editMenuItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Edit");
                     editMenuItem.Click += MenuItem_EditWebEnvironmentGroup_Click;
                     menuItem.Items.Add(editMenuItem);
 
                     MenuItem deleteMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "Delete",
                     };
+                    deleteMenuItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Delete");
                     deleteMenuItem.Click += MenuItem_DeleteWebEnvironmentGroup_Click;
                     menuItem.Items.Add(deleteMenuItem);
                 }
