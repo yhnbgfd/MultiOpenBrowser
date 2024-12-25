@@ -103,10 +103,8 @@ namespace MultiOpenBrowser.Views.Windows
         {
             this.MenuItem_WebBrowser.Items.Clear();
 
-            MenuItem menuItemAdd = new()
-            {
-                Header = "Add Browser",
-            };
+            MenuItem menuItemAdd = new();
+            menuItemAdd.SetDynamicResourceKey(TabItem.HeaderProperty, "AddBrowser");
             menuItemAdd.Click += MenuItem_AddWebBrowser_Click;
             this.MenuItem_WebBrowser.Items.Add(menuItemAdd);
 
@@ -127,8 +125,8 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem addEnvMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "Add Environment",
                     };
+                    addEnvMenuItem.SetDynamicResourceKey(TabItem.HeaderProperty, "AddEnvironment");
                     addEnvMenuItem.Click += MenuItem_AddWebEnvironmentUseWebBrowser_Click;
                     menuItem.Items.Add(addEnvMenuItem);
 
@@ -159,18 +157,14 @@ namespace MultiOpenBrowser.Views.Windows
             this.MenuItem_WebEnvironment.Items.Clear();
 
             {
-                MenuItem menuItemAdd2 = new()
-                {
-                    Header = "Add Environment",
-                };
+                MenuItem menuItemAdd2 = new();
+                menuItemAdd2.SetDynamicResourceKey(TabItem.HeaderProperty, "AddEnvironment");
                 menuItemAdd2.Click += MenuItem_AddWebEnvironment_Click;
                 this.MenuItem_WebEnvironment.Items.Add(menuItemAdd2);
             }
             {
-                MenuItem menuItemAdd1 = new()
-                {
-                    Header = "Add Group",
-                };
+                MenuItem menuItemAdd1 = new();
+                menuItemAdd1.SetDynamicResourceKey(TabItem.HeaderProperty, "AddGroup");
                 menuItemAdd1.Click += MenuItem_AddWebEnvironmentGroup_Click;
                 this.MenuItem_WebEnvironmentGroup.Items.Add(menuItemAdd1);
             }
@@ -192,8 +186,8 @@ namespace MultiOpenBrowser.Views.Windows
                     MenuItem addEnvMenuItem = new()
                     {
                         Tag = wb,
-                        Header = "Add Environment",
                     };
+                    addEnvMenuItem.SetDynamicResourceKey(TabItem.HeaderProperty, "AddEnvironment");
                     addEnvMenuItem.Click += MenuItem_AddWebEnvironmentUseWebEnvironmentGroup_Click;
                     menuItem.Items.Add(addEnvMenuItem);
 

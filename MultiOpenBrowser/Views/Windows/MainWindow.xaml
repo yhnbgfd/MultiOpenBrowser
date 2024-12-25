@@ -17,22 +17,22 @@
     mc:Ignorable="d">
     <DockPanel x:Name="DockPanel_Main">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Height="28" Header="{DynamicResource Menu_File}">
-                <MenuItem Click="MenuItem_Options_Click" Header="{DynamicResource Menu_Options}" />
+            <MenuItem Height="28" Header="{DynamicResource File}">
+                <MenuItem Click="MenuItem_Options_Click" Header="{DynamicResource Options}" />
                 <Separator />
-                <MenuItem Click="MenuItem_Exit_Click" Header="{DynamicResource Menu_Exit}" />
+                <MenuItem Click="MenuItem_Exit_Click" Header="{DynamicResource Exit}" />
             </MenuItem>
-            <MenuItem x:Name="MenuItem_WebBrowser" Header="{DynamicResource Menu_Browser}" />
+            <MenuItem x:Name="MenuItem_WebBrowser" Header="{DynamicResource Browser}" />
             <MenuItem x:Name="MenuItem_WebEnvironmentGroup" Header="{DynamicResource Menu_Group}" />
-            <MenuItem x:Name="MenuItem_WebEnvironment" Header="{DynamicResource Menu_Environment}" />
-            <MenuItem Header="{DynamicResource Menu_Language}">
-                <MenuItem Click="MenuItem_ZhCN_Click" Header="{DynamicResource Menu_Language_ZhCN}" />
-                <MenuItem Click="MenuItem_EnUS_Click" Header="{DynamicResource Menu_Language_EnUS}" />
+            <MenuItem x:Name="MenuItem_WebEnvironment" Header="{DynamicResource Environment}" />
+            <MenuItem Header="{DynamicResource Language}">
+                <MenuItem Click="MenuItem_ZhCN_Click" Header="{DynamicResource Language_ZhCN}" />
+                <MenuItem Click="MenuItem_EnUS_Click" Header="{DynamicResource Language_EnUS}" />
             </MenuItem>
-            <MenuItem Header="{DynamicResource Menu_Help}">
-                <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource Menu_CheckForUpdates}" />
+            <MenuItem Header="{DynamicResource Help}">
+                <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource CheckForUpdates}" />
                 <Separator />
-                <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource Menu_About}" />
+                <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource About}" />
             </MenuItem>
             <MenuItem x:Name="MenuItem_DEBUG" Header="{DynamicResource Menu_DEBUG}">
                 <MenuItem Click="MenuItem_OpenExeFolder_Click" Header="{DynamicResource Menu_DEBUG_OpenExeFolder}" />
