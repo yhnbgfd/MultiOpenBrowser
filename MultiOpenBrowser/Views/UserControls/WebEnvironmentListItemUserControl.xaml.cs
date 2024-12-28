@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
 {
@@ -15,7 +14,6 @@ namespace MultiOpenBrowser.Views.UserControls
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public WebEnvironment WebEnvironment { get; private set; }
-        public WebBrowser WebBrowser { get; private set; }
         public double IconOpacityDefault { get; set; } = 0.1;
         public double IconOpacityFocus { get; set; } = 0.2;
 
@@ -24,7 +22,6 @@ namespace MultiOpenBrowser.Views.UserControls
             InitializeComponent();
             DataContext = this;
             WebEnvironment = webEnvironment;
-            WebBrowser = WebEnvironment.WebBrowser;
 
             WebBrowserFactory webBrowserFactory = new(WebEnvironment);
             var iconName = webBrowserFactory.WebBrowserInstance.Icon;
