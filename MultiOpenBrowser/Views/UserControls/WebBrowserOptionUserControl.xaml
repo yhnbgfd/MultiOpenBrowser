@@ -74,6 +74,26 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                Text="Startup Arguments" />
+            <TextBox
+                Grid.Column="1"
+                Width="400"
+                MinHeight="30"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                Text="{Binding WebBrowser.Arguments}"
+                TextWrapping="Wrap" />
+        </Grid>
+        <Grid Grid.Row="3" Grid.ColumnSpan="99">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Margin="5,0,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
                 Text="WebBrowser Name"
                 TextWrapping="Wrap" />
             <TextBox
@@ -85,7 +105,7 @@
                 VerticalContentAlignment="Center"
                 Text="{Binding WebBrowser.Name}" />
         </Grid>
-        <Grid Grid.Row="3" Grid.ColumnSpan="99">
+        <Grid Grid.Row="4" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -105,7 +125,7 @@
                 Text="{Binding WebBrowser.UserAgent}"
                 TextWrapping="Wrap" />
         </Grid>
-        <Grid Grid.Row="4" Grid.ColumnSpan="99">
+        <Grid Grid.Row="5" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -125,7 +145,7 @@
                 Text="{Binding WebBrowser.ProxyServer}"
                 TextWrapping="Wrap" />
         </Grid>
-        <Grid Grid.Row="5" Grid.ColumnSpan="99">
+        <Grid Grid.Row="6" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -142,26 +162,6 @@
                 VerticalContentAlignment="Center"
                 Content="(It can solve the cross-domain error of some websites)"
                 IsChecked="{Binding WebBrowser.DisableWebSecurity}" />
-        </Grid>
-        <Grid Grid.Row="6" Grid.ColumnSpan="99">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="7*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Margin="5,0,5,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Text="Startup Arguments" />
-            <TextBox
-                Grid.Column="1"
-                Width="400"
-                MinHeight="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                Text="{Binding WebBrowser.Arguments}"
-                TextWrapping="Wrap" />
         </Grid>
     </Grid>
 </UserControl>
