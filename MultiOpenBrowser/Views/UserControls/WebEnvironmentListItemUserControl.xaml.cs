@@ -1,7 +1,9 @@
 ﻿using MultiOpenBrowser.Core.WebBrowsers;
 using MultiOpenBrowser.Views.Windows;
+using ReactiveUI;
 using System.Diagnostics;
 using System.IO;
+using System.Reactive;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,12 +18,26 @@ namespace MultiOpenBrowser.Views.UserControls
         public WebEnvironment WebEnvironment { get; private set; }
         public double IconOpacityDefault { get; set; } = 0.1;
         public double IconOpacityFocus { get; set; } = 0.2;
+        public ReactiveCommand<Unit, Unit> CopyWebEnvironmentCommand { get; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
             InitializeComponent();
             DataContext = this;
             WebEnvironment = webEnvironment;
+
+            CopyWebEnvironmentCommand = ReactiveCommand.Create(() =>
+            {
+                try
+                {
+                    EventBus.LockUI?.Invoke();
+                    CopyWebEnvironment();
+                }
+                finally
+                {
+                    EventBus.UnlockUI?.Invoke();
+                }
+            });
 
             WebBrowserFactory webBrowserFactory = new(WebEnvironment);
             var iconName = webBrowserFactory.WebBrowserInstance.Icon;
@@ -126,44 +142,6 @@ namespace MultiOpenBrowser.Views.UserControls
             }
         }
 
-        private void MenuItem_Copy_Click(object sender, RoutedEventArgs e)
-        {
-            if (WebEnvironment == null)
-            {
-                return;
-            }
-
-            try
-            {
-                EventBus.LockUI?.Invoke();
-
-                var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
-
-                var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
-
-                newWebEnvironment.Id = 0;
-                newWebEnvironment.Order = 0;
-                newWebEnvironment.WebBrowser.Id = 0;
-                newWebEnvironment.Name += " Copy";
-                newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
-
-                var dialogResult = new WebEnvironmentOptionWindow()
-                {
-                    Owner = Application.Current.MainWindow,
-                    WebEnvironment = newWebEnvironment
-                }.ShowDialog();
-
-                if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
-                {
-                    FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
-                }
-            }
-            finally
-            {
-                EventBus.UnlockUI?.Invoke();
-            }
-        }
-
         private void MenuItem_OpenDataFolder_Click(object sender, RoutedEventArgs e)
         {
             if (WebEnvironment == null)
@@ -194,6 +172,35 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 _logger.Error(ex);
                 MessageBox.Show(Application.Current.MainWindow, ex.Message, "Copy Startup CMD Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void CopyWebEnvironment()
+        {
+            if (WebEnvironment == null)
+            {
+                return;
+            }
+
+            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
+
+            var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
+
+            newWebEnvironment.Id = 0;
+            newWebEnvironment.Order = 0;
+            newWebEnvironment.WebBrowser.Id = 0;
+            newWebEnvironment.Name += " Copy";
+            newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
+
+            var dialogResult = new WebEnvironmentOptionWindow()
+            {
+                Owner = Application.Current.MainWindow,
+                WebEnvironment = newWebEnvironment
+            }.ShowDialog();
+
+            if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
+            {
+                FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
             }
         }
     }

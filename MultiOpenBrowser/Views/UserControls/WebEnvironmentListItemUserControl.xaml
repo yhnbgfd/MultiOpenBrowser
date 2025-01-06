@@ -63,7 +63,7 @@
                         <MenuItem Click="MenuItem_OpenDataFolder_Click" Header="Open Data Folder" />
                         <MenuItem Click="MenuItem_CopyStartupCMD_Click" Header="Copy startup CMD" />
                         <Separator />
-                        <MenuItem Click="MenuItem_Copy_Click" Header="Copy" />
+                        <MenuItem Command="{Binding CopyWebEnvironmentCommand}" Header="Copy" />
                         <MenuItem Click="Button_DeleteWebEnvironment_Click" Header="Delete" />
                     </MenuItem>
                 </Menu>
