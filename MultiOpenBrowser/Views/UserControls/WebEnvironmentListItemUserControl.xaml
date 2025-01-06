@@ -22,8 +22,8 @@
             <Image
                 x:Name="Image_Icon"
                 HorizontalAlignment="Left"
+                d:Opacity="0.1"
                 d:Source="/Assets/GoogleChrome.png"
-                Opacity="{Binding IconOpacityDefault}"
                 RenderOptions.BitmapScalingMode="HighQuality" />
             <TextBlock
                 HorizontalAlignment="Center"

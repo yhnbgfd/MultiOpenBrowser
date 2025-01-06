@@ -18,6 +18,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\GoogleChrome.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\GoogleChrome.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Fody" Version="6.9.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -14,10 +14,10 @@ namespace MultiOpenBrowser.Views.UserControls
     public partial class WebEnvironmentListItemUserControl : UserControl
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private const double IconOpacityDefault = 0.1;
+        private const double IconOpacityFocus = 0.2;
 
         public WebEnvironment WebEnvironment { get; private set; }
-        public double IconOpacityDefault { get; set; } = 0.1;
-        public double IconOpacityFocus { get; set; } = 0.2;
         public ReactiveCommand<Unit, Unit> CopyWebEnvironmentCommand { get; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
@@ -44,6 +44,7 @@ namespace MultiOpenBrowser.Views.UserControls
             var iconPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", iconName);
             Uri uriSource = new(iconPath);
             this.Image_Icon.Source = new BitmapImage(uriSource);
+            this.Image_Icon.Opacity = IconOpacityDefault;
         }
 
         private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)
