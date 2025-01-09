@@ -1,24 +1,22 @@
 ﻿using MultiOpenBrowser.Core.WebBrowsers;
+using MultiOpenBrowser.ViewModels;
 using MultiOpenBrowser.Views.Windows;
 using ReactiveUI;
 using System.Diagnostics;
 using System.IO;
-using System.Reactive;
+using System.Reactive.Disposables;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace MultiOpenBrowser.Views.UserControls
 {
-    public partial class WebEnvironmentListItemUserControl : UserControl
+    public partial class WebEnvironmentListItemUserControl : ReactiveUserControl<WebEnvironmentListItemViewModel>
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private const double IconOpacityDefault = 0.1;
         private const double IconOpacityFocus = 0.2;
-
         public WebEnvironment WebEnvironment { get; private set; }
-        public ReactiveCommand<Unit, Unit> CopyWebEnvironmentCommand { get; }
 
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
@@ -26,20 +24,13 @@ namespace MultiOpenBrowser.Views.UserControls
             DataContext = this;
             WebEnvironment = webEnvironment;
 
-            CopyWebEnvironmentCommand = ReactiveCommand.Create(() =>
+            ViewModel = new WebEnvironmentListItemViewModel(webEnvironment);
+            this.WhenActivated(disposables =>
             {
-                try
-                {
-                    EventBus.LockUI?.Invoke();
-                    CopyWebEnvironment();
-                }
-                finally
-                {
-                    EventBus.UnlockUI?.Invoke();
-                }
+                this.BindCommand(ViewModel, x => x.CopyWebEnvironmentCommand, x => x.MenuItem_Copy).DisposeWith(disposables);
             });
 
-            WebBrowserFactory webBrowserFactory = new(WebEnvironment);
+            WebBrowserFactory webBrowserFactory = new(webEnvironment);
             var iconName = webBrowserFactory.WebBrowserInstance.Icon;
             var iconPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", iconName);
             Uri uriSource = new(iconPath);
@@ -173,35 +164,6 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 _logger.Error(ex);
                 MessageBox.Show(Application.Current.MainWindow, ex.Message, "Copy Startup CMD Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void CopyWebEnvironment()
-        {
-            if (WebEnvironment == null)
-            {
-                return;
-            }
-
-            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
-
-            var sourceDataPath = newWebEnvironment.WebBrowserDataPath;
-
-            newWebEnvironment.Id = 0;
-            newWebEnvironment.Order = 0;
-            newWebEnvironment.WebBrowser.Id = 0;
-            newWebEnvironment.Name += " Copy";
-            newWebEnvironment.WebBrowserDataPath = Path.Combine($"{GlobalData.Option.DefaultWebBrowserDataPath}", $"{DateTimeOffset.Now:yyyyMMddHHmmss}");
-
-            var dialogResult = new WebEnvironmentOptionWindow()
-            {
-                Owner = Application.Current.MainWindow,
-                WebEnvironment = newWebEnvironment
-            }.ShowDialog();
-
-            if (dialogResult == true && sourceDataPath != null && Directory.Exists(sourceDataPath))
-            {
-                FileHelper.CopyDirectory(sourceDataPath, newWebEnvironment.WebBrowserDataPath, true);
             }
         }
     }

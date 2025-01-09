@@ -1,22 +1,31 @@
-﻿using System.Windows;
+﻿using MultiOpenBrowser.ViewModels;
+using ReactiveUI;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Windows.Input;
 
 namespace MultiOpenBrowser.Views.Windows
 {
-    public partial class OptionsWindow : Window
+    public partial class OptionsWindow : ReactiveWindow<OptionsViewModel>
     {
-        public static Option? Option => GlobalData.Option;
-
         public OptionsWindow()
         {
             InitializeComponent();
-            DataContext = this;
-        }
 
-        private async void Button_Save_Click(object sender, RoutedEventArgs e)
-        {
-            await CacheHelper.SetAsync(nameof(Option), Option);
-            this.Close();
+            ViewModel = new OptionsViewModel();
+            this.WhenActivated(disposables =>
+            {
+                this.Bind(ViewModel, vm => vm.Option.DefaultWebBrowserDataPath, v => v.TextBox_DefaultWebBrowserDataPath.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Option.DefaultUserAgent, v => v.TextBox_DefaultUserAgent.Text).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.SaveCommand, x => x.Button_Save).DisposeWith(disposables);
+                ViewModel.SaveCommand
+                    .ObserveOn(RxApp.MainThreadScheduler)
+                    .Subscribe(result =>
+                    {
+                        this.Close();
+                    })
+                    .DisposeWith(disposables);
+            });
         }
 
         private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
