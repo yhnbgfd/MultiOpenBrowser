@@ -27,6 +27,8 @@ namespace MultiOpenBrowser.Views.UserControls
             ViewModel = new WebEnvironmentListItemViewModel(webEnvironment);
             this.WhenActivated(disposables =>
             {
+                this.OneWayBind(ViewModel, vm => vm.WebEnvironment.NameUI, v => v.TextBlock_Name.Text).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.WebEnvironment.ToolTip, v => v.TextBlock_Name.ToolTip).DisposeWith(disposables);
                 this.BindCommand(ViewModel, x => x.CopyWebEnvironmentCommand, x => x.MenuItem_Copy).DisposeWith(disposables);
             });
 
