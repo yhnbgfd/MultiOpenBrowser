@@ -10,7 +10,6 @@
     d:DesignHeight="350"
     d:DesignWidth="800"
     x:TypeArguments="vms:WebBrowserOptionViewModel"
-    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -46,11 +45,11 @@
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
                 SelectionChanged="ComboBox_Type_SelectionChanged">
-                <!--<ComboBox.ItemTemplate>
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" />
                     </DataTemplate>
-                </ComboBox.ItemTemplate>-->
+                </ComboBox.ItemTemplate>
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="99">

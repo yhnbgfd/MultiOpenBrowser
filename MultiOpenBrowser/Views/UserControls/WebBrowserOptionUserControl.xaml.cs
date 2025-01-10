@@ -22,7 +22,8 @@ namespace MultiOpenBrowser.Views.UserControls
             this.WhenActivated(disposables =>
             {
                 ViewModel = new WebBrowserOptionViewModel(WebBrowser);
-                //this.OneWayBind(ViewModel, vm => vm.Types, v => v.ComboBox_Type.ItemsSource).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.Types, v => v.ComboBox_Type.ItemsSource).DisposeWith(disposables);
+                this.ComboBox_Type.SelectedItem = WebBrowser.Type.ToString();
                 //this.Bind(ViewModel, vm => vm.WebBrowser.Type, v => v.ComboBox_Type.SelectedItem).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.ExePath, v => v.TextBox_ExePath.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.Arguments, v => v.TextBox_Arguments.Text).DisposeWith(disposables);
@@ -33,18 +34,8 @@ namespace MultiOpenBrowser.Views.UserControls
             });
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            foreach (WebBrowser.TypeEnum type in Enum.GetValues<WebBrowser.TypeEnum>())
-            {
-                this.ComboBox_Type.Items.Add(type.ToString());
-            }
-            this.ComboBox_Type.SelectedItem = WebBrowser.Type.ToString();
-        }
-
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //string? text = ((sender as ComboBox)?.SelectedItem as ComboBoxItem)?.Content as string;
             string? text = (sender as ComboBox)?.SelectedItem as string;
             if (Enum.TryParse(text, out WebBrowser.TypeEnum type))
             {
