@@ -1,6 +1,6 @@
 ﻿namespace MultiOpenBrowser.Core.Repositorys
 {
-    public class WebEnvironmentGroupRepo(IUnitOfWork? uow) : BaseRepo<WebEnvironmentGroup>(uow, null, null)
+    public class WebEnvironmentGroupRepo(IUnitOfWork? uow) : BaseRepo<WebEnvironmentGroup>(uow, null)
     {
         public static async Task LoadAsync()
         {

@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
-
-namespace MultiOpenBrowser.Core.Repositorys
+﻿namespace MultiOpenBrowser.Core.Repositorys
 {
     /// <summary>
     /// 标准仓储
@@ -20,16 +17,12 @@ namespace MultiOpenBrowser.Core.Repositorys
         /// <param name="uow">UnitOfWork</param>
         /// <param name="filter"></param>
         /// <param name="asTable"></param>
-        public BaseRepo(IUnitOfWork? uow, Expression<Func<T, bool>>? filter, Func<string, string>? asTable) : base(Global.FSql, filter, asTable)
+        public BaseRepo(IUnitOfWork? uow, Func<string, string>? asTable) : base(Global.FSql)
         {
             if (asTable != null)
             {
-                // 使用反射修改FreeSql.BaseRepository的AsTableSelectValueInternal属性值，使其继承分表表名规则（默认不继承，LeftJoin子句里面的表名是原始表名）
-                Type type = typeof(BaseRepository<T>);
-                PropertyInfo propertyInfo = type.GetProperty("AsTableSelectValueInternal", BindingFlags.Instance | BindingFlags.NonPublic)!;
-                propertyInfo.SetValue(this, new Func<Type, string, string>((a, b) => asTable(b)));
+                base.AsTable(new Func<Type, string, string>((a, b) => asTable(b)));
             }
-
             UnitOfWork = uow;
         }
 
