@@ -7,7 +7,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
     internal class Chrome(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
         public override string Icon => "GoogleChrome.png";
-        public override string? ExePath => _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.ChromePath;
+        public override string? ExePath => string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ExePath) ? GlobalData.Option.ChromePath : _webEnvironment.WebBrowser.ExePath;
 
         public override string? GetStartupArguments(StartOption startOption)
         {
@@ -56,16 +56,15 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 
         public override string? GetStartupCmd(StartOption startOption)
         {
-            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.ChromePath;
             var aguments = GetStartupArguments(startOption);
-            return $"{exePath} {aguments}";
+            return $"{ExePath} {aguments}";
         }
 
         public override StartResult Start(StartOption startOption)
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.ChromePath,
+                FileName = ExePath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()

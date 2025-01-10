@@ -1,8 +1,5 @@
 ﻿using MultiOpenBrowser.Core.WebBrowsers;
-using MultiOpenBrowser.Views.Windows;
-using System.Diagnostics;
 using System.IO;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -25,7 +22,13 @@ namespace MultiOpenBrowser.Views.UserControls
                 ViewModel = new WebEnvironmentListItemViewModel(webEnvironment);
                 this.OneWayBind(ViewModel, vm => vm.WebEnvironment.NameUI, v => v.TextBlock_Name.Text).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.WebEnvironment.ToolTip, v => v.TextBlock_Name.ToolTip).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.StartWebEnvironmentCommand, x => x.Button_Run).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.StartWebEnvironmentIncognitoCommand, x => x.MenuItem_StartWebEnvironmentIncognito).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.EditWebEnvironmentCommand, x => x.MenuItem_EditWebEnvironment).DisposeWith(disposables);
                 this.BindCommand(ViewModel, x => x.CopyWebEnvironmentCommand, x => x.MenuItem_Copy).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.OpenDataFolderCommand, x => x.MenuItem_OpenDataFolder).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.DeleteWebEnvironmentCommand, x => x.MenuItem_DeleteWebEnvironment).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.CopyStartupCMDCommand, x => x.MenuItem_CopyStartupCMD).DisposeWith(disposables);
             });
 
             WebBrowserFactory webBrowserFactory = new(webEnvironment);
@@ -36,79 +39,6 @@ namespace MultiOpenBrowser.Views.UserControls
             this.Image_Icon.Opacity = IconOpacityDefault;
         }
 
-        private void Button_StartWebEnvironment_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                new WebBrowserFactory(WebEnvironment).Start(new IWebBrowser.StartOption());
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Start WebEnvironment Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private async void Button_DeleteWebEnvironment_Click(object sender, RoutedEventArgs e)
-        {
-            if (WebEnvironment == null)
-            {
-                return;
-            }
-
-            var result = MessageBox.Show(Application.Current.MainWindow, $"Delete WebEnvironment: {WebEnvironment.Name} ?", "Delete WebEnvironment", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Cancel)
-            {
-                return;
-            }
-
-            using var uow = Global.FSql.CreateUnitOfWork();
-            try
-            {
-                if (WebEnvironment.WebBrowser?.IsTemplate == false)
-                {
-                    WebBrowserRepo webBrowserRepo = new(uow);
-                    await webBrowserRepo.DeleteAsync(WebEnvironment.WebBrowser);
-                }
-
-                WebEnvironmentRepo webEnvironmentRepo = new(uow);
-                await webEnvironmentRepo.DeleteAsync(WebEnvironment);
-
-                uow.Commit();
-
-                if (!string.IsNullOrWhiteSpace(WebEnvironment.WebBrowserDataPath) && Directory.Exists(WebEnvironment.WebBrowserDataPath))
-                {
-                    Directory.Delete(WebEnvironment.WebBrowserDataPath, true);
-                }
-            }
-            catch (Exception ex)
-            {
-                uow.Rollback();
-                _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Delete WebEnvironment Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                EventBus.OnWebEnvironmentListChange?.Invoke();
-            }
-        }
-
-        private void Button_EditWebEnvironment_Click(object sender, RoutedEventArgs e)
-        {
-            if (WebEnvironment == null)
-            {
-                return;
-            }
-
-            var newWebEnvironment = (WebEnvironment)WebEnvironment.Clone();
-
-            _ = new WebEnvironmentOptionWindow()
-            {
-                Owner = Application.Current.MainWindow,
-                WebEnvironment = newWebEnvironment
-            }.ShowDialog();
-        }
-
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
             this.Image_Icon.Opacity = IconOpacityFocus;
@@ -117,52 +47,6 @@ namespace MultiOpenBrowser.Views.UserControls
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
         {
             this.Image_Icon.Opacity = IconOpacityDefault;
-        }
-
-        private void Button_StartWebEnvironmentIncognito_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                new WebBrowserFactory(WebEnvironment).Start(new IWebBrowser.StartOption() { IncognitoMode = true });
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Start WebEnvironment Incognito Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void MenuItem_OpenDataFolder_Click(object sender, RoutedEventArgs e)
-        {
-            if (WebEnvironment == null)
-            {
-                return;
-            }
-
-            if (WebEnvironment.WebBrowserDataPath != null && Directory.Exists(WebEnvironment.WebBrowserDataPath))
-            {
-                Process.Start("explorer.exe", WebEnvironment.WebBrowserDataPath);
-            }
-        }
-
-        private void MenuItem_CopyStartupCMD_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (WebEnvironment == null)
-                {
-                    return;
-                }
-
-                var cmd = new WebBrowserFactory(WebEnvironment).GetStartupCmd(new IWebBrowser.StartOption());
-
-                Clipboard.SetText(cmd, TextDataFormat.Text);
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex);
-                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Copy Startup CMD Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
     }
 }

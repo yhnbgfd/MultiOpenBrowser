@@ -8,7 +8,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
     {
         protected override string ArgumentPrefix => "-";
         public override string Icon => "Firefox.png";
-        public override string? ExePath => _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
+        public override string? ExePath => string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ExePath) ? GlobalData.Option.FirefoxPath : _webEnvironment.WebBrowser.ExePath;
 
         public override string? GetStartupArguments(StartOption startOption)
         {
@@ -44,16 +44,15 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 
         public override string? GetStartupCmd(StartOption startOption)
         {
-            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath;
             var aguments = GetStartupArguments(startOption);
-            return $"{exePath} {aguments}";
+            return $"{ExePath} {aguments}";
         }
 
         public override StartResult Start(StartOption startOption)
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.FirefoxPath,
+                FileName = ExePath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()

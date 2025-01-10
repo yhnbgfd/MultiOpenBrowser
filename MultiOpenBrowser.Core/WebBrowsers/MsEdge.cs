@@ -7,7 +7,7 @@ namespace MultiOpenBrowser.Core.WebBrowsers
     internal class MsEdge(WebEnvironment webEnvironment) : WebBrowserBase(webEnvironment)
     {
         public override string Icon => "MicrosoftEdge.png";
-        public override string? ExePath => _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath;
+        public override string? ExePath => string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ExePath) ? GlobalData.Option.MsEdgePath : _webEnvironment.WebBrowser.ExePath;
 
         public override string? GetStartupArguments(StartOption startOption)
         {
@@ -56,16 +56,15 @@ namespace MultiOpenBrowser.Core.WebBrowsers
 
         public override string? GetStartupCmd(StartOption startOption)
         {
-            var exePath = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath;
             var aguments = GetStartupArguments(startOption);
-            return $"{exePath} {aguments}";
+            return $"{ExePath} {aguments}";
         }
 
         public override StartResult Start(StartOption startOption)
         {
             ProcessStartInfo processStartInfo = new()
             {
-                FileName = _webEnvironment.WebBrowser.ExePath ?? GlobalData.Option.MsEdgePath,
+                FileName = ExePath,
                 Arguments = GetStartupArguments(startOption),
             };
             Process process = new()
