@@ -1,8 +1,4 @@
-﻿using MultiOpenBrowser.ViewModels;
-using ReactiveUI;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace MultiOpenBrowser.Views.Windows
 {

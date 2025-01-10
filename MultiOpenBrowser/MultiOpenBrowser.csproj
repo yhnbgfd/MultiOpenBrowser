@@ -65,8 +65,13 @@
     <Using Include="MultiOpenBrowser.Helpers" />
     <Using Include="MultiOpenBrowser.Core.Helpers" />
     <Using Include="MultiOpenBrowser.Core.Repositorys" />
+    <Using Include="MultiOpenBrowser.ViewModels" />
     <Using Include="NLog" />
+    <Using Include="ReactiveUI" />
     <Using Include="System.ComponentModel" />
+    <Using Include="System.Reactive" />
+    <Using Include="System.Reactive.Disposables" />
+    <Using Include="System.Reactive.Linq" />
   </ItemGroup>
 
 </Project>

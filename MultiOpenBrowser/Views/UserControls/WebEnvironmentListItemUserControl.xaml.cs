@@ -1,10 +1,7 @@
 ﻿using MultiOpenBrowser.Core.WebBrowsers;
-using MultiOpenBrowser.ViewModels;
 using MultiOpenBrowser.Views.Windows;
-using ReactiveUI;
 using System.Diagnostics;
 using System.IO;
-using System.Reactive.Disposables;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;

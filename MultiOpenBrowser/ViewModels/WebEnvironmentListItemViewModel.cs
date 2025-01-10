@@ -1,7 +1,5 @@
 ﻿using MultiOpenBrowser.Views.Windows;
-using ReactiveUI;
 using System.IO;
-using System.Reactive;
 using System.Windows;
 
 namespace MultiOpenBrowser.ViewModels

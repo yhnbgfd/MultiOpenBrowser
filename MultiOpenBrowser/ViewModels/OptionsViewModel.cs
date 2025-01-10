@@ -1,7 +1,4 @@
-﻿using ReactiveUI;
-using System.Reactive;
-
-namespace MultiOpenBrowser.ViewModels
+﻿namespace MultiOpenBrowser.ViewModels
 {
     public class OptionsViewModel : ReactiveObject
     {
