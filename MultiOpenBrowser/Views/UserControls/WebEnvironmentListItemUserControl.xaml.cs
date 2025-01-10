@@ -18,7 +18,6 @@ namespace MultiOpenBrowser.Views.UserControls
         public WebEnvironmentListItemUserControl(WebEnvironment webEnvironment)
         {
             InitializeComponent();
-            DataContext = this;
             WebEnvironment = webEnvironment;
 
             ViewModel = new WebEnvironmentListItemViewModel(webEnvironment);

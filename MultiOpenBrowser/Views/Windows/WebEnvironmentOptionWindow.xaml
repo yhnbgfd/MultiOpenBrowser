@@ -5,6 +5,8 @@
     xmlns:UserControls="clr-namespace:MultiOpenBrowser.Views.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:reactiveui="http://reactiveui.net"
+    xmlns:vms="clr-namespace:MultiOpenBrowser.ViewModels"
     Title="WebEnvironment Option Window"
     Width="640"
     Height="440"

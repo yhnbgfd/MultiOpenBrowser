@@ -4,7 +4,7 @@ using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
 {
-    public partial class WebBrowserOptionUserControl : UserControl
+    public partial class WebBrowserOptionUserControl : ReactiveUserControl<WebBrowserOptionViewModel>
     {
         public static readonly DependencyProperty WebBrowserProperty = DependencyProperty.Register(
             "WebBrowser", typeof(WebBrowser), typeof(WebBrowserOptionUserControl), new PropertyMetadata(new WebBrowser() { Name = "WebBrowser" }));
