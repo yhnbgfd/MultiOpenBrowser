@@ -18,6 +18,19 @@ namespace MultiOpenBrowser.Views.UserControls
         public WebBrowserOptionUserControl()
         {
             InitializeComponent();
+
+            this.WhenActivated(disposables =>
+            {
+                ViewModel = new WebBrowserOptionViewModel(WebBrowser);
+                //this.OneWayBind(ViewModel, vm => vm.Types, v => v.ComboBox_Type.ItemsSource).DisposeWith(disposables);
+                //this.Bind(ViewModel, vm => vm.WebBrowser.Type, v => v.ComboBox_Type.SelectedItem).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.ExePath, v => v.TextBox_ExePath.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.Arguments, v => v.TextBox_Arguments.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.Name, v => v.TextBox_WebBrowserName.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.UserAgent, v => v.TextBox_UserAgent.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.ProxyServer, v => v.TextBox_ProxyServer.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.DisableWebSecurity, v => v.CheckBox_DisableWebSecurity.IsChecked).DisposeWith(disposables);
+            });
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

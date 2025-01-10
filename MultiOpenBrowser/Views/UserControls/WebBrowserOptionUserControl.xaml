@@ -44,8 +44,13 @@
                 Height="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                SelectionChanged="ComboBox_Type_SelectionChanged" />
+                VerticalContentAlignment="Center">
+                <!--<ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>-->
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
@@ -59,13 +64,13 @@
                 Text="WebBrowser Exe Path"
                 TextWrapping="Wrap" />
             <TextBox
+                x:Name="TextBox_ExePath"
                 Grid.Column="1"
                 Width="400"
                 Height="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Text="{Binding WebBrowser.ExePath}"
                 TextWrapping="Wrap" />
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="99">
@@ -79,13 +84,13 @@
                 VerticalAlignment="Center"
                 Text="Startup Arguments" />
             <TextBox
+                x:Name="TextBox_Arguments"
                 Grid.Column="1"
                 Width="400"
                 MinHeight="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Text="{Binding WebBrowser.Arguments}"
                 TextWrapping="Wrap" />
         </Grid>
         <Grid Grid.Row="3" Grid.ColumnSpan="99">
@@ -100,13 +105,13 @@
                 Text="WebBrowser Name"
                 TextWrapping="Wrap" />
             <TextBox
+                x:Name="TextBox_WebBrowserName"
                 Grid.Column="1"
                 Width="200"
                 Height="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                Text="{Binding WebBrowser.Name}" />
+                VerticalContentAlignment="Center" />
         </Grid>
         <Grid Grid.Row="4" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
@@ -119,13 +124,13 @@
                 VerticalAlignment="Center"
                 Text="User-Agent" />
             <TextBox
+                x:Name="TextBox_UserAgent"
                 Grid.Column="1"
                 Width="400"
                 MinHeight="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Text="{Binding WebBrowser.UserAgent}"
                 TextWrapping="Wrap" />
         </Grid>
         <Grid Grid.Row="5" Grid.ColumnSpan="99">
@@ -139,13 +144,13 @@
                 VerticalAlignment="Center"
                 Text="Proxy Server" />
             <TextBox
+                x:Name="TextBox_ProxyServer"
                 Grid.Column="1"
                 Width="400"
                 MinHeight="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Text="{Binding WebBrowser.ProxyServer}"
                 TextWrapping="Wrap" />
         </Grid>
         <Grid Grid.Row="6" Grid.ColumnSpan="99">
@@ -159,12 +164,12 @@
                 VerticalAlignment="Center"
                 Text="Disable WebSecurity" />
             <CheckBox
+                x:Name="CheckBox_DisableWebSecurity"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Content="(It can solve the cross-domain error of some websites)"
-                IsChecked="{Binding WebBrowser.DisableWebSecurity}" />
+                Content="(It can solve the cross-domain error of some websites)" />
         </Grid>
     </Grid>
 </reactiveui:ReactiveUserControl>
