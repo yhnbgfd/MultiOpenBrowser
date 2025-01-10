@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
 {

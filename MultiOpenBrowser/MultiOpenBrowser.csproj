@@ -62,6 +62,9 @@
   <ItemGroup>
     <Using Include="MultiOpenBrowser.Core.Base" />
     <Using Include="MultiOpenBrowser.Core.Entitys" />
+    <Using Include="MultiOpenBrowser.Core.Entitys.WebBrowser">
+      <Alias>WebBrowser</Alias>
+    </Using>
     <Using Include="MultiOpenBrowser.Helpers" />
     <Using Include="MultiOpenBrowser.Core.Helpers" />
     <Using Include="MultiOpenBrowser.Core.Repositorys" />
