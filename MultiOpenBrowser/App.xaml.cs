@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace MultiOpenBrowser
@@ -44,6 +45,9 @@ namespace MultiOpenBrowser
             }
 
             StartupUri = new Uri("Views/Windows/MainWindow.xaml", UriKind.Relative);
+
+            // 启用绑定错误输出
+            PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Critical;
         }
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

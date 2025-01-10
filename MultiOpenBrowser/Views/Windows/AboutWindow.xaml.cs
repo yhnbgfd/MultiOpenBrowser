@@ -1,18 +1,21 @@
 ﻿using System.Diagnostics;
-using System.Windows;
 using System.Windows.Input;
 
 namespace MultiOpenBrowser.Views.Windows
 {
-    public partial class AboutWindow : Window
+    public partial class AboutWindow : ReactiveWindow<AboutViewModel>
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        public string? AppVersion => GlobalData.AppVersion;
 
         public AboutWindow()
         {
             InitializeComponent();
-            DataContext = this;
+
+            this.WhenActivated(disposables =>
+            {
+                ViewModel = new AboutViewModel();
+                this.Bind(ViewModel, vm => vm.AppVersion, v => v.TextBlock_AppVersion.Text).DisposeWith(disposables);
+            });
         }
 
         private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

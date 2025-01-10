@@ -44,12 +44,12 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button
+                    x:Name="Button_Run"
                     Width="45"
                     Height="30"
                     Margin="0,0,2,0"
                     BorderBrush="#FFDDDDDD"
                     BorderThickness="0,0,0,0"
-                    Click="Button_StartWebEnvironment_Click"
                     Content="{DynamicResource Btn_Run}" />
                 <Menu
                     Grid.Column="1"
@@ -60,13 +60,13 @@
                         Height="30"
                         BorderThickness="0,0,0,0"
                         Header="{DynamicResource Btn_More}">
-                        <MenuItem Click="Button_StartWebEnvironmentIncognito_Click" Header="Incognito" />
-                        <MenuItem Click="Button_EditWebEnvironment_Click" Header="Edit" />
-                        <MenuItem Click="MenuItem_OpenDataFolder_Click" Header="Open Data Folder" />
-                        <MenuItem Click="MenuItem_CopyStartupCMD_Click" Header="Copy startup CMD" />
+                        <MenuItem x:Name="MenuItem_StartWebEnvironmentIncognito" Header="Incognito" />
+                        <MenuItem x:Name="MenuItem_EditWebEnvironment" Header="Edit" />
+                        <MenuItem x:Name="MenuItem_OpenDataFolder" Header="Open Data Folder" />
+                        <MenuItem x:Name="MenuItem_CopyStartupCMD" Header="Copy startup CMD" />
                         <Separator />
                         <MenuItem x:Name="MenuItem_Copy" Header="Copy" />
-                        <MenuItem Click="Button_DeleteWebEnvironment_Click" Header="Delete" />
+                        <MenuItem x:Name="MenuItem_DeleteWebEnvironment" Header="Delete" />
                     </MenuItem>
                 </Menu>
             </Grid>

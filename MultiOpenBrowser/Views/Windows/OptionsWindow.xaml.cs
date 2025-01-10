@@ -8,9 +8,9 @@ namespace MultiOpenBrowser.Views.Windows
         {
             InitializeComponent();
 
-            ViewModel = new OptionsViewModel();
             this.WhenActivated(disposables =>
             {
+                ViewModel = new OptionsViewModel();
                 this.Bind(ViewModel, vm => vm.Option.DefaultWebBrowserDataPath, v => v.TextBox_DefaultWebBrowserDataPath.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.Option.DefaultUserAgent, v => v.TextBox_DefaultUserAgent.Text).DisposeWith(disposables);
                 this.BindCommand(ViewModel, x => x.SaveCommand, x => x.Button_Save).DisposeWith(disposables);
