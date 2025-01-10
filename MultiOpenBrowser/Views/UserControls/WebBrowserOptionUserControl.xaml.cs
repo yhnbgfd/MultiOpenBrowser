@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using WebBrowser = MultiOpenBrowser.Core.Entitys.WebBrowser;
 
 namespace MultiOpenBrowser.Views.UserControls
@@ -23,28 +22,15 @@ namespace MultiOpenBrowser.Views.UserControls
             {
                 ViewModel = new WebBrowserOptionViewModel(WebBrowser);
                 this.OneWayBind(ViewModel, vm => vm.Types, v => v.ComboBox_Type.ItemsSource).DisposeWith(disposables);
-                this.ComboBox_Type.SelectedItem = WebBrowser.Type.ToString();
-                //this.Bind(ViewModel, vm => vm.WebBrowser.Type, v => v.ComboBox_Type.SelectedItem).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.Type, v => v.ComboBox_Type.SelectedItem).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.ExePath, v => v.TextBox_ExePath.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.Arguments, v => v.TextBox_Arguments.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.Name, v => v.TextBox_WebBrowserName.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.UserAgent, v => v.TextBox_UserAgent.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.ProxyServer, v => v.TextBox_ProxyServer.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.DisableWebSecurity, v => v.CheckBox_DisableWebSecurity.IsChecked).DisposeWith(disposables);
+                this.ComboBox_Type.SelectedItem = WebBrowser.Type;
             });
-        }
-
-        private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string? text = (sender as ComboBox)?.SelectedItem as string;
-            if (Enum.TryParse(text, out WebBrowser.TypeEnum type))
-            {
-                WebBrowser.Type = type;
-            }
-            else
-            {
-                WebBrowser.Type = WebBrowser.TypeEnum.Chrome;
-            }
         }
     }
 }
