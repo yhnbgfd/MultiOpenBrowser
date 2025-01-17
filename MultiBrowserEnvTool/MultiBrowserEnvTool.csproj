@@ -21,9 +21,9 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.3" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.3" />
-    <PackageReference Include="FreeSql" Version="3.5.103" />
-    <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.5.103" />
-    <PackageReference Include="FreeSql.Repository" Version="3.5.103" />
+    <PackageReference Include="FreeSql" Version="3.5.104" />
+    <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.5.104" />
+    <PackageReference Include="FreeSql.Repository" Version="3.5.104" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NLog" Version="5.3.4" />
   </ItemGroup>
