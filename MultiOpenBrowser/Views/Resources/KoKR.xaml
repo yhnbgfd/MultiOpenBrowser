@@ -1,0 +1,35 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="File">파일</sys:String>
+    <sys:String x:Key="Options">옵션</sys:String>
+    <sys:String x:Key="Exit">종료</sys:String>
+    <sys:String x:Key="Browser">브라우저</sys:String>
+    <sys:String x:Key="AddBrowser">브라우저 추가</sys:String>
+    <sys:String x:Key="Menu_Group">그룹</sys:String>
+    <sys:String x:Key="AddGroup">그룹 추가</sys:String>
+    <sys:String x:Key="Environment">환경</sys:String>
+    <sys:String x:Key="AddEnvironment">환경 추가</sys:String>
+    <sys:String x:Key="Language">언어</sys:String>
+    <sys:String x:Key="Language_ZhCN">简体中文</sys:String>
+    <sys:String x:Key="Language_EnUS">English</sys:String>
+    <sys:String x:Key="Language_JaJP">日本語</sys:String>
+    <sys:String x:Key="Language_KoKR">한국어</sys:String>
+    <sys:String x:Key="Help">도움말</sys:String>
+    <sys:String x:Key="CheckForUpdates">업데이트 확인</sys:String>
+    <sys:String x:Key="About">정보</sys:String>
+    <sys:String x:Key="Menu_DEBUG">DEBUG</sys:String>
+    <sys:String x:Key="Menu_DEBUG_OpenLogFolder">로그 폴더 열기</sys:String>
+    <sys:String x:Key="Menu_DEBUG_OpenExeFolder">실행 폴더 열기</sys:String>
+
+    <sys:String x:Key="Group_All">전체</sys:String>
+    <sys:String x:Key="Group_Other">미분류</sys:String>
+
+    <sys:String x:Key="Edit">편집</sys:String>
+    <sys:String x:Key="Delete">삭제</sys:String>
+    <sys:String x:Key="Copy">복사</sys:String>
+
+    <sys:String x:Key="Btn_Run">실행</sys:String>
+    <sys:String x:Key="Btn_More">더보기</sys:String>
+</ResourceDictionary> 

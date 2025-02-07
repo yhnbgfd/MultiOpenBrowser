@@ -335,6 +335,16 @@ namespace MultiOpenBrowser.Views.Windows
             EventBus.OnLanguageChange?.Invoke("EnUS");
         }
 
+        private void MenuItem_JaJP_Click(object sender, RoutedEventArgs e)
+        {
+            EventBus.OnLanguageChange?.Invoke("JaJP");
+        }
+
+        private void MenuItem_KoKR_Click(object sender, RoutedEventArgs e)
+        {
+            EventBus.OnLanguageChange?.Invoke("KoKR");
+        }
+
         private void MenuItem_OpenExeFolder_Click(object sender, RoutedEventArgs e)
         {
             var path = Directory.GetCurrentDirectory();

@@ -30,6 +30,8 @@
             <MenuItem Header="{DynamicResource Language}">
                 <MenuItem Click="MenuItem_ZhCN_Click" Header="{DynamicResource Language_ZhCN}" />
                 <MenuItem Click="MenuItem_EnUS_Click" Header="{DynamicResource Language_EnUS}" />
+                <MenuItem Click="MenuItem_JaJP_Click" Header="{DynamicResource Language_JaJP}" />
+                <MenuItem Click="MenuItem_KoKR_Click" Header="{DynamicResource Language_KoKR}" />
             </MenuItem>
             <MenuItem Header="{DynamicResource Help}">
                 <MenuItem Click="MenuItem_About_Click" Header="{DynamicResource CheckForUpdates}" />
