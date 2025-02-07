@@ -60,11 +60,11 @@
                         Height="30"
                         BorderThickness="0,0,0,0"
                         Header="{DynamicResource Btn_More}">
-                        <MenuItem x:Name="MenuItem_StartWebEnvironmentIncognito" Header="Run as incognito" />
+                        <MenuItem x:Name="MenuItem_StartWebEnvironmentIncognito" Header="Run as Incognito" />
                         <Separator />
-                        <MenuItem x:Name="MenuItem_OpenDataFolder" Header="Open data folder" />
-                        <MenuItem x:Name="MenuItem_CopyStartupCMD" Header="Copy startup arguments" />
-                        <MenuItem x:Name="MenuItem_CreateShortcut" Header="Create shortcut" />
+                        <MenuItem x:Name="MenuItem_OpenDataFolder" Header="Open Data Folder" />
+                        <MenuItem x:Name="MenuItem_CopyStartupCMD" Header="Copy Startup Arguments" />
+                        <MenuItem x:Name="MenuItem_CreateShortcut" Header="Create Shortcut" />
                         <Separator />
                         <MenuItem x:Name="MenuItem_EditWebEnvironment" Header="Edit" />
                         <MenuItem x:Name="MenuItem_Copy" Header="Copy" />
