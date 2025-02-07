@@ -19,26 +19,45 @@ namespace MultiOpenBrowser.Views.Windows
             MenuItem_DEBUG.Visibility = Visibility.Collapsed;
 #endif
 
+            SetWindowStartupLocation();
+
+            if (GlobalData.UserInfo == null)
+            {
+                //this.Title = $"{this.Title} (试用版)";
+            }
+        }
+
+        private void SetWindowStartupLocation()
+        {
             var topCache = CacheHelper.Get("MainWindow_Top");
             var leftCache = CacheHelper.Get("MainWindow_Left");
             var widthCache = CacheHelper.Get("MainWindow_Width");
             var heightCache = CacheHelper.Get("MainWindow_Height");
+            
             if (topCache != null && leftCache != null && widthCache != null && heightCache != null)
             {
                 _ = double.TryParse(topCache, out var top);
                 _ = double.TryParse(leftCache, out var left);
                 _ = double.TryParse(widthCache, out var width);
                 _ = double.TryParse(heightCache, out var height);
+
+                // 获取主屏幕工作区
+                var workArea = SystemParameters.WorkArea;
+
+                // 确保窗口尺寸不超过屏幕
+                width = Math.Min(width, workArea.Width);
+                height = Math.Min(height, workArea.Height);
+
+                // 确保窗口位置在屏幕内，至少留出标题栏以便可以拖动
+                const double minVisibleHeight = 30;
+                left = Math.Max(workArea.Left, Math.Min(left, workArea.Right - width));
+                top = Math.Max(workArea.Top, Math.Min(top, workArea.Bottom - minVisibleHeight));
+
                 this.WindowStartupLocation = WindowStartupLocation.Manual;
                 this.Top = top;
                 this.Left = left;
                 this.Width = width;
                 this.Height = height;
-            }
-
-            if (GlobalData.UserInfo == null)
-            {
-                //this.Title = $"{this.Title} (试用版)";
             }
         }
 
