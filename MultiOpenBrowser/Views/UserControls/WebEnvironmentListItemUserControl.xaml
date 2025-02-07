@@ -14,7 +14,7 @@
     mc:Ignorable="d">
     <Border
         x:Name="Border_Main"
-        Background="#FFF9F9F9"
+        Background="{DynamicResource WebEnvironmentListItemBackgroundColor}"
         BorderThickness="2"
         CornerRadius="4">
         <Grid>
