@@ -18,6 +18,7 @@ namespace MultiOpenBrowser.ViewModels
         public ReactiveCommand<Unit, Unit> OpenDataFolderCommand { get; }
         public ReactiveCommand<Unit, Unit> DeleteWebEnvironmentCommand { get; }
         public ReactiveCommand<Unit, Unit> CopyStartupCMDCommand { get; }
+        public ReactiveCommand<Unit, Unit> CreateShortcutCommand { get; }
 
         public WebEnvironmentListItemViewModel(WebEnvironment webEnvironment)
         {
@@ -30,6 +31,7 @@ namespace MultiOpenBrowser.ViewModels
             OpenDataFolderCommand = ReactiveCommand.Create(OpenDataFolder);
             DeleteWebEnvironmentCommand = ReactiveCommand.CreateFromTask(DeleteWebEnvironmentAsync);
             CopyStartupCMDCommand = ReactiveCommand.Create(CopyStartupCMD);
+            CreateShortcutCommand = ReactiveCommand.Create(CreateShortcut);
         }
 
         public void StartWebEnvironment()
@@ -190,6 +192,24 @@ namespace MultiOpenBrowser.ViewModels
             {
                 _logger.Error(ex);
                 MessageBox.Show(Application.Current.MainWindow, ex.Message, "Copy Startup CMD Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void CreateShortcut()
+        {
+            try
+            {
+                if (WebEnvironment == null)
+                {
+                    return;
+                }
+
+                var b = new WebBrowserFactory(WebEnvironment).CreateShortcut(new IWebBrowser.StartOption());
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Create Shortcut Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

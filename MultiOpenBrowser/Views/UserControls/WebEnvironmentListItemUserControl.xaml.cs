@@ -29,6 +29,7 @@ namespace MultiOpenBrowser.Views.UserControls
                 this.BindCommand(ViewModel, x => x.OpenDataFolderCommand, x => x.MenuItem_OpenDataFolder).DisposeWith(disposables);
                 this.BindCommand(ViewModel, x => x.DeleteWebEnvironmentCommand, x => x.MenuItem_DeleteWebEnvironment).DisposeWith(disposables);
                 this.BindCommand(ViewModel, x => x.CopyStartupCMDCommand, x => x.MenuItem_CopyStartupCMD).DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.CreateShortcutCommand, x => x.MenuItem_CreateShortcut).DisposeWith(disposables);
             });
 
             WebBrowserFactory webBrowserFactory = new(webEnvironment);
