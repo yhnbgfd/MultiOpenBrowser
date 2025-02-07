@@ -33,7 +33,7 @@ namespace MultiOpenBrowser.Views.Windows
             var leftCache = CacheHelper.Get("MainWindow_Left");
             var widthCache = CacheHelper.Get("MainWindow_Width");
             var heightCache = CacheHelper.Get("MainWindow_Height");
-            
+
             if (topCache != null && leftCache != null && widthCache != null && heightCache != null)
             {
                 _ = double.TryParse(topCache, out var top);
@@ -355,6 +355,29 @@ namespace MultiOpenBrowser.Views.Windows
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
             Process.Start("explorer.exe", path);
+        }
+
+        private void MenuItem_Themes_FollowSystem_Click(object sender, RoutedEventArgs e)
+        {
+            var systemTheme = SystemParameters.WindowGlassColor.ToString(); // 检查系统主题
+            if (systemTheme == "Black") // 如果是深色模式
+            {
+                MenuItem_Themes_Dark_Click(sender, e);
+            }
+            else
+            {
+                MenuItem_Themes_Light_Click(sender, e);
+            }
+        }
+
+        private void MenuItem_Themes_Light_Click(object sender, RoutedEventArgs e)
+        {
+            EventBus.OnLanguageChange?.Invoke("LightTheme");
+        }
+
+        private void MenuItem_Themes_Dark_Click(object sender, RoutedEventArgs e)
+        {
+            EventBus.OnLanguageChange?.Invoke("DarkTheme");
         }
     }
 }

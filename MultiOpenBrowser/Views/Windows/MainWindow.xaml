@@ -22,9 +22,18 @@
             <MenuItem Height="28" Header="{DynamicResource File}">
                 <MenuItem Click="MenuItem_Options_Click" Header="{DynamicResource Options}" />
                 <MenuItem Header="{DynamicResource Themes}">
-                    <MenuItem Header="{DynamicResource Themes_FollowSystem}" />
-                    <MenuItem Header="{DynamicResource Themes_Light}" />
-                    <MenuItem Header="{DynamicResource Themes_Dark}" />
+                    <MenuItem
+                        x:Name="MenuItem_Themes_FollowSystem"
+                        Click="MenuItem_Themes_FollowSystem_Click"
+                        Header="{DynamicResource Themes_FollowSystem}" />
+                    <MenuItem
+                        x:Name="MenuItem_Themes_Light"
+                        Click="MenuItem_Themes_Light_Click"
+                        Header="{DynamicResource Themes_Light}" />
+                    <MenuItem
+                        x:Name="MenuItem_Themes_Dark"
+                        Click="MenuItem_Themes_Dark_Click"
+                        Header="{DynamicResource Themes_Dark}" />
                 </MenuItem>
                 <Separator />
                 <MenuItem Click="MenuItem_Exit_Click" Header="{DynamicResource Exit}" />

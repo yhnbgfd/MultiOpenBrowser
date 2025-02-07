@@ -19,6 +19,17 @@ namespace MultiOpenBrowser
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
 
             EventBus.OnLanguageChange += OnLanguageChangeHandle;
+            EventBus.OnColorThemeChange += OnColorThemeChangeHandle;
+        }
+
+        private async void OnColorThemeChangeHandle(string themeName)
+        {
+            if (Application.LoadComponent(new Uri(@"Views\Resources\" + themeName + ".xaml", UriKind.Relative)) is ResourceDictionary rd)
+            {
+                Resources.MergedDictionaries.Add(rd);
+                GlobalData.Option.ColorTheme = themeName;
+                await CacheHelper.SetAsync(nameof(Option), GlobalData.Option);
+            }
         }
 
         private async void OnLanguageChangeHandle(string langName)
@@ -39,6 +50,10 @@ namespace MultiOpenBrowser
 
             await ArgsHelper.StartWebEnvironmentAsync(e.Args);
 
+            if (!string.IsNullOrWhiteSpace(GlobalData.Option.ColorTheme))
+            {
+                OnColorThemeChangeHandle(GlobalData.Option.ColorTheme!);
+            }
             if (!string.IsNullOrWhiteSpace(GlobalData.Option.Language))
             {
                 OnLanguageChangeHandle(GlobalData.Option.Language!);
