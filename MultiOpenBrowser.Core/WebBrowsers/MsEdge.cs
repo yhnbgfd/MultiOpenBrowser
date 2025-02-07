@@ -21,6 +21,13 @@ namespace MultiOpenBrowser.Core.WebBrowsers
             AppendArgument(sb, "no-first-run");
             AppendArgument(sb, "no-default-browser-check");
 
+            // 禁用账号自动登录和同步
+            AppendArgument(sb, "disable-sync");  // 禁用同步
+            AppendArgument(sb, "disable-sync-types");  // 禁用所有类型的同步
+            AppendArgument(sb, "disable-features", "msSignInOnHub,msProfileOnHub,msAadSignInOnHub"); // 禁用 Edge 的账号登录功能
+            AppendArgument(sb, "disable-signin-promo"); // 禁用登录提示
+            AppendArgument(sb, "disable-sync-app-list"); // 禁用应用同步
+
             if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.ProxyServer))
             {
                 AppendArgument(sb, "proxy-server", _webEnvironment.WebBrowser.ProxyServer);
