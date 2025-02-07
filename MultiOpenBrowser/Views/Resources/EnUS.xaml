@@ -4,6 +4,10 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="File">File</sys:String>
     <sys:String x:Key="Options">Options</sys:String>
+    <sys:String x:Key="Themes">Themes</sys:String>
+    <sys:String x:Key="Themes_FollowSystem">Follow System</sys:String>
+    <sys:String x:Key="Themes_Light">Light</sys:String>
+    <sys:String x:Key="Themes_Dark">Dark</sys:String>
     <sys:String x:Key="Exit">Exit</sys:String>
     <sys:String x:Key="Browser">Browser</sys:String>
     <sys:String x:Key="AddBrowser">Add Browser</sys:String>

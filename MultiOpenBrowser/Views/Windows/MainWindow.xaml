@@ -9,7 +9,7 @@
     xmlns:vms="clr-namespace:MultiOpenBrowser.ViewModels"
     Title="MultiOpenBrowser"
     Width="565"
-    Height="550"
+    Height="350"
     MinWidth="303"
     MinHeight="200"
     Closed="Window_Closed"
@@ -21,6 +21,11 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Height="28" Header="{DynamicResource File}">
                 <MenuItem Click="MenuItem_Options_Click" Header="{DynamicResource Options}" />
+                <MenuItem Header="{DynamicResource Themes}">
+                    <MenuItem Header="{DynamicResource Themes_FollowSystem}" />
+                    <MenuItem Header="{DynamicResource Themes_Light}" />
+                    <MenuItem Header="{DynamicResource Themes_Dark}" />
+                </MenuItem>
                 <Separator />
                 <MenuItem Click="MenuItem_Exit_Click" Header="{DynamicResource Exit}" />
             </MenuItem>
