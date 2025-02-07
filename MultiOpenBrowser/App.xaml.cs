@@ -25,7 +25,7 @@ namespace MultiOpenBrowser
         {
             if (Application.LoadComponent(new Uri(@"Views\Resources\" + langName + ".xaml", UriKind.Relative)) is ResourceDictionary langRd)
             {
-                Resources.MergedDictionaries[0] = langRd;
+                Resources.MergedDictionaries.Add(langRd);
                 GlobalData.Option.Language = langName;
                 await CacheHelper.SetAsync(nameof(Option), GlobalData.Option);
             }
