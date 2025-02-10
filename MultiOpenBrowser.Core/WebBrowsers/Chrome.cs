@@ -31,8 +31,6 @@ namespace MultiOpenBrowser.Core.WebBrowsers
                 AppendArgument(sb, "restore-last-session");
             }
             AppendArgument(sb, "hide-crash-restore-bubble");
-            AppendArgument(sb, "flag-switches-begin");
-            AppendArgument(sb, "flag-switches-end");
 
             if (_webEnvironment.WebBrowser.DisableWebSecurity)
             {
