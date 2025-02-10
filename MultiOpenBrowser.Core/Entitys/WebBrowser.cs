@@ -19,6 +19,7 @@
         public string? UserAgent { get; set; }
         public string? ProxyServer { get; set; }
         public bool DisableWebSecurity { get; set; } = false;
+        public bool RestoreLastSession { get; set; } = true;
         public string? Arguments { get; set; }
 
         [Column(IsIgnore = true)]

@@ -28,6 +28,7 @@ namespace MultiOpenBrowser.Views.UserControls
                 this.Bind(ViewModel, vm => vm.WebBrowser.UserAgent, v => v.TextBox_UserAgent.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.ProxyServer, v => v.TextBox_ProxyServer.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.DisableWebSecurity, v => v.CheckBox_DisableWebSecurity.IsChecked).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.RestoreLastSession, v => v.CheckBox_RestoreLastSession.IsChecked).DisposeWith(disposables);
                 this.ComboBox_Type.SelectedItem = WebBrowser.Type;
             });
         }

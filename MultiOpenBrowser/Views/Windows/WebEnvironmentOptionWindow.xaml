@@ -9,7 +9,7 @@
     xmlns:vms="clr-namespace:MultiOpenBrowser.ViewModels"
     Title="WebEnvironment Option Window"
     Width="640"
-    Height="440"
+    Height="460"
     Loaded="Window_Loaded"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
@@ -34,7 +34,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="7*" />
+                <RowDefinition Height="8*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />

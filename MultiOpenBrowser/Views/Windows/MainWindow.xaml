@@ -18,7 +18,10 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel x:Name="DockPanel_Main">
-        <Menu DockPanel.Dock="Top">
+        <Menu
+            Background="{DynamicResource MenuBackgroundColor}"
+            DockPanel.Dock="Top"
+            Foreground="{DynamicResource MenuForeground}">
             <MenuItem Height="28" Header="{DynamicResource File}">
                 <MenuItem Click="MenuItem_Options_Click" Header="{DynamicResource Options}" />
                 <MenuItem Header="{DynamicResource Themes}">

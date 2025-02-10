@@ -26,7 +26,10 @@ namespace MultiOpenBrowser.Core.WebBrowsers
                 AppendArgument(sb, "proxy-server", _webEnvironment.WebBrowser.ProxyServer);
             }
 
-            AppendArgument(sb, "restore-last-session");
+            if (_webEnvironment.WebBrowser.RestoreLastSession)
+            {
+                AppendArgument(sb, "restore-last-session");
+            }
             AppendArgument(sb, "hide-crash-restore-bubble");
             AppendArgument(sb, "flag-switches-begin");
             AppendArgument(sb, "flag-switches-end");

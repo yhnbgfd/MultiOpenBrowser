@@ -20,6 +20,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -169,6 +170,23 @@
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
                 Content="(It can solve the cross-domain error of some websites)" />
+        </Grid>
+        <Grid Grid.Row="7" Grid.ColumnSpan="99">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Margin="5,0,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Text="Restore Last Session" />
+            <CheckBox
+                x:Name="CheckBox_RestoreLastSession"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center" />
         </Grid>
     </Grid>
 </reactiveui:ReactiveUserControl>
