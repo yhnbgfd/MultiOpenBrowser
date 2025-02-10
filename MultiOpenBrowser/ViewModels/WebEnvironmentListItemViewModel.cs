@@ -18,6 +18,7 @@ namespace MultiOpenBrowser.ViewModels
         public ReactiveCommand<Unit, Unit> OpenDataFolderCommand { get; }
         public ReactiveCommand<Unit, Unit> DeleteWebEnvironmentCommand { get; }
         public ReactiveCommand<Unit, Unit> CopyStartupCMDCommand { get; }
+        public ReactiveCommand<Unit, Unit> CopyDataFolderPathCommand { get; }
         public ReactiveCommand<Unit, Unit> CreateShortcutCommand { get; }
 
         public WebEnvironmentListItemViewModel(WebEnvironment webEnvironment)
@@ -31,7 +32,28 @@ namespace MultiOpenBrowser.ViewModels
             OpenDataFolderCommand = ReactiveCommand.Create(OpenDataFolder);
             DeleteWebEnvironmentCommand = ReactiveCommand.CreateFromTask(DeleteWebEnvironmentAsync);
             CopyStartupCMDCommand = ReactiveCommand.Create(CopyStartupCMD);
+            CopyDataFolderPathCommand = ReactiveCommand.Create(CopyDataFolderPath);
             CreateShortcutCommand = ReactiveCommand.Create(CreateShortcut);
+        }
+
+        private void CopyDataFolderPath()
+        {
+            try
+            {
+                if (WebEnvironment == null)
+                {
+                    return;
+                }
+
+                var text = WebEnvironment.WebBrowserDataPath;
+
+                Clipboard.SetText(text, TextDataFormat.Text);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageBox.Show(Application.Current.MainWindow, ex.Message, "Copy Data Folder Path Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void StartWebEnvironment()

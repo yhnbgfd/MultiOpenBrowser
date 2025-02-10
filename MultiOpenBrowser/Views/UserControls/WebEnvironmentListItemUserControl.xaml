@@ -63,6 +63,7 @@
                         <MenuItem x:Name="MenuItem_StartWebEnvironmentIncognito" Header="Run as Incognito" />
                         <Separator />
                         <MenuItem x:Name="MenuItem_OpenDataFolder" Header="Open Data Folder" />
+                        <MenuItem x:Name="MenuItem_CopyDataFolderPath" Header="Copy Data Folder Path" />
                         <MenuItem x:Name="MenuItem_CopyStartupCMD" Header="Copy Startup Arguments" />
                         <MenuItem x:Name="MenuItem_CreateShortcut" Header="Create Shortcut" />
                         <Separator />
