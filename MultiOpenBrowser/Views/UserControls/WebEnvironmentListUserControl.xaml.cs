@@ -136,10 +136,11 @@ namespace MultiOpenBrowser.Views.UserControls
                             if (item is WebEnvironmentListItemUserControl webEnvUC)
                             {
                                 webEnvUC.WebEnvironment.Order = _wrapPanel_All.Children.IndexOf(webEnvUC);
-                                WebEnvironmentRepo webEnvironmentRepo = new(null);
-                                await webEnvironmentRepo.InsertOrUpdateAsync(webEnvUC.WebEnvironment);
+                                _ = new WebEnvironmentRepo(null).InsertOrUpdateAsync(webEnvUC.WebEnvironment);
                             }
                         }
+
+                        await ReloadListAsync();
                     }
                 }
             }
