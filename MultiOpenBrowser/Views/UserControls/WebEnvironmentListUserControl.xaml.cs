@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MultiOpenBrowser.Views.UserControls
 {
     public partial class WebEnvironmentListUserControl : UserControl
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private WrapPanel _wrapPanel_All = new();
 
         public WebEnvironmentListUserControl()
         {
@@ -34,20 +36,25 @@ namespace MultiOpenBrowser.Views.UserControls
 
                 // ALL分组
                 {
-                    WrapPanel wrapPanel = new()
+                    _wrapPanel_All = new()
                     {
                         Margin = new Thickness(5, 0, 5, 0),
+                        AllowDrop = true,
                     };
                     var list = GlobalData.WebEnvironmentList.Select((value, i) => new { i, value });
                     foreach (var webEnv in list)
                     {
                         webEnv.value.Index = webEnv.i + 1;
-                        wrapPanel.Children.Add(new WebEnvironmentListItemUserControl(webEnv.value));
+                        WebEnvironmentListItemUserControl webEnvironmentListItemUserControl = new(webEnv.value);
+                        webEnvironmentListItemUserControl.MouseLeftButtonDown += WebEnvironmentListItemUserControl_MouseLeftButtonDown;
+                        webEnvironmentListItemUserControl.DragOver += WebEnvironmentListItemUserControl_DragOver;
+                        webEnvironmentListItemUserControl.Drop += WebEnvironmentListItemUserControl_Drop;
+                        _wrapPanel_All.Children.Add(webEnvironmentListItemUserControl);
                     }
                     TabItem tabItem = new()
                     {
                         IsSelected = true,
-                        Content = new ScrollViewer() { Content = wrapPanel },
+                        Content = new ScrollViewer() { Content = _wrapPanel_All },
                     };
                     tabItem.SetDynamicResourceKey(TabItem.HeaderProperty, "Group_All");
                     this.TabControl_Group.Items.Add(tabItem);
@@ -103,6 +110,52 @@ namespace MultiOpenBrowser.Views.UserControls
             catch (Exception ex)
             {
                 _logger.Error(ex);
+            }
+        }
+
+        private async void WebEnvironmentListItemUserControl_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetData(typeof(WebEnvironmentListItemUserControl)) is WebEnvironmentListItemUserControl draggedItem)
+            {
+                // 获取被拖动的项的索引
+                int draggedIndex = _wrapPanel_All.Children.IndexOf(draggedItem);
+                if (sender is WebEnvironmentListItemUserControl targetItem)
+                {
+                    // 获取目标项的索引
+                    int targetIndex = _wrapPanel_All.Children.IndexOf(targetItem);
+
+                    // 更新 WrapPanel 中的子项顺序
+                    if (draggedIndex != targetIndex)
+                    {
+                        _wrapPanel_All.Children.Remove(draggedItem);
+                        _wrapPanel_All.Children.Insert(targetIndex, draggedItem);
+
+                        // 保存到数据库
+                        foreach (var item in _wrapPanel_All.Children)
+                        {
+                            if (item is WebEnvironmentListItemUserControl webEnvUC)
+                            {
+                                webEnvUC.WebEnvironment.Order = _wrapPanel_All.Children.IndexOf(webEnvUC);
+                                WebEnvironmentRepo webEnvironmentRepo = new(null);
+                                await webEnvironmentRepo.InsertOrUpdateAsync(webEnvUC.WebEnvironment);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void WebEnvironmentListItemUserControl_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Move;
+            e.Handled = true;
+        }
+
+        private void WebEnvironmentListItemUserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is WebEnvironmentListItemUserControl draggedItem)
+            {
+                DragDrop.DoDragDrop(draggedItem, draggedItem, DragDropEffects.Move);
             }
         }
     }

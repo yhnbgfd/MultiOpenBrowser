@@ -8,7 +8,7 @@
             GlobalData.WebEnvironmentList = await repo.Select
                 .LeftJoin(a => a.WebBrowser != null && a.WebBrowserId == a.WebBrowser.Id)
                 .LeftJoin(a => a.WebEnvironmentGroup != null && a.WebEnvironmentGroupId == a.WebEnvironmentGroup.Id)
-                .OrderByDescending(a => a.Order)
+                .OrderBy(a => a.Order)
                 .OrderBy(a => a.Id)
                 .ToListAsync();
         }
