@@ -135,8 +135,12 @@ namespace MultiOpenBrowser.Views.UserControls
                         {
                             if (item is WebEnvironmentListItemUserControl webEnvUC)
                             {
-                                webEnvUC.WebEnvironment.Order = _wrapPanel_All.Children.IndexOf(webEnvUC);
-                                _ = new WebEnvironmentRepo(null).InsertOrUpdateAsync(webEnvUC.WebEnvironment);
+                                var newOrder = _wrapPanel_All.Children.IndexOf(webEnvUC);
+                                if (webEnvUC.WebEnvironment.Order != newOrder)
+                                {
+                                    webEnvUC.WebEnvironment.Order = _wrapPanel_All.Children.IndexOf(webEnvUC);
+                                    _ = new WebEnvironmentRepo(null).InsertOrUpdateAsync(webEnvUC.WebEnvironment);
+                                }
                             }
                         }
 
