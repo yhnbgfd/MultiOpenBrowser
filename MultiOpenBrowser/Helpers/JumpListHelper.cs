@@ -22,6 +22,11 @@ namespace MultiOpenBrowser.Helpers
             {
                 try
                 {
+                    if (webEnv.ShowInJumpList == false)
+                    {
+                        continue;
+                    }
+
                     WebBrowserFactory webBrowserFactory = new(webEnv);
                     if (!File.Exists(webBrowserFactory.WebBrowserInstance.ExePath))
                     {

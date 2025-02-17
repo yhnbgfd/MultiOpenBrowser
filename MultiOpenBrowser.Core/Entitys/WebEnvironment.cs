@@ -13,6 +13,7 @@
         public int? WebEnvironmentGroupId { get; set; }
         public int? WebBrowserId { get; set; }
         public string? WebBrowserDataPath { get; set; }
+        public bool ShowInJumpList { get; set; } = true;
 
         [Column(IsIgnore = true)]
         public int Index { get; set; }
