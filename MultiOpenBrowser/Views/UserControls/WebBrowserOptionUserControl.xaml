@@ -3,16 +3,19 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entitys="clr-namespace:MultiOpenBrowser.Core.Entitys;assembly=MultiOpenBrowser.Core"
     xmlns:local="clr-namespace:MultiOpenBrowser.Views.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:reactiveui="http://reactiveui.net"
     xmlns:vms="clr-namespace:MultiOpenBrowser.ViewModels"
-    d:DesignHeight="350"
-    d:DesignWidth="800"
+    d:DataContext="{d:DesignInstance Type=entitys:WebBrowser}"
+    d:DesignHeight="400"
+    d:DesignWidth="620"
     x:TypeArguments="vms:WebBrowserOptionViewModel"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
@@ -27,6 +30,26 @@
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="99">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Margin="5,0,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Text="WebBrowser Name"
+                TextWrapping="Wrap" />
+            <TextBox
+                x:Name="TextBox_WebBrowserName"
+                Grid.Column="1"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center" />
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -52,7 +75,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.ColumnSpan="99">
+        <Grid Grid.Row="2" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -73,7 +96,7 @@
                 VerticalContentAlignment="Center"
                 TextWrapping="Wrap" />
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="99">
+        <Grid Grid.Row="3" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -92,26 +115,6 @@
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
                 TextWrapping="Wrap" />
-        </Grid>
-        <Grid Grid.Row="3" Grid.ColumnSpan="99">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="7*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Margin="5,0,5,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Text="WebBrowser Name"
-                TextWrapping="Wrap" />
-            <TextBox
-                x:Name="TextBox_WebBrowserName"
-                Grid.Column="1"
-                Width="200"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center" />
         </Grid>
         <Grid Grid.Row="4" Grid.ColumnSpan="99">
             <Grid.ColumnDefinitions>
@@ -187,6 +190,35 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center" />
+        </Grid>
+        <Grid Grid.Row="8" Grid.ColumnSpan="99">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Margin="5,0,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Text="Default Website" />
+            <TextBox
+                x:Name="TextBox_DefaultWebsite"
+                Grid.Column="1"
+                Width="300"
+                MinHeight="30"
+                MaxWidth="400"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                TextWrapping="Wrap" />
+            <CheckBox
+                x:Name="CheckBox_IsApp"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                Content="App Mode" />
         </Grid>
     </Grid>
 </reactiveui:ReactiveUserControl>

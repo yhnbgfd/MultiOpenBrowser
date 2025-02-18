@@ -4,12 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:UserControls="clr-namespace:MultiOpenBrowser.Views.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entitys="clr-namespace:MultiOpenBrowser.Core.Entitys;assembly=MultiOpenBrowser.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:reactiveui="http://reactiveui.net"
     xmlns:vms="clr-namespace:MultiOpenBrowser.ViewModels"
     Title="WebEnvironment Option Window"
     Width="640"
-    Height="500"
+    Height="560"
+    d:DataContext="{d:DesignInstance Type=entitys:WebEnvironment}"
     Loaded="Window_Loaded"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
@@ -35,7 +37,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="8*" />
+                <RowDefinition Height="9*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />

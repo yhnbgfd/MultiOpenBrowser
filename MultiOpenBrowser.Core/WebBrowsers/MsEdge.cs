@@ -59,6 +59,18 @@ namespace MultiOpenBrowser.Core.WebBrowsers
                 sb.Append($"{_webEnvironment.WebBrowser.Arguments} ");
             }
 
+            if (!string.IsNullOrWhiteSpace(_webEnvironment.WebBrowser.DefaultWebsite))
+            {
+                if (_webEnvironment.WebBrowser.IsApp == true)
+                {
+                    AppendArgument(sb, "app", _webEnvironment.WebBrowser.DefaultWebsite);
+                }
+                else
+                {
+                    sb.Append($"{_webEnvironment.WebBrowser.DefaultWebsite} ");
+                }
+            }
+
             return sb.ToString();
         }
 

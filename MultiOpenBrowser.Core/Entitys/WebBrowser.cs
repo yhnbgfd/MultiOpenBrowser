@@ -21,6 +21,14 @@
         public bool DisableWebSecurity { get; set; } = false;
         public bool RestoreLastSession { get; set; } = true;
         public string? Arguments { get; set; }
+        /// <summary>
+        /// 默认网站
+        /// </summary>
+        public string? DefaultWebsite { get; set; }
+        /// <summary>
+        /// 默认网站是否以APP模式打开
+        /// </summary>
+        public bool IsApp { get; set; } = false;
 
         [Column(IsIgnore = true)]
         public static WebBrowser Default => new()

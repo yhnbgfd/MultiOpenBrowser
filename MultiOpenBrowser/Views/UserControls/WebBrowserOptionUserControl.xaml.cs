@@ -29,6 +29,8 @@ namespace MultiOpenBrowser.Views.UserControls
                 this.Bind(ViewModel, vm => vm.WebBrowser.ProxyServer, v => v.TextBox_ProxyServer.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.DisableWebSecurity, v => v.CheckBox_DisableWebSecurity.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.WebBrowser.RestoreLastSession, v => v.CheckBox_RestoreLastSession.IsChecked).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.DefaultWebsite, v => v.TextBox_DefaultWebsite.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.WebBrowser.IsApp, v => v.CheckBox_IsApp.IsChecked).DisposeWith(disposables);
             });
         }
     }
