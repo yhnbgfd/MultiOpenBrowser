@@ -11,6 +11,8 @@
     Title="WebEnvironment Option Window"
     Width="640"
     Height="560"
+    MinWidth="640"
+    MinHeight="560"
     d:DataContext="{d:DesignInstance Type=entitys:WebEnvironment}"
     Loaded="Window_Loaded"
     WindowStartupLocation="CenterOwner"

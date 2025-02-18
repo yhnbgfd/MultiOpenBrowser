@@ -10,6 +10,8 @@
     Title="WebBrowser Option Window"
     Width="640"
     Height="420"
+    MinWidth="640"
+    MinHeight="420"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.InputBindings>
