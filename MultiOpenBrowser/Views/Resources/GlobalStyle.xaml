@@ -15,7 +15,4 @@
     <Style TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
-    <Style x:Key="Grid_InputRow" TargetType="Grid">
-        <Setter Property="Height" Value="34" />
-    </Style>
 </ResourceDictionary>
