@@ -13,23 +13,8 @@
     d:DesignWidth="620"
     x:TypeArguments="vms:WebBrowserOptionViewModel"
     mc:Ignorable="d">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="7*" />
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.ColumnSpan="99">
+    <StackPanel>
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -37,19 +22,15 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Text="WebBrowser Name"
-                TextWrapping="Wrap" />
+                Text="WebBrowser Name" />
             <TextBox
                 x:Name="TextBox_WebBrowserName"
                 Grid.Column="1"
                 Width="200"
                 Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center" />
+                HorizontalAlignment="Left" />
         </Grid>
-        <Grid Grid.Row="1" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -57,17 +38,13 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Text="WebBrowser Type"
-                TextWrapping="Wrap" />
+                Text="WebBrowser Type" />
             <ComboBox
                 x:Name="ComboBox_Type"
                 Grid.Column="1"
                 Width="200"
                 Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center">
+                HorizontalAlignment="Left">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" />
@@ -75,7 +52,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -83,20 +60,15 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Text="WebBrowser Exe Path"
-                TextWrapping="Wrap" />
+                Text="WebBrowser Exe Path" />
             <TextBox
                 x:Name="TextBox_ExePath"
                 Grid.Column="1"
                 Width="400"
                 Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                TextWrapping="Wrap" />
+                HorizontalAlignment="Left" />
         </Grid>
-        <Grid Grid.Row="3" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -104,19 +76,15 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
                 Text="Startup Arguments" />
             <TextBox
                 x:Name="TextBox_Arguments"
                 Grid.Column="1"
                 Width="400"
                 MinHeight="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                TextWrapping="Wrap" />
+                HorizontalAlignment="Left" />
         </Grid>
-        <Grid Grid.Row="4" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -124,19 +92,15 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
                 Text="User-Agent" />
             <TextBox
                 x:Name="TextBox_UserAgent"
                 Grid.Column="1"
                 Width="400"
                 MinHeight="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                TextWrapping="Wrap" />
+                HorizontalAlignment="Left" />
         </Grid>
-        <Grid Grid.Row="5" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -144,19 +108,15 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
                 Text="Proxy Server" />
             <TextBox
                 x:Name="TextBox_ProxyServer"
                 Grid.Column="1"
                 Width="400"
                 MinHeight="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                TextWrapping="Wrap" />
+                HorizontalAlignment="Left" />
         </Grid>
-        <Grid Grid.Row="6" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -164,17 +124,14 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
                 Text="Disable WebSecurity" />
             <CheckBox
                 x:Name="CheckBox_DisableWebSecurity"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
                 Content="(It can solve the cross-domain error of some websites)" />
         </Grid>
-        <Grid Grid.Row="7" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
@@ -182,43 +139,39 @@
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
                 Text="Restore Last Session" />
             <CheckBox
                 x:Name="CheckBox_RestoreLastSession"
                 Grid.Column="1"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center" />
+                HorizontalAlignment="Left" />
         </Grid>
-        <Grid Grid.Row="8" Grid.ColumnSpan="99">
+        <Grid Style="{StaticResource Grid_InputRow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="7*" />
             </Grid.ColumnDefinitions>
             <TextBlock
                 Margin="5,0,5,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
                 Text="Default Website" />
-            <TextBox
-                x:Name="TextBox_DefaultWebsite"
-                Grid.Column="1"
-                Width="300"
-                MinHeight="30"
-                MaxWidth="400"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                TextWrapping="Wrap" />
-            <CheckBox
-                x:Name="CheckBox_IsApp"
-                Grid.Column="2"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                Content="App Mode" />
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    x:Name="TextBox_DefaultWebsite"
+                    Width="300"
+                    MinHeight="30"
+                    MaxWidth="400"
+                    HorizontalAlignment="Left" />
+                <CheckBox
+                    x:Name="CheckBox_IsApp"
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Content="App Mode" />
+            </Grid>
         </Grid>
-    </Grid>
+    </StackPanel>
 </reactiveui:ReactiveUserControl>

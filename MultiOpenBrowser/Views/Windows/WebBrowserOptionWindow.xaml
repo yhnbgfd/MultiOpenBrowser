@@ -9,7 +9,7 @@
     xmlns:vms="clr-namespace:MultiOpenBrowser.ViewModels"
     Title="WebBrowser Option Window"
     Width="640"
-    Height="360"
+    Height="420"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.InputBindings>
@@ -28,7 +28,7 @@
             Click="Button_Save_Click"
             Content="OK"
             DockPanel.Dock="Bottom" />
-        <Grid>
+        <Grid Margin="0,10,0,0">
             <UserControls:WebBrowserOptionUserControl WebBrowser="{Binding WebBrowser}" />
         </Grid>
     </DockPanel>
